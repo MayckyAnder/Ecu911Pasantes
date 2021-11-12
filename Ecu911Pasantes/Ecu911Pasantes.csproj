@@ -111,10 +111,13 @@
     <Content Include="resources\images\brands\slack.png" />
     <Content Include="resources\images\ECU911.svg.png" />
     <Content Include="resources\images\email-campaign.svg" />
+    <Content Include="resources\images\escudo2.PNG" />
     <Content Include="resources\images\favicon.ico" />
     <Content Include="resources\images\features-1.svg" />
     <Content Include="resources\images\features-2.svg" />
     <Content Include="resources\images\file-searching.svg" />
+    <Content Include="resources\images\final.png" />
+    <Content Include="resources\images\firmas.PNG" />
     <Content Include="resources\images\flags\germany.jpg" />
     <Content Include="resources\images\flags\italy.jpg" />
     <Content Include="resources\images\flags\russia.jpg" />
@@ -277,7 +280,9 @@
     <Content Include="views\admin\proyectos.aspx" />
     <Content Include="views\admin\responsable.aspx" />
     <Content Include="views\admin\responsables.aspx" />
+    <Content Include="views\pasantes\Acuerdo.aspx" />
     <Content Include="views\pasantes\asistencia.aspx" />
+    <Content Include="views\pasantes\Certificado.aspx" />
     <Content Include="views\pasantes\contraseña.aspx" />
     <Content Include="views\pasantes\hora.aspx" />
     <Content Include="views\pasantes\horas.aspx" />
@@ -411,12 +416,26 @@
     <Compile Include="views\admin\responsables.aspx.designer.cs">
       <DependentUpon>responsables.aspx</DependentUpon>
     </Compile>
+    <Compile Include="views\pasantes\Acuerdo.aspx.cs">
+      <DependentUpon>Acuerdo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\pasantes\Acuerdo.aspx.designer.cs">
+      <DependentUpon>Acuerdo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="views\pasantes\asistencia.aspx.cs">
       <DependentUpon>asistencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="views\pasantes\asistencia.aspx.designer.cs">
       <DependentUpon>asistencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\pasantes\Certificado.aspx.cs">
+      <DependentUpon>Certificado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\pasantes\Certificado.aspx.designer.cs">
+      <DependentUpon>Certificado.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\pasantes\contraseña.aspx.cs">
       <DependentUpon>contraseña.aspx</DependentUpon>

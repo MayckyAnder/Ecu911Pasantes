@@ -17,7 +17,7 @@ namespace CapaNegocio
         {
             try
             {
-                ma.From = new MailAddress(from, "Empresa Pepito S.A.", System.Text.Encoding.UTF8);
+                ma.From = new MailAddress(from, "Ecu911 Sistema Pasantes", System.Text.Encoding.UTF8);
                 ma.To.Add(new MailAddress(to));
 
                 ma.Body = mensaje;

@@ -60,13 +60,13 @@
                         </li>
                         <li class="side-nav-title side-nav-item">Documentos</li>
                         <li class="side-nav-item">
-                            <a href="participantes.aspx" class="side-nav-link">
+                            <a href="Acuerdo.aspx" class="side-nav-link">
                                 <i class="uil-comments-alt"></i>
                                 <span>Acuerdo</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="javascript:void(0);" class="side-nav-link">
+                            <a href="Certificado.aspx" class="side-nav-link">
                                 <i class="uil-comments-alt"></i>
                                 <span>Certificado</span>
                             </a>

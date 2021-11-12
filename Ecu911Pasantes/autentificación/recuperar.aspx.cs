@@ -27,8 +27,8 @@ namespace Ecu911Pasantes.autentificación
                 {
                     usu = cnUsuarios.obtenerCorreo(txtEmail.Text);
 
-                    string from = "";
-                    string pass = "";
+                    string from = "asosa934@gmail.com";
+                    string pass = "cheesandy";
                     string to = usu.Correo;
                     string mensaje = "La contraseña que el olvido es: <strong>" + 
                         desencriptar(usu.Password) + "</strong>";
