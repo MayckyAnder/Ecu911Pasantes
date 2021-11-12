@@ -30,14 +30,17 @@ namespace Ecu911Pasantes.autentificación
                     if (existe)
                     {
                         Tbl_Usuarios usuario = new Tbl_Usuarios();
+                        Tbl_TipoUsuario tusu = new Tbl_TipoUsuario();
                         usuario = cnUsuarios.autentificarxLogin(txtUser.Text, encriptar(txtPass.Text));
-
+                        int rol = Convert.ToInt32(usuario.Tusu_id.ToString());
+                        tusu = cnTipoUsuario.obtenerTusuarioxUsuario(Convert.ToInt32(rol));
                         int tusuario = Convert.ToInt32(usuario.Tusu_id);
                         if (tusuario == 1)
                         {
                             Session["Admin"] = usuario.Usu_id.ToString();
                             Session["nombre"] = usuario.Nombres.ToString();
                             Session["apellido"] = usuario.Apellidos.ToString();
+                            Session["rol"] = tusu.Nombre.ToString();
                             Response.Redirect("~/views/admin/inicio.aspx");
                             Limpiar();
                         }
@@ -46,6 +49,7 @@ namespace Ecu911Pasantes.autentificación
                             Session["Pasante"] = usuario.Usu_id.ToString();
                             Session["nombre"] = usuario.Nombres.ToString();
                             Session["apellido"] = usuario.Apellidos.ToString();
+                            Session["rol"] = tusu.Nombre.ToString();
                             Response.Redirect("~/views/pasantes/asistencia.aspx");
                             Limpiar();
                         }

@@ -36,7 +36,7 @@
                                     <asp:TextBox ID="txtEmail" CssClass="form-control" type="email" required="" placeholder="Ingrese su correo electronico" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="mb-0 text-center d-grid">
-                                    <asp:LinkButton ID="lnbRecuperar" CssClass="btn btn-primary" type="submit" runat="server"><i class="mdi mdi-lock-reset"></i>Restablecer la contraseña</asp:LinkButton>
+                                    <asp:LinkButton ID="lnbRecuperar" OnClick="lnbRecuperar_Click" CssClass="btn btn-primary" type="submit" runat="server"><i class="mdi mdi-lock-reset"></i>Restablecer la contraseña</asp:LinkButton>
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>

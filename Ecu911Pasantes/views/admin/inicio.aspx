@@ -4,7 +4,7 @@
     Inicio | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-        <link href="../../resources/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="../../resources/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
     <link href="../../resources/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
@@ -27,7 +27,7 @@
                             <div class="dash-widget-header">
                                 <div>
                                     <h3 class="card_widget_header">236</h3>
-                                    <h6 class="text-muted">Total Booking</h6>
+                                    <h6 class="text-muted">Total de usuarios</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted">
@@ -48,11 +48,11 @@
                             <div class="dash-widget-header">
                                 <div>
                                     <h3 class="card_widget_header">180</h3>
-                                    <h6 class="text-muted">Available Rooms</h6>
+                                    <h6 class="text-muted">Total de pasantes activos</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
                                             <line x1="12" y1="1" x2="12" y2="23"></line>
                                             <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                                         </svg></span>
@@ -67,11 +67,11 @@
                             <div class="dash-widget-header">
                                 <div>
                                     <h3 class="card_widget_header">1538</h3>
-                                    <h6 class="text-muted">Enquiry</h6>
+                                    <h6 class="text-muted">Total de pasantes inactivos</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
                                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
                                             </path>
                                             <polyline points="14 2 14 8 20 8"></polyline>
@@ -89,11 +89,11 @@
                             <div class="dash-widget-header">
                                 <div>
                                     <h3 class="card_widget_header">364</h3>
-                                    <h6 class="text-muted">Collections</h6>
+                                    <h6 class="text-muted">Total de responsables</h6>
                                 </div>
                                 <div class="ml-auto mt-md-1 mt-lg-0">
                                     <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
                                             <circle cx="12" cy="12" r="10"></circle>
                                             <line x1="2" y1="12" x2="22" y2="12"></line>
                                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
@@ -162,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            <asp:Literal ID="ltChartData" runat="server"></asp:Literal>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
@@ -171,6 +172,7 @@
     <script src="../../resources/js/vendor/dataTables.responsive.min.js"></script>
     <script src="../../resources/js/vendor/responsive.bootstrap5.min.js"></script>
     <script src="../../resources/js/vendor/dataTables.checkboxes.min.js"></script>
+    <script src="../../resources/js/vendor/Chart.bundle.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#<%=grvAsistencias.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();

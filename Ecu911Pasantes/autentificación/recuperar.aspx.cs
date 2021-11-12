@@ -15,7 +15,7 @@ namespace Ecu911Pasantes.autentificación
         {
             if (!IsPostBack)
             {
-
+                Timer1.Enabled = false;
             }
         }
         private void Recuperar()
@@ -67,6 +67,11 @@ namespace Ecu911Pasantes.autentificación
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             Response.Redirect("~/autentificación/index.aspx");
+        }
+
+        protected void lnbRecuperar_Click(object sender, EventArgs e)
+        {
+            Recuperar();
         }
     }
 }

@@ -108,7 +108,9 @@
                                         <span class="account-user-name">
                                             <asp:Label ID="lblNombre" CssClass="form-label" runat="server" Text=""></asp:Label>
                                         </span>
-                                        <span class="account-position">Founder</span>
+                                        <span class="account-position">
+                                            <asp:Label ID="lblRol" CssClass="form-label" runat="server" Text=""></asp:Label>
+                                        </span>
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

@@ -18,7 +18,9 @@ namespace Ecu911Pasantes.views.admin
                     string usulogeado = Session["Admin"].ToString();
                     string resNom = Session["nombre"].ToString();
                     string resApe = Session["apellido"].ToString();
+                    string resRol = Session["rol"].ToString();
                     lblNombre.Text = resNom + " " + resApe;
+                    lblRol.Text = resRol;
                 }
                 else
                 {

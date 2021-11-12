@@ -13,7 +13,7 @@ namespace Ecu911Pasantes.views.admin
             if (!IsPostBack)
             {
                 cargarAsistencias();
-
+                //TotalxUniversidades();
             }
         }
         private void cargarAsistencias()
@@ -25,5 +25,29 @@ namespace Ecu911Pasantes.views.admin
                 grvAsistencias.DataBind();
             }
         }
+        //private void TotalxUniversidades()
+        //{
+        //    var list = dc.Totales();
+        //    if (list != null)
+        //    {
+        //        string chartData = "";
+        //        string pasantes = "";
+        //        string carreras = "";
+        //        string universidades = "";
+        //        chartData += "<script>";
+        //        foreach (var item in list)
+        //        {
+        //            universidades += "\"" + item.Universidad + "\",";
+        //            pasantes += item.TotalPasantes + ",";
+        //            carreras += item.TotalCarreras + ",";
+        //        }
+        //        universidades = universidades.Substring(0, universidades.Length - 1);
+        //        pasantes = pasantes.Substring(0, pasantes.Length - 1);
+        //        carreras = carreras.Substring(0, carreras.Length - 1);
+        //        chartData += "chartlabels = [" + universidades + "]; chartPasantes = [" + pasantes + "]; chartCarreras = [" + carreras + "]";
+        //        chartData += "</script>";
+        //        ltChartData.Text = chartData;
+        //    }
+        //}
     }
 }

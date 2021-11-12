@@ -16,9 +16,11 @@ namespace Ecu911Pasantes.views.pasantes
                 if (Session["Pasante"] != null)
                 {
                     string usulogeado = Session["Pasante"].ToString();
-                    string resNom = Session["nombre"].ToString();
-                    string resApe = Session["apellido"].ToString();
-                    lblNombre.Text = resNom + " " + resApe;
+                    string pasNom = Session["nombre"].ToString();
+                    string pasApe = Session["apellido"].ToString();
+                    string pasRol = Session["rol"].ToString();
+                    lblNombre.Text = pasNom + " " + pasApe;
+                    lblRol.Text = pasRol;
                 }
                 else
                 {
