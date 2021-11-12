@@ -21,8 +21,6 @@ namespace Ecu911Pasantes.views.admin
                 {
                     int codigo = Convert.ToInt32(Request["cod"]);
                     labinfo = cnLabores.obtenerLaboresxId(codigo);
-   
-
                     if (labinfo != null)
                     {
                         txtDescripcion.Text = labinfo.ConceptoL.ToString();

@@ -39,7 +39,7 @@ namespace Ecu911Pasantes.views.admin
             int codigo = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "Editar")
             {
-                Response.Redirect("~/views/admin/labores.aspx?cod=" + codigo, true);
+                Response.Redirect("~/views/admin/labor.aspx?cod=" + codigo, true);
             }
             else if (e.CommandName == "Eliminar")
             {
