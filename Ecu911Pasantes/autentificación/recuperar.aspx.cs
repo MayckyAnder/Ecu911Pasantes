@@ -27,13 +27,11 @@ namespace Ecu911Pasantes.autentificación
                 {
                     usu = cnUsuarios.obtenerCorreo(txtEmail.Text);
 
-                    string from = "anderlion16@gmail.com";
+                    string from = "";
                     string pass = "";
                     string to = usu.Correo;
-                    string mensaje = "<table>" +
-                        "<tbody>" +
-                        "<tr" +
-                        "< td>Restablecer Contraseña<u> </ u ></ td >";
+                    string mensaje = "La contraseña que el olvido es: <strong>" + 
+                        desencriptar(usu.Password) + "</strong>";
 
                     if (new cnEmail().EnviarEmail(from, pass, to, mensaje))
                     {
@@ -57,6 +55,13 @@ namespace Ecu911Pasantes.autentificación
                     txtEmail.Text = "";
                 }
             }
+        }
+        string desencriptar(string cadena)
+        {
+            string resultado = string.Empty;
+            byte[] desencriptar = Convert.FromBase64String(cadena);
+            resultado = System.Text.Encoding.Unicode.GetString(desencriptar);
+            return resultado;
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)
