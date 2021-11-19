@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/pasantes/pasante.Master" AutoEventWireup="true" CodeBehind="hora.aspx.cs" Inherits="Ecu911Pasantes.views.pasantes.hora" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphTitle" runat="server">
     Hora | Pasantes - Sistema Pasantes
 </asp:Content>
@@ -19,14 +20,17 @@
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Gestiones</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Listado de horas completadas</a></li>
-                                <li class="breadcrumb-item active">Registras horas</li>
+                                <li class="breadcrumb-item active">Registrar horas</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Registras horas</h4>
+                        <h4 class="page-title">Registrar horas</h4>
                     </div>
                 </div>
             </div>
             <div class="card">
+                <div class="card-header">
+                    <asp:Label ID="lblError" Width="100%" CssClass="alert alert-danger" runat="server" Text=""></asp:Label>
+                </div>
                 <div class="card-body">
                     <div class="col-12">
                         <div class="row mb-3">
@@ -44,7 +48,6 @@
                         <div class="row mb-3">
                             <div class="form-floating mb-3">
                                 <asp:DropDownList ID="ddlLabor" CssClass="form-control select2" data-toggle="select2" runat="server">
-                                    <asp:ListItem>Seleccione un proyecto</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

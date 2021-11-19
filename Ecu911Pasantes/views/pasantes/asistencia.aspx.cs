@@ -41,16 +41,25 @@ namespace Ecu911Pasantes.views.pasantes
             {
                 string usulogeado = Session["Pasante"].ToString();
                 bool validar = cnPasantes.autentificarxCodigo(Convert.ToInt32(usulogeado), Convert.ToInt32(txtAsistencia.Text));
+                bool activo = cnPasantes.autentificarxEstado(Convert.ToInt32(usulogeado));
                 if (validar)
                 {
-                    asisinfo = new Tbl_Asistencia();
-                    asisinfo.Usu_id = Convert.ToInt32(usulogeado);
-                    asisinfo.Codigo_Pasante = txtAsistencia.Text;
-                    cnAsistencias.save(asisinfo);
-                    string js1 = "alert('Ingreso registrado con existo..')";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                    txtAsistencia.Text = "";
-                    txtActividades.Visible = true;
+                    if (activo)
+                    {
+                        asisinfo = new Tbl_Asistencia();
+                        asisinfo.Usu_id = Convert.ToInt32(usulogeado);
+                        asisinfo.Codigo_Pasante = txtAsistencia.Text;
+                        cnAsistencias.save(asisinfo);
+                        string js1 = "alert('Ingreso registrado con existo..')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                        txtAsistencia.Text = "";
+                        txtActividades.Visible = true;
+                    }
+                    else
+                    {
+                        string js1 = "alert('Usted aun no se encuentra habilitado para poder registar su asistencia')";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                    }
                 }
                 else
                 {

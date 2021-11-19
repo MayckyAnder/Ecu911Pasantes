@@ -101,6 +101,7 @@ namespace Ecu911Pasantes.views.admin
                 labinfo.Nhoras = Convert.ToInt32(txtNumHoras.Text);
 
                 cnLabores.save(labinfo);
+                Actualizar();
                 string js1 = "alert('Datos Guardados Con Exito..')";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
                 Response.Redirect("~/views/admin/labores.aspx");
@@ -120,6 +121,16 @@ namespace Ecu911Pasantes.views.admin
         protected void lnbGuardar_Click(object sender, EventArgs e)
         {
             guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+        }
+        private void Actualizar()
+        {
+            int codigo = Convert.ToInt32(ddlPasantes.SelectedValue = labinfo.Pasantes_id.ToString());
+            Tbl_Pasantes pasaes = new Tbl_Pasantes();
+            pasaes = cnPasantes.obtenerPasantesxId(codigo);
+            if (pasaes != null)
+            {
+                cnPasantes.status(pasaes);
+            }
         }
     }
 }

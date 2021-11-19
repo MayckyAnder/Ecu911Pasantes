@@ -57,7 +57,7 @@ namespace CapaDatos
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::CapaDatos.Properties.Settings.Default.Ecu911PasantesConnectionString1, mappingSource)
+				base(global::CapaDatos.Properties.Settings.Default.Ecu911PasantesConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -545,7 +545,7 @@ namespace CapaDatos
 		
 		private int _Usu_id;
 		
-		private string _Cedula;
+		private System.Nullable<int> _Cedula;
 		
 		private string _Apellidos;
 		
@@ -555,7 +555,7 @@ namespace CapaDatos
 		
 		private string _Area;
 		
-		private string _Celular;
+		private System.Nullable<int> _Celular;
 		
 		private string _Usuario;
 		
@@ -583,7 +583,7 @@ namespace CapaDatos
     partial void OnCreated();
     partial void OnUsu_idChanging(int value);
     partial void OnUsu_idChanged();
-    partial void OnCedulaChanging(string value);
+    partial void OnCedulaChanging(System.Nullable<int> value);
     partial void OnCedulaChanged();
     partial void OnApellidosChanging(string value);
     partial void OnApellidosChanged();
@@ -593,7 +593,7 @@ namespace CapaDatos
     partial void OnCorreoChanged();
     partial void OnAreaChanging(string value);
     partial void OnAreaChanged();
-    partial void OnCelularChanging(string value);
+    partial void OnCelularChanging(System.Nullable<int> value);
     partial void OnCelularChanged();
     partial void OnUsuarioChanging(string value);
     partial void OnUsuarioChanged();
@@ -638,8 +638,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="VarChar(15)")]
-		public string Cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="Int")]
+		public System.Nullable<int> Cedula
 		{
 			get
 			{
@@ -738,8 +738,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Celular", DbType="VarChar(15)")]
-		public string Celular
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Celular", DbType="Int")]
+		public System.Nullable<int> Celular
 		{
 			get
 			{
@@ -1136,7 +1136,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(1)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(10)")]
 		public string Estado
 		{
 			get
@@ -2649,7 +2649,7 @@ namespace CapaDatos
 		
 		private string _Usuario;
 		
-		private string _Cedula;
+		private System.Nullable<int> _Cedula;
 		
 		private string _Apellidos;
 		
@@ -2659,7 +2659,7 @@ namespace CapaDatos
 		
 		private string _Cargo;
 		
-		private string _Celular;
+		private System.Nullable<int> _Celular;
 		
 		private string _Correo;
 		
@@ -2701,8 +2701,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="VarChar(15)")]
-		public string Cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="Int")]
+		public System.Nullable<int> Cedula
 		{
 			get
 			{
@@ -2781,8 +2781,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Celular", DbType="VarChar(15)")]
-		public string Celular
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Celular", DbType="Int")]
+		public System.Nullable<int> Celular
 		{
 			get
 			{
@@ -3045,7 +3045,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(1)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="VarChar(10)")]
 		public string Estado
 		{
 			get
@@ -3691,7 +3691,7 @@ namespace CapaDatos
 		
 		private string _Usuario;
 		
-		private string _Cedula;
+		private System.Nullable<int> _Cedula;
 		
 		private string _Nombres;
 		
@@ -3699,7 +3699,7 @@ namespace CapaDatos
 		
 		private string _Correo;
 		
-		private string _Celular;
+		private System.Nullable<int> _Celular;
 		
 		private string _Curriculum;
 		
@@ -3755,8 +3755,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="VarChar(15)")]
-		public string Cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cedula", DbType="Int")]
+		public System.Nullable<int> Cedula
 		{
 			get
 			{
@@ -3819,8 +3819,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Celular", DbType="VarChar(15)")]
-		public string Celular
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Celular", DbType="Int")]
+		public System.Nullable<int> Celular
 		{
 			get
 			{

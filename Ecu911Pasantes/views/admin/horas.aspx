@@ -98,6 +98,9 @@
                 </div>
             </div>
         </ContentTemplate>
+        <%--<Triggers>
+            <asp:PostBackTrigger ControlID="lnbActualizar"/>
+        </Triggers>--%>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
@@ -109,7 +112,7 @@
     <script>
         $(document).ready(function () {
             $('#<%=grvHoras.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-            responsive: true
-        });
+                    responsive: true
+                });
     </script>
 </asp:Content>

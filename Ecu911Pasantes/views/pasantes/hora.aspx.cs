@@ -17,7 +17,20 @@ namespace Ecu911Pasantes.views.pasantes
         {
             if (!IsPostBack)
             {
-                cargarLabores();
+                string usulogeado = Session["Pasante"].ToString();
+                bool activo = cnPasantes.autentificarxEstado(Convert.ToInt32(usulogeado));
+                if (activo)
+                {
+                    cargarLabores();
+                    lblError.Visible = false;
+                    lnbGuardar.Visible = true;
+                }
+                else
+                {
+                    Validar();
+                    lblError.Visible = true;
+                    lblError.Text = "Usted aun no se encuentra habilitado para poder registar sus horas";
+                }
             }
         }
         private void cargarLabores()
@@ -30,7 +43,7 @@ namespace Ecu911Pasantes.views.pasantes
             ddlLabor.DataBind();
         }
 
-        protected void lnbGuardar_Click(object sender, EventArgs e)
+        private void Guardar()
         {
             try
             {
@@ -55,6 +68,18 @@ namespace Ecu911Pasantes.views.pasantes
         protected void lnbCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/views/pasantes/horas.aspx");
+        }
+
+        protected void lnbGuardar_Click(object sender, EventArgs e)
+        {
+            Guardar();
+        }
+        private void Validar()
+        {
+            txtCantidad.Enabled = false;
+            txtConcepto.Enabled = false;
+            ddlLabor.Enabled = false;
+            lnbGuardar.Visible = false;
         }
     }
 }

@@ -51,8 +51,8 @@ namespace Ecu911Pasantes.views.admin
                 usuinfo.Password = encriptar(txtPass.Text);
                 usuinfo.Apellidos = txtApellido.Text;
                 usuinfo.Nombres = txtNombre.Text;
-                usuinfo.Cedula = txtCedula.Text;
-                usuinfo.Celular = txtCelular.Text;
+                usuinfo.Cedula = Convert.ToInt32(txtCedula.Text);
+                usuinfo.Celular = Convert.ToInt32(txtCelular.Text);
                 usuinfo.Correo = txtEmail.Text;
                 usuinfo.Area = txtArea.Text;
                 usuinfo.Tusu_id = 2;
@@ -85,8 +85,8 @@ namespace Ecu911Pasantes.views.admin
                 usu.Usuario = txtUser.Text;
                 usu.Apellidos = txtApellido.Text;
                 usu.Nombres = txtNombre.Text;
-                usu.Cedula = txtCedula.Text;
-                usu.Celular = txtCelular.Text;
+                usu.Cedula = Convert.ToInt32(txtCedula.Text);
+                usu.Celular = Convert.ToInt32(txtCelular.Text);
                 usu.Correo = txtEmail.Text;
                 cnUsuarios.modify(usu);
 

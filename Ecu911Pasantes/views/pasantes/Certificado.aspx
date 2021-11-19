@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <br />
-                        <div class="container" style="border: solid 1px; width: 250px; height: 100px; box-shadow: -10px -10px 1px gray; align-items: self-end">
+                        <div class="text-right" style="border: solid 1px; width: 250px; height: 100px; box-shadow: -10px -10px 1px gray;">
                             <div class="col-auto">
                                 <label style="text-align: center; font-size: 11px">
                                     Dirección Nacional Académico para Emergencias Subdirección Técnica de Doctrina<br />
