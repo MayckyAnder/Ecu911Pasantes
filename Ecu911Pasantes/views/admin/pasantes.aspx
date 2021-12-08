@@ -74,7 +74,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Curriculum">
                                     <ItemTemplate>
-                                        <asp:HyperLink ID="Curriculum" NavigateUrl='<%# "~/resources/documentos/" + Eval("Cedula") + ".pdf" %>' Target="_blank" runat="server">Ver Curriculum </asp:HyperLink>
+                                        <asp:HyperLink ID="Curriculum" NavigateUrl='<%# "~/resources/documentos/" + Eval("Curriculum") %>' Target="_blank" runat="server">Ver Curriculum </asp:HyperLink>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Acuerdo de confidencialidad">

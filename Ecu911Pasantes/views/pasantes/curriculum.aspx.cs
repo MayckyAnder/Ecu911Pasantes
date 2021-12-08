@@ -43,18 +43,11 @@ namespace Ecu911Pasantes.views.pasantes
                 {
                     if (fuCurriculum.HasFile)
                     {
-                        string stRuta = Server.MapPath(@"~\resources\tmp\") + fuCurriculum.FileName;
-                        fuCurriculum.PostedFile.SaveAs(stRuta);
-                        string stRutaDestino = Server.MapPath(@"~\resources\documentos\") + info + Path.GetExtension(fuCurriculum.FileName);
-                        if (File.Exists(stRutaDestino))
+                        if (!string.IsNullOrEmpty(fuCurriculum.FileName))
                         {
-                            File.SetAttributes(stRutaDestino,FileAttributes.Normal);
-                            File.Delete(stRutaDestino);
+                            fuCurriculum.SaveAs(Server.MapPath("~/resources/documentos/") + fuCurriculum.FileName);
                         }
-                        File.Copy(stRuta, stRutaDestino);
-                        File.SetAttributes(stRuta, FileAttributes.Normal);
-                        File.Delete(stRuta);
-                        pasmd.Curriculum = stRutaDestino;
+                        pasmd.Curriculum = fuCurriculum.FileName;
                         cnPasantes.curriculum(pasmd);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Curriculum subido con éxito.', 'success')", true);
                     }

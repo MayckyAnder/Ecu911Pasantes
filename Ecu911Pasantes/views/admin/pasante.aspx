@@ -90,7 +90,7 @@
                                                         <div class="multisteps-form__content">
                                                             <div class="form-row mt-4">
                                                                 <div class="col-12 col-sm-4">
-                                                                    <asp:TextBox ID="txtCedula" TextMode="Phone" MaxLength="10" CssClass="multisteps-form__input form-control" placeholder="Cedula" OnTextChanged="txtCedula_TextChanged" runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtCedula" TextMode="Number" MaxLength="10" CssClass="multisteps-form__input form-control" placeholder="Cedula" OnTextChanged="txtCedula_TextChanged" runat="server"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="La cedula es requerida" ControlToValidate="txtCedula" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4">
@@ -114,17 +114,17 @@
                                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ForeColor="Red" ErrorMessage="Ingrese correctamente su numero de telefono" ControlToValidate="txtCelular" ValidationGroup="Info" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtArea"  CssClass="multisteps-form__input form-control" placeholder="Area designada"  runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtArea"  CssClass="multisteps-form__input form-control" type="text" placeholder="Area designada"  runat="server"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ForeColor="Red" runat="server" ErrorMessage="La area designada es requerida" ControlToValidate="txtArea" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row mt-4">
                                                                 <div class="col-12 col-sm-4">
-                                                                    <asp:TextBox ID="txtUniversidad"  CssClass="multisteps-form__input form-control" placeholder="Universidad"  runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtUniversidad"  CssClass="multisteps-form__input form-control" type="text" placeholder="Universidad"  runat="server"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ForeColor="Red" runat="server" ErrorMessage="La universidad es requerida" ControlToValidate="txtUniversidad" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtCarrera"  CssClass="multisteps-form__input form-control" placeholder="Carrera"  runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtCarrera"  CssClass="multisteps-form__input form-control" type="text" placeholder="Carrera"  runat="server"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ForeColor="Red" runat="server" ErrorMessage="La carrera es requerida" ControlToValidate="txtCarrera" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4 mt-4 mt-sm-0">
@@ -137,16 +137,16 @@
                                                                     <asp:DropDownList ID="ddlActividad" CssClass="multisteps-form__input form-control" runat="server">
                                                                         <asp:ListItem Value="0">Selecciona una actividad</asp:ListItem>
                                                                         <asp:ListItem Value="Vinculación">Vinculación</asp:ListItem>
-                                                                        <asp:ListItem Value="prácticas">prácticas</asp:ListItem>
+                                                                        <asp:ListItem Value="Prácticas">Prácticas</asp:ListItem>
                                                                     </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator14" ForeColor="Red" runat="server" ErrorMessage="La actividad es requerida" ControlToValidate="ddlActividad" InitialValue="0" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtCodPa"  CssClass="multisteps-form__input form-control" placeholder="Codigo de asistencia"  runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtCodPa"  CssClass="multisteps-form__input form-control" TextMode="Number" placeholder="Codigo de asistencia"  runat="server"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" ForeColor="Red" runat="server" ErrorMessage="El codigo de asistencia es requerido" ControlToValidate="txtCodPa" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtCodEcu" CssClass="multisteps-form__input form-control" placeholder="Codigo del Ecu"  runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="txtCodEcu" CssClass="multisteps-form__input form-control" type="text" placeholder="Codigo del Ecu"  runat="server"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ForeColor="Red" runat="server" ErrorMessage="El codigo del Ecu es requerido" ControlToValidate="txtCodEcu" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                             </div>
