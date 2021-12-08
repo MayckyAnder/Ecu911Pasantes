@@ -44,5 +44,16 @@ namespace CapaDatos.Properties {
                 return ((string)(this["Ecu911PasantesConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5105.site4now.net;Initial Catalog=db_a7d8a5_pasantesecu911;User ID" +
+            "=db_a7d8a5_pasantesecu911_admin;Password=pasantesEcu911")]
+        public string db_a7d8a5_pasantesecu911ConnectionString {
+            get {
+                return ((string)(this["db_a7d8a5_pasantesecu911ConnectionString"]));
+            }
+        }
     }
 }

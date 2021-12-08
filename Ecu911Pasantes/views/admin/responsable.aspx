@@ -137,9 +137,6 @@
                     </div>
                 </div>
         </ContentTemplate>
-        <Triggers>
-            <asp:PostBackTrigger ControlID="btnGuardar"/>
-        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">

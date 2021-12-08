@@ -906,6 +906,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="resources\documentos\" />
     <Folder Include="resources\tmp\" />
   </ItemGroup>
