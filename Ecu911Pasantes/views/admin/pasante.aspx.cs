@@ -165,6 +165,11 @@ namespace Ecu911Pasantes.views.admin
         }
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
+            
+        }
+
+        protected void txtCedula_TextChanged(object sender, EventArgs e)
+        {
             bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));
             if (existe)
             {
@@ -172,11 +177,7 @@ namespace Ecu911Pasantes.views.admin
                 resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
                 if (resp != null)
                 {
-                    args.IsValid = false;
-                }
-                else
-                {
-                    args.IsValid = true;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ya existe una persona registrado con ese numero de cedula', 'error')", true);
                 }
             }
         }

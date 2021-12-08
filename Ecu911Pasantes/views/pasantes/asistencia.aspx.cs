@@ -50,27 +50,23 @@ namespace Ecu911Pasantes.views.pasantes
                         asisinfo.Usu_id = Convert.ToInt32(usulogeado);
                         asisinfo.Codigo_Pasante = txtAsistencia.Text;
                         cnAsistencias.save(asisinfo);
-                        string js1 = "alert('Ingreso registrado con existo..')";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Ingreso registrado con existo.', 'success')", true);
                         txtAsistencia.Text = "";
                         txtActividades.Visible = true;
                     }
                     else
                     {
-                        string js1 = "alert('Usted aun no se encuentra habilitado para poder registar su asistencia')";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Usted aun no se encuentra habilitado para poder registar su asistencia.', 'error')", true);
                     }
                 }
                 else
                 {
-                    string js1 = "alert('El codigo ingresado es incorrecto')";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'El codigo ingresado es incorrecto.', 'error')", true);
                 }
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Ingreso no registrado.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ingreso no registrado.." + ex.Message + ".', 'error')", true);
                 txtAsistencia.Text = "";
             }
         }
@@ -85,8 +81,7 @@ namespace Ecu911Pasantes.views.pasantes
                     asismd.Actividades = txtActividades.Text;
                     asismd.Usu_id = Convert.ToInt32(usulogeado);
                     cnAsistencias.modify(asismd);
-                    string js1 = "alert('Salida registrada con existo..')";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Salida registrada con existo.', 'success')", true);
                     txtAsistencia.Text = "";
                     txtActividades.Text = "";
                     txtActividades.Visible = false;
@@ -95,14 +90,12 @@ namespace Ecu911Pasantes.views.pasantes
                 }
                 else
                 {
-                    string js1 = "alert('El codigo ingresado es incorrecto')";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'El codigo ingresado es incorrecto.', 'error')", true);
                 }
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Salida no registrada.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Salida no registrada.." + ex.Message + ".', 'error')", true);
                 txtAsistencia.Text = "";
             }
         }
@@ -114,8 +107,7 @@ namespace Ecu911Pasantes.views.pasantes
             bool dia = cnAsistencias.autentificarDiaxCodigo(Convert.ToInt32(usulogeado));
             if (dia)
             {
-                string js1 = "alert('Ya has registrado tu asistencia del dia de hoy')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ya has registrado tu asistencia del dia de hoy', 'error')", true);
             }
             else
             {

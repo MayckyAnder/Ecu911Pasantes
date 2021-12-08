@@ -575,6 +575,7 @@
     <Content Include="resources\vendors\scripts\script.js" />
     <Content Include="resources\vendors\scripts\script.min.js" />
     <Content Include="resources\vendors\scripts\steps-setting.js" />
+    <Content Include="resources\vendors\styles\asistencia.css" />
     <Content Include="resources\vendors\styles\core.css" />
     <Content Include="resources\vendors\styles\core.min.css" />
     <Content Include="resources\vendors\styles\icon-font.css" />

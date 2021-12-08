@@ -4,7 +4,7 @@
     Asistencia | Pasantes - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-    <link href="../../resources/css/vendor/asistencia.css" rel="stylesheet">
+    <link href="../../resources/vendors/styles/asistencia.css" rel="stylesheet">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
