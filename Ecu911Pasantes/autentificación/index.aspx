@@ -6,76 +6,102 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Inicio de Sesión | Sistema Pasantes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
-    <link rel="shortcut icon" href="../resources/images/ECU911.svg.png" />
-    <link href="../resources/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../resources/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../../resources/vendors/images/ECU911.svg.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="../../resources/vendors/images/ECU911.svg.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="../../resources/vendors/images/ECU911.svg.png" />
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../resources/vendors/styles/core.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/vendors/styles/icon-font.min.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/vendors/styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="../resources/src/plugins/sweetalert2/sweetalert2.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119386393-1');
+    </script>
+
 </head>
-<body class="authentication-bg pb-0">
-    <form action="#" runat="server">
+<body class="login-page">
+    <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:Timer ID="Timer1" runat="server" Interval="2000" OnTick="Timer1_Tick"></asp:Timer>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <div class="auth-fluid">
-                    <div class="auth-fluid-form-box">
-                        <div class="align-items-center d-flex h-100">
-                            <div class="card-body">
-                                <div class="auth-brand text-center text-lg-start">
-                                    <a href="javascript: void(0);" class="logo-dark">
-                                        <span>
-                                            <img src="../resources/images/ECU911.SVG.PNG" alt="" height="100" /></span>
-                                    </a>
-                                </div>
-                                <h4 class="mt-0">Iniciar Sesión</h4>
-                                <p class="text-muted mb-4">Ingrese su nombre de usuario y contraseña para acceder a su cuenta.</p>
-                                <div class="mb-3">
-                                    <label for="emailaddress" class="form-label">Nombre de usuario</label>
-                                    <asp:TextBox ID="txtUser" CssClass="form-control" type="text" required="" placeholder="Ingrese su nombre de usuario" runat="server"></asp:TextBox>
-                                </div>
-                                <div class="mb-3">
-                                    <a href="recuperar.aspx" class="text-muted float-end"><small>Olvidates tu contraseña?</small></a>
-                                    <label for="password" class="form-label">Contraseña</label>
-                                    <div class="input-group input-group-merge">
-                                        <asp:TextBox ID="txtPass" CssClass="form-control" type="password" required="" placeholder="Ingrese su contraseña" runat="server"></asp:TextBox>
-                                        <div class="input-group-text" data-password="false">
-                                            <span class="password-eye"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="checkbox-signin" />
-                                        <label class="form-check-label" for="checkbox-signin">Recuérdame</label>
-                                    </div>
-                                </div>
-                                <div class="d-grid mb-0 text-center">
-                                    <asp:LinkButton ID="lnbIngresar" OnClick="lnbIngresar_Click" class="btn btn-primary" type="submit" runat="server"><i class="mdi mdi-login"></i>Iniciar Sesión</asp:LinkButton>
-                                </div>
-                                <!-- Footer-->
-                                <%--<footer class="footer footer-alt">
-                        <p class="text-muted">Don't have an account? <a href="pages-register-2.html" class="text-muted ms-1"><b>Sign Up</b></a></p>
-                    </footer>--%>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="auth-fluid-right text-center">
-                        <div class="auth-user-testimonial">
-                            <h2 class="mb-3">I love the color!</h2>
-                            <p class="lead">
-                                <i class="mdi mdi-format-quote-open"></i>It's a elegent templete. I love it very much! . <i class="mdi mdi-format-quote-close"></i>
-                            </p>
-                            <p>
-                                - Sistema Pasantes
-                            </p>
+                <div class="login-header box-shadow">
+                    <div class="container-fluid d-flex justify-content-between align-items-center">
+                        <div class="brand-logo">
+                            <a href="index.aspx">
+                                <img src="../../resources/vendors/images/ECU911.svg.png" width="100" height="100" alt="" />
+                            </a>
                         </div>
                     </div>
                 </div>
-                <script src="../resources/js/vendor.min.js"></script>
-                <script src="../resources/js/app.min.js"></script>
+                <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-lg-7">
+                                <img src="../resources/vendors/images/login-page-img.png" alt="" />
+                            </div>
+                            <div class="col-md-6 col-lg-5">
+                                <div class="login-box bg-white box-shadow border-radius-10">
+                                    <div class="login-title">
+                                        <h2 class="text-center text-primary">Iniciar sesión en Sistema pasantes</h2>
+                                    </div>
+                                    <div class="input-group custom">
+                                        <asp:TextBox ID="txtUser" CssClass="form-control form-control-lg" type="text" required="" placeholder="Nombre de usuario" runat="server"></asp:TextBox>
+                                        <div class="input-group-append custom">
+                                            <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                        </div>                      
+                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="El nombre de usuario es requerido" ControlToValidate="txtUser" ValidationGroup="Info"></asp:RequiredFieldValidator>
+                                    <div class="input-group custom">
+                                        <asp:TextBox ID="txtPass" CssClass="form-control form-control-lg" type="password" required="" placeholder="**********" runat="server"></asp:TextBox>
+                                        <div class="input-group-append custom">
+                                            <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                        </div>
+                                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ErrorMessage="La contraseña es requerida" ControlToValidate="txtPass" ValidationGroup="Info"></asp:RequiredFieldValidator>
+                                    <div class="row pb-30">
+                                        <div class="col-6">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1" />
+                                                <label class="custom-control-label" for="customCheck1">Recordar</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="forgot-password"><a href="recuperar.aspx">Has olvidado tu contraseña</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="input-group mb-0">
+                                                <asp:Button ID="btnIngresar" OnClick="btnIngresar_Click" CssClass="btn btn-primary btn-lg btn-block" ValidationGroup="Info" runat="server" Text="Iniciar Sesión" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </ContentTemplate>
         </asp:UpdatePanel>
     </form>
+    <!-- js -->
+    <script src="../resources/vendors/scripts/core.js"></script>
+    <script src="../resources/vendors/scripts/script.min.js"></script>
+    <script src="../resources/vendors/scripts/process.js"></script>
+    <script src="../resources/vendors/scripts/layout-settings.js"></script>
+    <script type="text/javascript" src="../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

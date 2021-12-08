@@ -13,8 +13,8 @@ namespace Ecu911Pasantes.views.pasantes
         {
             if (!IsPostBack)
             {
-                Label24.Text = DateTime.Now.ToShortDateString();
-                Label15.Text = DateTime.Now.ToString("QUITO, dd 'de' MMMM 'del' yyyy ");
+                lblFecha2.Text = DateTime.Now.ToShortDateString();
+                lblFecha.Text = DateTime.Now.ToString("dd 'de' MMMM 'del' yyyy ");
                 
             } 
         }

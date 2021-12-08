@@ -9,11 +9,22 @@ namespace CapaNegocio
     {
         //Instanciamos el dbml
         private static DataClasses1DataContext dc = new DataClasses1DataContext();
-
         //metodo para verificar credenciales
         public static bool autentificar(string nombre, string pass)
         {
             var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Usuario.Equals(nombre) && usu.Password.Equals(pass));
+            return auto;
+        }
+        //metodo para verificar si existe el nombre
+        public static Tbl_Usuarios obtenerUsuariosxCedula(int cedula)
+        {
+            var usuced = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Cedula.Equals(cedula) && usu.Estado == "Activo");
+            return usuced;
+        }
+        //metodo para verificar si existe el nombre
+        public static bool autentificarxCedula(int cedula)
+        {
+            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Cedula == (cedula));
             return auto;
         }
         //metodo para verificar si existe el nombre

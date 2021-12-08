@@ -4,63 +4,70 @@
     Proyecto | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-    <link href="../../resources/css/vendor/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/sweetalert2/sweetalert2.css" />
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/select2/dist/css/select2.min.css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:Timer ID="Timer1" runat="server" Interval="2000" OnTick="Timer1_Tick"></asp:Timer>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContenido" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Responsables</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Listado de proyectos</a></li>
-                                <li class="breadcrumb-item active">Crear un proyecto</li>
-                            </ol>
-                        </div>
-                        <h4 class="page-title">Crear un proyecto</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="col-12">
-                        <div class="row mb-3">
-                            <div class="form-floating mb-3">
-                                <asp:TextBox ID="txtConcepto" type="text" CssClass="form-control" required="" placeholder="Ejm.Sistema pasantes" runat="server"></asp:TextBox>
-                                <label for="floatingInput">Nombre</label>
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Crear un proyecto</h4>
                             </div>
-                        </div>
-                        <div class="row mb-3" id="pass">
-                            <div class="form-floating mb-3">
-                                <asp:TextBox ID="txtDescripcion" type="text" CssClass="form-control" required="" placeholder="Ejm.Descripcion" runat="server"></asp:TextBox>
-                                <label for="floatingInput">Descripcion</label>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="form-floating mb-3">
-                                <asp:DropDownList ID="ddlResponsables" CssClass="form-control select2" data-toggle="select2" runat="server">
-                                    <asp:ListItem>Seleccione un responsable</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="inicio.aspx">Inicio</a></li>
+                                    <li class="breadcrumb-item"><a href="proyectos.aspx">Listado de proyectos</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Crear un proyecto</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
-                <div class="card-footer align-content-end">
-                    <asp:LinkButton ID="lnbCancelar" OnClick="lnbCancelar_Click" CssClass="btn btn-outline-secondary mb-2" runat="server"><i class="mdi mdi-cancel me-2"></i>Regresar</asp:LinkButton>
-                    <asp:LinkButton ID="lnbGuardar" CssClass="btn btn-success mb-2" OnClick="lnbGuardar_Click" runat="server"><i class="mdi mdi-send me-2"></i>Enviar</asp:LinkButton>
+                <div class="pd-20 card-box mb-30">
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Nombre del proyecto</label>
+                        <div class="col-sm-12 col-md-10">
+                            <asp:TextBox ID="txtConcepto" type="text" CssClass="form-control" placeholder="Nombre del proyecto" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ControlToValidate="txtConcepto" ValidationGroup="info" ErrorMessage="El nombre del proyecto es requerido"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Descripción</label>
+                        <div class="col-sm-12 col-md-10">
+                            <asp:TextBox ID="txtDescripcion" type="text" CssClass="form-control" placeholder="Descripción" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" ControlToValidate="txtDescripcion" ValidationGroup="info" ErrorMessage="La descripción es requerida"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Responsables</label>
+                        <div class="col-sm-12 col-md-10">
+                            <asp:DropDownList ID="ddlResponsables" CssClass="form-control select2" data-toggle="select2" runat="server">
+                                <asp:ListItem Value="0">Seleccione responsable</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" runat="server" ControlToValidate="ddlResponsables" ValidationGroup="info" ErrorMessage="El responsable es requerido"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="align-items-end">
+                        <asp:Button ID="btnRegresar" OnClick="lnbCancelar_Click" CssClass="btn btn-outline-primary btn-lg" runat="server" Text="Regresar" />
+                        <asp:Button ID="btnEnviar" OnClick="lnbGuardar_Click" CssClass="btn btn-primary btn-lg" ValidationGroup="info" runat="server" Text="Enviar" />
+                    </div>
                 </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
-    <script src="../../resources/js/vendor/select2.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/select2/dist/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
     <script>
         $(document).ready(function () {
             $('#<%=ddlResponsables.ClientID%>').select2();

@@ -48,6 +48,7 @@ namespace Ecu911Pasantes.views.admin
                 if (labpe != null)
                 {
                     cnLabores.delete(labpe);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos eliminados con éxito.', 'success')", true);
                     cargarLabor();
                 }
             }

@@ -16,6 +16,18 @@ namespace CapaNegocio
             var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Usu_id.Equals(id) && pasa.Estado == "Activo" || pasa.Estado == "Pendiente");
             return pasaid;
         }
+        //Metodo para verifiar si el pasante aceptado el acuerdo
+        public static bool autentificarxUsuario(int Usu)
+        {
+            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Acuerdo == "aceptado" && pasa.Estado == "Activo");
+            return auto;
+        }
+        //Metodo para verifiar si el pasante existe
+        public static bool autentificarxUsu(int Usu)
+        {
+            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Estado == "Activo");
+            return auto;
+        }
         //Metodo para verificar codigo del pasante mediante la session
         public static bool autentificarxCodigo(int Usu, int cod)
         {
@@ -82,6 +94,17 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 throw new ArgumentException("Los datos no han sido actualizados <br/>" + ex.Message);
+            }
+        }
+        public static void curriculum(Tbl_Pasantes pasa)
+        {
+            try
+            {
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Los datos no han sido modificados <br/>" + ex.Message);
             }
         }
         public static void status(Tbl_Pasantes pasa)

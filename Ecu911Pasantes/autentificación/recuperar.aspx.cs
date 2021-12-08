@@ -35,23 +35,20 @@ namespace Ecu911Pasantes.autentificación
 
                     if (new cnEmail().EnviarEmail(from, pass, to, mensaje))
                     {
-                        string js1 = "alert('Correo enviado con exito..')";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Correo enviado con éxito.', 'success')", true);
                         txtEmail.Text = "";
                         Timer1.Enabled = true;
                     }
                     else
                     {
-                        string js1 = "alert('Correo no enviado..')";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Correo no enviado intentelo de nuevo.', 'error')", true);
                         txtEmail.Text = "";
                         return;
                     }
                 }
                 else
                 {
-                    string js1 = "alert('el correo no existe..')";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'El correo no existe.', 'error')", true);
                     txtEmail.Text = "";
                 }
             }
@@ -69,7 +66,7 @@ namespace Ecu911Pasantes.autentificación
             Response.Redirect("~/autentificación/index.aspx");
         }
 
-        protected void lnbRecuperar_Click(object sender, EventArgs e)
+        protected void btnEnviar_Click(object sender, EventArgs e)
         {
             Recuperar();
         }

@@ -29,6 +29,9 @@ namespace Ecu911Pasantes.views.admin
                         txtCelular.Text = usuinfo.Celular.ToString();
                         txtEmail.Text = usuinfo.Correo.ToString();
                         txtArea.Text = usuinfo.Area.ToString();
+                        txtDireccion.Text = usuinfo.Direccion.ToString();
+                        txtPass.Text = usuinfo.Password.ToString();
+                        txtConfirmar.Text = usuinfo.Password.ToString();
                         if (pasinfo != null)
                         {
                             txtCarrera.Text = pasinfo.Carrera.ToString();
@@ -36,10 +39,11 @@ namespace Ecu911Pasantes.views.admin
                             txtUniversidad.Text = pasinfo.Universidad.ToString();
                             txtCodPa.Text = pasinfo.Codigo_Pasante.ToString();
                             txtCodEcu.Text = pasinfo.CodigoEcu.ToString();
+                            ddlActividad.SelectedValue = pasinfo.Actividad.ToString();
                         }
                     }
                 }
-                Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+                Timer1.Enabled = false;
             }
         }
         private void Guardar()
@@ -55,6 +59,7 @@ namespace Ecu911Pasantes.views.admin
                 usuinfo.Celular = Convert.ToInt32(txtCelular.Text);
                 usuinfo.Correo = txtEmail.Text;
                 usuinfo.Area = txtArea.Text;
+                usuinfo.Direccion = txtDireccion.Text;
                 usuinfo.Tusu_id = 2;
 
                 cnUsuarios.save(usuinfo);
@@ -65,29 +70,30 @@ namespace Ecu911Pasantes.views.admin
                 pasinfo.Universidad = txtUniversidad.Text;
                 pasinfo.Codigo_Pasante = txtCodPa.Text;
                 pasinfo.CodigoEcu = txtCodEcu.Text;
+                pasinfo.Actividad = ddlActividad.SelectedValue;
                 pasinfo.Usu_id = usuinfo.Usu_id;
 
                 cnPasantes.save(pasinfo);
-                string js1 = "alert('Datos Guardados Con Exito..')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                Response.Redirect("~/views/admin/pasantes.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos guardados con éxito.', 'success')", true);
+                Timer1.Enabled = true;
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Datos No Guardados.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se pudo guardar los datos" + ex.Message + " intentelo de nuevo.', 'error')", true);
             }
         }
         private void Modificar(Tbl_Pasantes pas,Tbl_Usuarios usu)
         {
             try
-            {             
+            {
                 usu.Usuario = txtUser.Text;
                 usu.Apellidos = txtApellido.Text;
                 usu.Nombres = txtNombre.Text;
                 usu.Cedula = Convert.ToInt32(txtCedula.Text);
                 usu.Celular = Convert.ToInt32(txtCelular.Text);
                 usu.Correo = txtEmail.Text;
+                usu.Area = txtArea.Text;
+                usu.Direccion = txtDireccion.Text;
                 cnUsuarios.modify(usu);
 
                 pas.Carrera = txtCarrera.Text;
@@ -95,17 +101,16 @@ namespace Ecu911Pasantes.views.admin
                 pas.Universidad = txtUniversidad.Text;
                 pas.Codigo_Pasante = txtCodPa.Text;
                 pas.CodigoEcu = txtCodEcu.Text;
+                pas.Actividad = ddlActividad.SelectedValue;
                 pas.Usu_id = usuinfo.Usu_id;
 
                 cnPasantes.modify(pas);
-                string js1 = "alert('Datos Modificados Con Exito..')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                Response.Redirect("~/views/admin/pasantes.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos modificados con éxito.', 'success')", true);
+                Timer1.Enabled = true;
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Datos No Modificados.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se puedo modificar los datos." + ex.Message + " intentelo de nuevo.', 'error')", true);
             }
         }
         private void guardar_modificar_datos(int id,int usu)
@@ -130,7 +135,10 @@ namespace Ecu911Pasantes.views.admin
         }
         protected void lnbGuardar_Click(object sender, EventArgs e)
         {
-            guardar_modificar_datos(Convert.ToInt32(Request["cod"]),Convert.ToInt32(usuinfo.Usu_id.ToString()));
+            if (IsValid)
+            {
+                guardar_modificar_datos(Convert.ToInt32(Request["cod"]), Convert.ToInt32(usuinfo.Usu_id.ToString()));
+            }  
         }
 
         protected void lnbCancelar_Click(object sender, EventArgs e)
@@ -141,8 +149,7 @@ namespace Ecu911Pasantes.views.admin
         {
             txtPass.Enabled = false;
             txtConfirmar.Enabled = false;
-            lblInfo.Text = "De un click en el boton actualizar para terminar con la actualizacion de la informacion del pasante";
-            lnbGuardar.Text = "Actualizar";
+            btnGuardar.Text = "Actualizar";
         }
         string encriptar(string cadena)
         {
@@ -150,6 +157,28 @@ namespace Ecu911Pasantes.views.admin
             byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(cadena);
             resultado = Convert.ToBase64String(encriptar);
             return resultado;
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/views/admin/pasantes.aspx");
+        }
+        protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        {
+            bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));
+            if (existe)
+            {
+                Tbl_Usuarios resp = new Tbl_Usuarios();
+                resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
+                if (resp != null)
+                {
+                    args.IsValid = false;
+                }
+                else
+                {
+                    args.IsValid = true;
+                }
+            }
         }
     }
 }

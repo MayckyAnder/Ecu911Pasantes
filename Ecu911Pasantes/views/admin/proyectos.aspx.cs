@@ -2,6 +2,7 @@
 using CapaNegocio;
 using System;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Ecu911Pasantes.views.admin
@@ -46,6 +47,7 @@ namespace Ecu911Pasantes.views.admin
                 if (prope != null)
                 {
                     cnProyectos.delete(prope);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos eliminados con éxito.', 'success')", true);
                     cargarProyectos();
                 }
             }

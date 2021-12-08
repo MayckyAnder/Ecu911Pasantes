@@ -2,6 +2,7 @@
 using System;
 using System.Web.UI.WebControls;
 using CapaNegocio;
+using System.Web.UI;
 
 namespace Ecu911Pasantes.views.admin
 {
@@ -26,11 +27,6 @@ namespace Ecu911Pasantes.views.admin
             }
         }
 
-        protected void lnbAgregar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/views/admin/responsable.aspx");
-        }
-
         protected void grvResponsables_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int codigo = Convert.ToInt32(e.CommandArgument);
@@ -51,10 +47,16 @@ namespace Ecu911Pasantes.views.admin
                     if (respe != null)
                     {
                         cnResponsables.delete(respe);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos eliminados con éxito.', 'success')", true);
                         cargarResponsables();
                     }
                 }
             }
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/views/admin/responsable.aspx");
         }
     }
 }

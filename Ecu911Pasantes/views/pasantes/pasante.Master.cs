@@ -20,7 +20,7 @@ namespace Ecu911Pasantes.views.pasantes
                     string pasApe = Session["apellido"].ToString();
                     string pasRol = Session["rol"].ToString();
                     lblNombre.Text = pasNom + " " + pasApe;
-                    lblRol.Text = pasRol;
+                    //lblRol.Text = pasRol;
                 }
                 else
                 {
@@ -32,7 +32,7 @@ namespace Ecu911Pasantes.views.pasantes
         protected void lnbLogout_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("../../autentificación/logout.aspx");
+            Response.Redirect("../../autentificación/index.aspx");
         }
     }
 }

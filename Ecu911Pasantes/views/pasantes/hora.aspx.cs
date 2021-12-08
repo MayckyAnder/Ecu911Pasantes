@@ -22,15 +22,14 @@ namespace Ecu911Pasantes.views.pasantes
                 if (activo)
                 {
                     cargarLabores();
-                    lblError.Visible = false;
-                    lnbGuardar.Visible = true;
+                    btnEnviar.Visible = true;
                 }
                 else
                 {
                     Validar();
-                    lblError.Visible = true;
-                    lblError.Text = "Usted aun no se encuentra habilitado para poder registar sus horas";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Usted aun no se encuentra habilitado para poder registar sus horas.', 'error')", true);
                 }
+                Timer1.Enabled = false;
             }
         }
         private void cargarLabores()
@@ -54,14 +53,12 @@ namespace Ecu911Pasantes.views.pasantes
 
                 cnHoras.save(horinfo);
 
-                string js1 = "alert('Datos Guardados Con Exito..')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                Response.Redirect("~/views/pasantes/horas.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos Guardados Con Exito.', 'success')", true);
+                Timer1.Enabled = true;
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Datos No Guardados.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se puedo guardar los datos." + ex.Message + " intentelo de nuevo.', 'error')", true);
             }
         }
 
@@ -79,7 +76,12 @@ namespace Ecu911Pasantes.views.pasantes
             txtCantidad.Enabled = false;
             txtConcepto.Enabled = false;
             ddlLabor.Enabled = false;
-            lnbGuardar.Visible = false;
+            btnEnviar.Visible = false;
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/views/pasantes/horas.aspx");
         }
     }
 }

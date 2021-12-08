@@ -4,8 +4,7 @@
     Inicio | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-    <link href="../../resources/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
-    <link href="../../resources/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
+   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -13,170 +12,363 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContenido" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <h4 class="page-title">Inicio</h4>
-                    </div>
-                </div>
+            <div class="title pb-20">
+                <h2 class="h3 mb-0">Descripción general del sistema</h2>
             </div>
-            <div class="row">
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-                                <div>
-                                    <h3 class="card_widget_header">236</h3>
-                                    <h6 class="text-muted">Total de usuarios</h6>
+            <div class="row pb-10">
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">
+                                    <asp:Label ID="lblUsuarios" runat="server" Text=""></asp:Label>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="8.5" cy="7" r="4"></circle>
-                                            <line x1="20" y1="8" x2="20" y2="14"></line>
-                                            <line x1="23" y1="11" x2="17" y2="11"></line>
-                                        </svg></span>
-                                </div>
+                                <div class="font-14 text-secondary weight-500">Total de usuarios</div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#00eccf"><i class="icon-copy dw dw-user"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-                                <div>
-                                    <h3 class="card_widget_header">180</h3>
-                                    <h6 class="text-muted">Total de pasantes activos</h6>
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">
+                                    <asp:Label ID="lblResponsables" runat="server" Text=""></asp:Label>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
-                                            <line x1="12" y1="1" x2="12" y2="23"></line>
-                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                        </svg></span>
-                                </div>
+                                <div class="font-14 text-secondary weight-500">Total de responsables</div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#ff5b5b"><span class="icon-copy dw dw-user1"></span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-                                <div>
-                                    <h3 class="card_widget_header">1538</h3>
-                                    <h6 class="text-muted">Total de pasantes inactivos</h6>
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">
+                                    <asp:Label ID="lblActivos" runat="server" Text=""></asp:Label>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
-                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
-                                            </path>
-                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                            <line x1="12" y1="18" x2="12" y2="12"></line>
-                                            <line x1="9" y1="15" x2="15" y2="15"></line>
-                                        </svg></span>
-                                </div>
+                                <div class="font-14 text-secondary weight-500">Total de pasantes activos</div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon"><i class="icon-copy dw dw-user2" aria-hidden="true"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card board1 fill">
-                        <div class="card-body">
-                            <div class="dash-widget-header">
-                                <div>
-                                    <h3 class="card_widget_header">364</h3>
-                                    <h6 class="text-muted">Total de responsables</h6>
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">
+                                    <asp:Label ID="lblInactivos" runat="server" Text=""></asp:Label>
                                 </div>
-                                <div class="ml-auto mt-md-1 mt-lg-0">
-                                    <span class="opacity-7 text-muted">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                            </path>
-                                        </svg></span>
-                                </div>
+                                <div class="font-14 text-secondary weight-500">Pasantes inactivos</div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#09cc06"><i class="icon-copy dw dw-user3" aria-hidden="true"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title">
-                                <h5>Asistencias diarias</h5>
-                            </div>
-                            <div class="table-responsive">
-                            </div>
-                            <asp:GridView ID="grvAsistencias" runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="Codigo">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Asistencia_id" runat="server" Text='<%#Eval("Asistencia_id")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Pasante">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Pasante" runat="server" Text='<%#Eval("Pasante")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Codigo de Pasante">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Codigo_Pasante" runat="server" Text='<%#Eval("Codigo_Pasante")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Fecha">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Fecha" runat="server" Text='<%#Eval("Fecha")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Hora de Entrada">
-                                        <ItemTemplate>
-                                            <asp:Label ID="HoraEntrada" runat="server" Text='<%#Eval("HoraEntrada")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Hora de Salida">
-                                        <ItemTemplate>
-                                            <asp:Label ID="HoraSalida" runat="server" Text='<%#Eval("HoraSalida")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Actividades Diarias">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Actividades" runat="server" Text='<%#Eval("Actividades")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Tipo">
-                                        <ItemTemplate>
-                                            <asp:Label ID="Tipo" runat="server" Text='<%#Eval("Tipo")%>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
-                        </div>
+                <div class="col-xl-6 mb-30">
+                    <div class="card-box height-100-p pd-20">
+                        <h2 class="h4 mb-20">Total de pasantes por universidad</h2>
+                        <div id="chart5"></div>
+                    </div>
+                </div>
+                <div class="col-xl-6 mb-30">
+                    <div class="card-box height-100-p pd-20">
+                        <h2 class="h4 mb-20">Total de pasantes por carrera</h2>
+                        <div id="chart6"></div>
                     </div>
                 </div>
             </div>
+            <div class="card-box pb-10">
+                <div class="h5 pd-20 mb-0">Asistencias diarias</div>
+                <asp:GridView ID="grvAsistencias" runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table nowrap" GridLines="None" Width="100%">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Codigo">
+                            <ItemTemplate>
+                                <asp:Label ID="Asistencia_id" runat="server" Text='<%#Eval("Asistencia_id")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Pasante">
+                            <ItemTemplate>
+                                <asp:Label ID="Pasante" runat="server" Text='<%#Eval("Pasante")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Codigo del Pasante">
+                            <ItemTemplate>
+                                <asp:Label ID="Codigo_Pasante" runat="server" Text='<%#Eval("Codigo_Pasante")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Fecha">
+                            <ItemTemplate>
+                                <asp:Label ID="Fecha" runat="server" Text='<%#Eval("Fecha")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Hora de Entrada">
+                            <ItemTemplate>
+                                <asp:Label ID="HoraEntrada" runat="server" Text='<%#Eval("HoraEntrada")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Hora de Salida">
+                            <ItemTemplate>
+                                <asp:Label ID="HoraSalida" runat="server" Text='<%#Eval("HoraSalida")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Actividades Diarias">
+                            <ItemTemplate>
+                                <asp:Label ID="Actividades" runat="server" Text='<%#Eval("Actividades")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Tipo">
+                            <ItemTemplate>
+                                <asp:Label ID="Tipo" runat="server" Text='<%#Eval("Tipo")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+            <br />
             <asp:Literal ID="ltChartData" runat="server"></asp:Literal>
+            <asp:Literal ID="ltChartData1" runat="server"></asp:Literal>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
-    <script src="../../resources/js/vendor/jquery.dataTables.min.js"></script>
-    <script src="../../resources/js/vendor/dataTables.bootstrap5.js"></script>
-    <script src="../../resources/js/vendor/dataTables.responsive.min.js"></script>
-    <script src="../../resources/js/vendor/responsive.bootstrap5.min.js"></script>
-    <script src="../../resources/js/vendor/dataTables.checkboxes.min.js"></script>
-    <script src="../../resources/js/vendor/Chart.bundle.min.js"></script>
+    <script src="../../resources/src/plugins/apexcharts/apexcharts.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#<%=grvAsistencias.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-            responsive: true
+        var chartuniversidades;
+        var chartPasantes;
+        var options5 = {
+            chart: {
+                height: 350,
+                type: 'bar',
+                parentHeightOffset: 0,
+                fontFamily: 'Poppins, sans-serif',
+                toolbar: {
+                    show: false,
+                },
+            },
+            colors: ['#1b00ff', '#f56767'],
+            grid: {
+                borderColor: '#c7d2dd',
+                strokeDashArray: 5,
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '25%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            series: [{
+                name: 'Pasantes',
+                data: chartPasantes
+            }],
+            xaxis: {
+                categories: chartuniversidades,
+                labels: {
+                    style: {
+                        colors: ['#353535'],
+                        fontSize: '16px',
+                    },
+                },
+                axisBorder: {
+                    color: '#8fa6bc',
+                }
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                },
+                labels: {
+                    style: {
+                        colors: '#353535',
+                        fontSize: '16px',
+                    },
+                },
+                axisBorder: {
+                    color: '#f00',
+                }
+            },
+            legend: {
+                horizontalAlign: 'right',
+                position: 'top',
+                fontSize: '16px',
+                offsetY: 0,
+                labels: {
+                    colors: '#353535',
+                },
+                markers: {
+                    width: 10,
+                    height: 10,
+                    radius: 15,
+                },
+                itemMargin: {
+                    vertical: 0
+                },
+            },
+            fill: {
+                opacity: 1
+
+            },
+            tooltip: {
+                style: {
+                    fontSize: '15px',
+                    fontFamily: 'Poppins, sans-serif',
+                },
+                y: {
+                    formatter: function (val) {
+                        return val
+                    }
+                }
+            }
+        }
+        var chart5 = new ApexCharts(document.querySelector("#chart5"), options5);
+        chart5.render();
+    </script>
+    <script>
+        var chartcarreras;
+        var chartPasantes;
+        var options6 = {
+            chart: {
+                height: 350,
+                type: 'bar',
+                parentHeightOffset: 0,
+                fontFamily: 'Poppins, sans-serif',
+                toolbar: {
+                    show: false,
+                },
+            },
+            colors: ['#f56767', '#1b00ff'],
+            grid: {
+                borderColor: '#c7d2dd',
+                strokeDashArray: 5,
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '25%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            series: [{
+                name: 'Pasantes',
+                data: chartPasantes
+            }],
+            xaxis: {
+                categories: chartcarreras,
+                labels: {
+                    style: {
+                        colors: ['#353535'],
+                        fontSize: '16px',
+                    },
+                },
+                axisBorder: {
+                    color: '#8fa6bc',
+                }
+            },
+            yaxis: {
+                title: {
+                    text: ''
+                },
+                labels: {
+                    style: {
+                        colors: '#353535',
+                        fontSize: '16px',
+                    },
+                },
+                axisBorder: {
+                    color: '#f00',
+                }
+            },
+            legend: {
+                horizontalAlign: 'right',
+                position: 'top',
+                fontSize: '16px',
+                offsetY: 0,
+                labels: {
+                    colors: '#353535',
+                },
+                markers: {
+                    width: 10,
+                    height: 10,
+                    radius: 15,
+                },
+                itemMargin: {
+                    vertical: 0
+                },
+            },
+            fill: {
+                opacity: 1
+
+            },
+            tooltip: {
+                style: {
+                    fontSize: '15px',
+                    fontFamily: 'Poppins, sans-serif',
+                },
+                y: {
+                    formatter: function (val) {
+                        return val
+                    }
+                }
+            }
+        }
+        var chart6 = new ApexCharts(document.querySelector("#chart6"), options6);
+        chart6.render();
+    </script>
+    <script>
+        // datatable init
+        $('document').ready(function () {
+            $('#<%=grvAsistencias.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                scrollCollapse: false,
+                autoWidth: false,
+                responsive: true,
+                searching: false,
+                bLengthChange: false,
+                bPaginate: true,
+                bInfo: false,
+                columnDefs: [{
+                    targets: "datatable-nosort",
+                    orderable: false,
+                }],
+                "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+                "language": {
+                    "info": "_START_-_END_ of _TOTAL_ entries",
+                    searchPlaceholder: "Search",
+                    paginate: {
+                        next: '<i class="ion-chevron-right"></i>',
+                        previous: '<i class="ion-chevron-left"></i>'
+                    }
+                },
+            });
         });
     </script>
 </asp:Content>

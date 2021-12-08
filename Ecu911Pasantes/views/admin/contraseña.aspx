@@ -4,6 +4,7 @@
     Cambio de contraseña | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/sweetalert2/sweetalert2.css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -11,69 +12,78 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContenido" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Contraseña</a></li>
-                                <li class="breadcrumb-item active">Cambio de contraseña</li>
-                            </ol>
-                        </div>
-                        <h4 class="page-title">Cambio de contraseña</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <asp:Label ID="lblResponsable" runat="server" Text=""></asp:Label></h5>
+            <div class="min-height-200px">
+                <div class="page-header">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Contraseña anterior</label>
-                                <div class="input-group input-group-merge">
-                                    <asp:TextBox ID="txtActual" CssClass="form-control" type="password" required="" placeholder="Ingrese su contraseña anterior" runat="server"></asp:TextBox>
-                                    <div class="input-group-text" data-password="false">
-                                        <span class="password-eye"></span>
-                                    </div>
-                                </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Cambio de contraseña</h4>
                             </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Nueva contraseña</label>
-                                <div class="input-group input-group-merge">
-                                    <asp:TextBox ID="txtPass" CssClass="form-control" type="password" required="" placeholder="Ingrese su nueva contraseña" runat="server"></asp:TextBox>
-                                    <div class="input-group-text" data-password="false">
-                                        <span class="password-eye"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="password" class="form-label">Confirmar contraseña</label>
-                                <div class="input-group input-group-merge">
-                                    <asp:TextBox ID="txtConfirmar" CssClass="form-control" type="password" required="" placeholder="Confirme su nueva contraseña" runat="server"></asp:TextBox>
-                                    <div class="input-group-text" data-password="false">
-                                        <span class="password-eye"></span>
-                                    </div>
-                                </div>
-                                <asp:CompareValidator ID="CompareValidator1" ControlToCompare="txtConfirmar" ControlToValidate="txtPass" Type="String" Operator="Equal" Display="Dynamic" runat="server" ErrorMessage="Los valores ingresados no son iguales" SetFocusOnError="True" Text="Las claves ingresadas son distintas"></asp:CompareValidator>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <asp:LinkButton ID="lnbGuardar" type="submit" CssClass="btn btn-success mb-2" OnClick="lnbGuardar_Click" runat="server"><i class="mdi mdi-send me-2"></i>Guardar Cambios</asp:LinkButton>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="inicio.aspx">Inicio</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Cambio de contraseña</li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
                 </div>
-                <footer>
-                    <footer class="footer footer-alt">
-                        <asp:Label ID="lblMensaje" CssClass="alert alert-success" runat="server" Text=""></asp:Label>
-                        <asp:Label ID="lblError" CssClass="alert alert-danger" runat="server" Text=""></asp:Label>
-                    </footer>
-                </footer>
+                <div class="pd-20 card-box mb-30">
+                    <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <img src="../../resources/vendors/images/forgot-password.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="login-box bg-white box-shadow border-radius-10">
+                                        <div class="login-title">
+                                            <h2 class="text-center text-primary">Restablecer la contraseña</h2>
+                                        </div>
+                                        <h6 class="mb-20">Ingrese su contraseña anterior, su nueva contraseña, confirme y actualize</h6>
+                                        <div class="input-group custom">
+                                            <asp:TextBox ID="txtActual" CssClass="form-control form-control-lg" type="password" placeholder="Contraseña anterior" runat="server"></asp:TextBox>
+                                            <div class="input-group-append custom">
+                                                <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                            </div>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ControlToValidate="txtActual" ValidationGroup="info" ErrorMessage="La contraseña anterior es requerida"></asp:RequiredFieldValidator>
+                                        <div class="input-group custom">
+                                            <asp:TextBox ID="txtPass" CssClass="form-control form-control-lg" type="password" placeholder="Nueva contraseña" runat="server"></asp:TextBox>
+                                            <div class="input-group-append custom">
+                                                <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                            </div>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" ControlToValidate="txtPass" ValidationGroup="info" ErrorMessage="La nueva contraseña es requerida"></asp:RequiredFieldValidator>
+                                        <div class="input-group custom">
+                                            <asp:TextBox ID="txtConfirmar" CssClass="form-control form-control-lg" type="password" placeholder="Confirmar nueva contraseña" runat="server"></asp:TextBox>
+                                            <div class="input-group-append custom">
+                                                <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+                                            </div>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" runat="server" ControlToValidate="txtConfirmar" ValidationGroup="info" ErrorMessage="Confirmar la contraseña es requerida"></asp:RequiredFieldValidator>
+                                        <br />
+                                        <asp:CompareValidator ID="CompareValidator1" ForeColor="Red" ControlToValidate="txtConfirmar" ControlToCompare="txtPass" runat="server" ErrorMessage="Las contraseñas ingresadas no coiciden" ValidationGroup="Info"></asp:CompareValidator>
+                                        <div class="row align-items-center">
+                                            <div class="col-5">
+                                                <div class="input-group mb-0">
+                                                    <asp:Button ID="btnGuardar" OnClick="lnbGuardar_Click" CssClass="btn btn-primary btn-lg btn-block" ValidationGroup="info" runat="server" Text="Actualizar" />
+                                                    <br />
+                                                </div>
+                                                <br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </asp:Content>

@@ -29,6 +29,7 @@ namespace Ecu911Pasantes.views.admin
                     }
                 }
                 cargarLabores();
+                Timer1.Enabled = false;
             }
         }
         private void cargarLabores()
@@ -60,14 +61,12 @@ namespace Ecu911Pasantes.views.admin
                 horinfo.Labor_id = Convert.ToInt32(ddlLabor.SelectedValue);
 
                 cnHoras.modify(horinfo);
-                string js1 = "alert('Datos Modificados Con Exito..')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                Response.Redirect("~/views/admin/horas.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos modificados con éxito.', 'success')", true);
+                Timer1.Enabled = true;
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Datos No Modificados.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se puedo modificar los datos." + ex.Message + " intentelo de nuevo.', 'error')", true);
             }
         }
 
@@ -79,6 +78,11 @@ namespace Ecu911Pasantes.views.admin
         protected void lnbGuardar_Click(object sender, EventArgs e)
         {
             guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/views/admin/horas.aspx");
         }
     }
 }

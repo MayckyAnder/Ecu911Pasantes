@@ -33,13 +33,13 @@ namespace Ecu911Pasantes.views.pasantes
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Control Label15.
+        /// Control lblFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label15;
+        protected global::System.Web.UI.WebControls.Label lblFecha;
 
         /// <summary>
         /// Control Label16.
@@ -114,21 +114,21 @@ namespace Ecu911Pasantes.views.pasantes
         protected global::System.Web.UI.WebControls.Label Label23;
 
         /// <summary>
-        /// Control Label24.
+        /// Control lblFecha2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label24;
+        protected global::System.Web.UI.WebControls.Label lblFecha2;
 
         /// <summary>
-        /// Control Label25.
+        /// Control lblCodigo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label25;
+        protected global::System.Web.UI.WebControls.Label lblCodigo;
     }
 }

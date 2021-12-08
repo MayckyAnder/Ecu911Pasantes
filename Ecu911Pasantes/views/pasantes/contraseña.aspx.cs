@@ -15,13 +15,9 @@ namespace Ecu911Pasantes.views.pasantes
         {
             if (!IsPostBack)
             {
-                lblError.Visible = false;
-                lblMensaje.Visible = false;
                 string resNom = Session["nombre"].ToString();
                 string resApe = Session["apellido"].ToString();
-                lblPasante.Text = "Pasante:" + resNom + " " + resApe;
             }
-            Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
         }
 
         protected void lnbGuardar_Click(object sender, EventArgs e)
@@ -47,31 +43,26 @@ namespace Ecu911Pasantes.views.pasantes
                     string anterior = usuc.Password.ToString();
                     if (anterior == encriptar(txtPass.Text))
                     {
-                        lblError.Visible = true;
-                        lblError.Text = "Su nueva clave no puede ser igual a la anterior";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Su nueva clave no puede ser igual a la anterior.', 'error')", true);
                         Limpiar();
                     }
                     else
                     {
                         usu.Password = encriptar(txtPass.Text);
                         cnUsuarios.change(usu);
-                        lblError.Visible = false;
-                        lblMensaje.Visible = true;
-                        lblMensaje.Text = "Su clave a sido modificada con exito..";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Su clave a sido modificada con exito.', 'success')", true);
                         Limpiar();
                     }
                 }
                 else
                 {
-                    lblError.Visible = true;
-                    lblError.Text = "La contraseña anterior ingresada es incorrecta";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La contraseña anterior ingresada es incorrecta.', 'error')", true);
                     Limpiar();
                 }
             }
             catch (Exception ex)
             {
-                lblError.Visible = true;
-                lblError.Text = "No se a podido realizar el cambio de su clave" + ex.Message + "'";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se a podido realizar el cambio de su clave" + ex.Message + ".', 'error')", true);
                 Limpiar();
             }
         }

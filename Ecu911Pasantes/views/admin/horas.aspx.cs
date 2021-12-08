@@ -49,6 +49,7 @@ namespace Ecu911Pasantes.views.admin
                 if (horpe != null)
                 {
                     cnHoras.delete(horpe);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos eliminados con éxito.', 'success')", true);
                     cargarHoras();
                 }
             }
@@ -59,6 +60,7 @@ namespace Ecu911Pasantes.views.admin
                 if (hores != null)
                 {
                     cnHoras.status(hores);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos Actualizados con éxito.', 'success')", true);
                     cargarHoras();
                 }
             }

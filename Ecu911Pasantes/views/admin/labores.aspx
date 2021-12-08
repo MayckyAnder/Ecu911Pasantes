@@ -4,8 +4,9 @@
     Labores | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-    <link href="../../resources/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
-    <link href="../../resources/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/sweetalert2/sweetalert2.css" />
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -13,80 +14,70 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContenido" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Pasantes</a></li>
-                                <li class="breadcrumb-item active">Listado de labores</li>
-                            </ol>
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Listado de labores</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="inicio.aspx">Inicio</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Listado de labores</li>
+                                </ol>
+                            </nav>
                         </div>
-                        <h4 class="page-title">Listado de labores</h4>
+                        <div class="col-md-6 col-sm-12 text-right">
+                            <asp:Button ID="btnAgregar" OnClick="lnbAgregar_Click" CssClass="btn btn-primary btn-lg" runat="server" Text="Agregar Labor" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row mb-2">
-                                <div class="col-sm-4">
-                                    <asp:LinkButton ID="lnbAgregar" OnClick="lnbAgregar_Click" CssClass="btn btn-danger mb-2" runat="server"><i class="mdi mdi-plus-circle me-2"></i>Agregar Labor</asp:LinkButton>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <asp:GridView ID="grvLabores" AutoGenerateColumns="false" OnRowCommand="grvLabores_RowCommand" Width="100%" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="Codigo">
-                                            <ItemTemplate>
-                                                <asp:Label ID="Labor_id" runat="server" Text='<%#Eval("Labor_id")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Descripción">
-                                            <ItemTemplate>
-                                                <asp:Label ID="ConceptoL" runat="server" Text='<%#Eval("ConceptoL")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Pasante">
-                                            <ItemTemplate>
-                                                <asp:Label ID="Pasante" runat="server" Text='<%#Eval("Pasante")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Proyecto">
-                                            <ItemTemplate>
-                                                <asp:Label ID="Nombre" runat="server" Text='<%#Eval("Nombre")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Numero de Horas del Labor">
-                                            <ItemTemplate>
-                                                <asp:Label ID="Nhoras" runat="server" Text='<%#Eval("Nhoras")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Estado">
-                                            <ItemTemplate>
-                                                <asp:Label ID="Estado" runat="server" Text='<%#Eval("Estado")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Editar">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("Labor_id")%>' CommandName="Editar" runat="server"><i class="mdi mdi-square-edit-outline"></i></asp:LinkButton>
-                                            </ItemTemplate>
-                                            <HeaderStyle Width="17px" />
-                                            <ItemStyle Width="17px" />
-                                        </asp:TemplateField>
-                                        <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Eliminar">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="lnbEliminar" Width="16" Height="16" CommandArgument='<%#Eval("Labor_id")%>' CommandName="Eliminar" OnClientClick="return confirm('Esta seguro que desea eliminar este registro..')" runat="server"><i class="mdi mdi-delete"></i></asp:LinkButton>
-                                            </ItemTemplate>
-                                            <HeaderStyle Width="17px" />
-                                            <ItemStyle Width="17px" />
-                                        </asp:TemplateField>
-                                    </Columns>
-                                </asp:GridView>
-                            </div>
-                        </div>
+                <div class="card-box mb-30">
+                    <div class="pd-20">
+                        <asp:GridView ID="grvLabores" AutoGenerateColumns="false" OnRowCommand="grvLabores_RowCommand" Width="100%" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Descripción">
+                                    <ItemTemplate>
+                                        <asp:Label ID="ConceptoL" runat="server" Text='<%#Eval("ConceptoL")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Pasante">
+                                    <ItemTemplate>
+                                        <asp:Label ID="Pasante" runat="server" Text='<%#Eval("Pasante")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Proyecto">
+                                    <ItemTemplate>
+                                        <asp:Label ID="Nombre" runat="server" Text='<%#Eval("Nombre")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Numero de Horas del Labor">
+                                    <ItemTemplate>
+                                        <asp:Label ID="Nhoras" runat="server" Text='<%#Eval("Nhoras")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Estado">
+                                    <ItemTemplate>
+                                        <asp:Label ID="Estado" runat="server" Text='<%#Eval("Estado")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Editar">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("Labor_id")%>' CommandName="Editar" runat="server"><i class="icon-copy dw dw-edit2"></i></asp:LinkButton>
+                                    </ItemTemplate>
+                                    <HeaderStyle Width="17px" />
+                                    <ItemStyle Width="17px" />
+                                </asp:TemplateField>
+                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Eliminar">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnbEliminar" Width="16" Height="16" ForeColor="Red" CommandArgument='<%#Eval("Labor_id")%>' CommandName="Eliminar" OnClientClick="return confirm('Esta seguro que desea eliminar este registro..')" runat="server"><i class="icon-copy dw dw-delete-3"></i></asp:LinkButton>
+                                    </ItemTemplate>
+                                    <HeaderStyle Width="17px" />
+                                    <ItemStyle Width="17px" />
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>
@@ -94,15 +85,36 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
-    <script src="../../resources/js/vendor/jquery.dataTables.min.js"></script>
-    <script src="../../resources/js/vendor/dataTables.bootstrap5.js"></script>
-    <script src="../../resources/js/vendor/dataTables.responsive.min.js"></script>
-    <script src="../../resources/js/vendor/responsive.bootstrap5.min.js"></script>
-    <script src="../../resources/js/vendor/dataTables.checkboxes.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#<%=grvLabores.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
-            responsive: true
+        $('document').ready(function () {
+            $('#<%=grvLabores.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                scrollCollapse: true,
+                autoWidth: false,
+                responsive: true,
+                columnDefs: [{
+                    targets: "datatable-nosort",
+                    orderable: false,
+                }],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                "language": {
+                    "info": "Mostrando _START_-_END_ de _TOTAL_ Registros",
+                    "zeroRecords": "No se encontró nada - lo siento",
+                    "lengthMenu": "Mostrar _MENU_ Registros por página",
+                    "emptyTable": "No hay datos disponibles en la tabla",
+                    "search": "Buscar:",
+                    searchPlaceholder: "Buscar",
+                    paginate: {
+                        next: '<i class="ion-chevron-right"></i>',
+                        previous: '<i class="ion-chevron-left"></i>'
+                    }
+                },
+            });
         });
     </script>
 </asp:Content>

@@ -21,6 +21,7 @@ namespace CapaNegocio
                 ma.To.Add(new MailAddress(to));
 
                 ma.Body = mensaje;
+                ma.IsBodyHtml = true;
                 ma.Subject = "Recuperacion De Contraseña";
 
                 smtp.Host = "smtp.gmail.com";

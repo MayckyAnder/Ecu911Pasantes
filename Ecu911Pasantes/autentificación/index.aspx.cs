@@ -16,7 +16,7 @@ namespace Ecu911Pasantes.autentificación
         {
             if (!IsPostBack)
             {
-
+                Timer1.Enabled = false;
             }
             Session["con"] = Session["Conantiguo"];
         }
@@ -58,23 +58,21 @@ namespace Ecu911Pasantes.autentificación
                     {
                         string intentos = (con + (Convert.ToInt32(Session["con"]))).ToString();
                         Session["Conantiguo"] = intentos.ToString();
-                        string js1 = "alert('Credenciales Incorrectas!, Intento #" + intentos + "')";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Credenciales Incorrectas! Intento #" + intentos + "', 'error')",true);
                         txtPass.Text = "";
-                        if (Convert.ToInt32(intentos) == 3)
+                        if (Convert.ToInt32(intentos) == 2)
                         {
-                            string jsl1 = "alert('A superado el limite de intentos..')";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", jsl1, true);
-                            lnbIngresar.Visible = false;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'A superado el limite de intentos.', 'error')", true);
+                            btnIngresar.Visible = false;
                             Session.RemoveAll();
-                            Response.Redirect("~/autentificación/recuperar.aspx");
+                            Timer1.Enabled = true;
                         }
                     }
                 }
                 else
                 {
-                    string js1 = "alert('Usuario No existe..')";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'El usuario no existe.', 'error')", true);
+                    Limpiar();
                 }
             }
         }
@@ -91,9 +89,14 @@ namespace Ecu911Pasantes.autentificación
             return resultado;
         }
 
-        protected void lnbIngresar_Click(object sender, EventArgs e)
+        protected void btnIngresar_Click(object sender, EventArgs e)
         {
             Ingresar();
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/autentificación/recuperar.aspx");
         }
     }
 }

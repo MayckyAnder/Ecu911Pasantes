@@ -25,10 +25,10 @@ namespace Ecu911Pasantes.views.admin
                         txtConcepto.Text = proinfo.Nombre.ToString();
                         txtDescripcion.Text = proinfo.Descripcion.ToString();
                         ddlResponsables.SelectedValue = proinfo.Resp_id.ToString();
-
                     }
                 }
                 cargarResponsables();
+                Timer1.Enabled = false;
             }
         }
 
@@ -64,14 +64,12 @@ namespace Ecu911Pasantes.views.admin
                 proinfo.Resp_id = Convert.ToInt32(ddlResponsables.SelectedValue);
 
                 cnProyectos.modify(proinfo);
-                string js1 = "alert('Datos Modificados Con Exito..')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                Response.Redirect("~/views/admin/proyectos.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos modificados con éxito.', 'success')", true);
+                Timer1.Enabled = true;
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Datos No Modificados.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se puedo modificar los datos." + ex.Message + " intentelo de nuevo.', 'error')", true);
             }
         }
         private void Guardar()
@@ -84,14 +82,12 @@ namespace Ecu911Pasantes.views.admin
                 proinfo.Resp_id = Convert.ToInt32(ddlResponsables.SelectedValue);
 
                 cnProyectos.save(proinfo);
-                string js1 = "alert('Datos Guardados Con Exito..')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
-                Response.Redirect("~/views/admin/proyectos.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos guardados con éxito.', 'success')", true);
+                Timer1.Enabled = true;
             }
             catch (Exception ex)
             {
-                string js1 = "alert('Datos No Guardados.." + ex.Message + "')";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", js1, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'No se pudo guardar los datos" + ex.Message + " intentelo de nuevo.', 'error')", true);
             }
         }
         protected void lnbGuardar_Click(object sender, EventArgs e)
@@ -100,6 +96,11 @@ namespace Ecu911Pasantes.views.admin
         }
 
         protected void lnbCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/views/admin/proyectos.aspx");
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
         {
             Response.Redirect("~/views/admin/proyectos.aspx");
         }
