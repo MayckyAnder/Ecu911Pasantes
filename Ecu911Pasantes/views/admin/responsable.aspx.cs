@@ -147,12 +147,6 @@ namespace Ecu911Pasantes.views.admin
         {
             Response.Redirect("~/Views/admin/responsables.aspx");
         }
-
-        protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
-        {
-           
-        }
-
         protected void txtCedula_TextChanged(object sender, EventArgs e)
         {
             bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));

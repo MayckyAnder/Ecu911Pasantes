@@ -91,8 +91,6 @@
                                                             <div class="form-row mt-4">
                                                                 <div class="col-12 col-sm-4">
                                                                     <asp:TextBox ID="txtCedula" TextMode="Phone" MaxLength="10" CssClass="multisteps-form__input form-control" placeholder="Cedula" OnTextChanged="txtCedula_TextChanged" runat="server"></asp:TextBox>
-                                                                    <%--<asp:CustomValidator ID="CustomValidator1" runat="server" ForeColor="Red" ErrorMessage="Ya existe una persona registrado con ese numero de cedula" ControlToValidate="txtCedula" ValidationGroup="Info" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic"></asp:CustomValidator>
-                                                                    <br />--%>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="La cedula es requerida" ControlToValidate="txtCedula" ValidationGroup="Info"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-12 col-sm-4">
