@@ -58,22 +58,26 @@ namespace Ecu911Pasantes.views.admin
         {
             try
             {
-                usuinfo = new Tbl_Usuarios();
-                usuinfo.Usuario = txtUser.Text;
-                usuinfo.Password = encriptar(txtPass.Text);
-                usuinfo.Nombres = txtNombre.Text;
-                usuinfo.Apellidos = txtApellido.Text;
-                usuinfo.Cedula = Convert.ToInt32(txtCedula.Text);
-                usuinfo.Area = txtArea.Text;
-                usuinfo.Celular = Convert.ToInt32(txtCelular.Text);
-                usuinfo.Correo = txtEmail.Text;
-                usuinfo.Direccion = txtDireccion.Text;
-                usuinfo.Tusu_id = 1;
+                usuinfo = new Tbl_Usuarios
+                {
+                    Usuario = txtUser.Text,
+                    Password = encriptar(txtPass.Text),
+                    Nombres = txtNombre.Text,
+                    Apellidos = txtApellido.Text,
+                    Cedula = txtCedula.Text,
+                    Area = txtArea.Text,
+                    Celular = txtCelular.Text,
+                    Correo = txtEmail.Text,
+                    Direccion = txtDireccion.Text,
+                    Tusu_id = 1
+                };
                 cnUsuarios.save(usuinfo);
 
-                respinfo = new Tbl_Responsable();
-                respinfo.Cargo = txtCargo.Text;
-                respinfo.Usu_id = usuinfo.Usu_id;
+                respinfo = new Tbl_Responsable
+                {
+                    Cargo = txtCargo.Text,
+                    Usu_id = usuinfo.Usu_id
+                };
 
                 cnResponsables.save(respinfo);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos guardados con éxito.', 'success')", true);
@@ -91,15 +95,15 @@ namespace Ecu911Pasantes.views.admin
                 usu.Usuario = txtUser.Text;
                 usu.Nombres = txtNombre.Text;
                 usu.Apellidos = txtApellido.Text;
-                usu.Cedula = Convert.ToInt32(txtCedula.Text);
+                usu.Cedula = txtCedula.Text;
                 usu.Area = txtArea.Text;
-                usu.Celular = Convert.ToInt32(txtCelular.Text);
+                usu.Celular = txtCelular.Text;
                 usu.Correo = txtEmail.Text;
                 usu.Direccion = txtDireccion.Text;
                 cnUsuarios.modify(usu);
 
                 respmd.Cargo = txtCargo.Text;
-                cnResponsables.modify(respmd);
+                cnResponsables.Modify(respmd);
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos modificados con éxito.', 'success')", true);
                 Timer1.Enabled = true;
@@ -137,9 +141,8 @@ namespace Ecu911Pasantes.views.admin
         }
         string encriptar(string cadena)
         {
-            string resultado = string.Empty;
             byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(cadena);
-            resultado = Convert.ToBase64String(encriptar);
+            string resultado = Convert.ToBase64String(encriptar);
             return resultado;
         }
 
@@ -147,16 +150,30 @@ namespace Ecu911Pasantes.views.admin
         {
             Response.Redirect("~/Views/admin/responsables.aspx");
         }
-        protected void txtCedula_TextChanged(object sender, EventArgs e)
+        protected void TxtCedula_TextChanged(object sender, EventArgs e)
         {
             bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));
             if (existe)
             {
-                Tbl_Usuarios resp = new Tbl_Usuarios();
-                resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
+                _ = new Tbl_Usuarios();
+                Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
                 if (resp != null)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ya existe una persona registrado con ese numero de cedula', 'error')", true);
+                }
+            }
+        }
+
+        protected void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            bool existe = cnUsuarios.autentificarxNomUsuario(txtUser.Text);
+            if (existe)
+            {
+                _ = new Tbl_Usuarios();
+                Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxNomUsuario(txtUser.Text);
+                if (resp != null)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ese nombre de usuario ya se encuentra registrado', 'error')", true);
                 }
             }
         }

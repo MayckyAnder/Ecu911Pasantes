@@ -32,7 +32,7 @@
                 </div>
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <asp:GridView ID="grvHoras" OnRowCommand="grvHoras_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
+                        <asp:GridView ID="grvHoras" EmptyDataText="No hay datos disponibles en la tabla." OnRowCommand="grvHoras_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="Descipción">
                                     <ItemTemplate>
@@ -103,7 +103,7 @@
     <script>
         $('document').ready(function () {
             $('#<%=grvHoras.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
-                scrollCollapse: true,
+                scrollCollapse: false,
                 autoWidth: false,
                 responsive: true,
                 columnDefs: [{

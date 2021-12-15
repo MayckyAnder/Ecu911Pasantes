@@ -32,7 +32,7 @@
                 </div>
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <asp:GridView ID="grvNumHoras" runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
+                        <asp:GridView ID="grvNumHoras" runat="server" EmptyDataText="No hay datos disponibles en la tabla." AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
                             <Columns>
                                 <asp:TemplateField HeaderText="Labor">
                                     <ItemTemplate>

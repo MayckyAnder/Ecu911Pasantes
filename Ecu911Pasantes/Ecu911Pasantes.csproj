@@ -567,6 +567,7 @@
     <Content Include="resources\vendors\scripts\datatable-setting.js" />
     <Content Include="resources\vendors\scripts\function.js" />
     <Content Include="resources\vendors\scripts\highchart-setting.js" />
+    <Content Include="resources\vendors\scripts\horas.js" />
     <Content Include="resources\vendors\scripts\jvectormap-setting.js" />
     <Content Include="resources\vendors\scripts\knob-chart-setting.js" />
     <Content Include="resources\vendors\scripts\layout-settings.js" />

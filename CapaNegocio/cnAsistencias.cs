@@ -10,7 +10,7 @@ namespace CapaNegocio
     public class cnAsistencias
     {
         //Instanciamos el dbml
-        private static DataClasses1DataContext dc = new DataClasses1DataContext();
+        private static readonly DataClasses1DataContext dc = new DataClasses1DataContext();
         public static bool autentificarxCodigo(int cod)
         {
             var auto = dc.Tbl_Asistencia.Any(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Solo Ingreso" && pasa.Estado == "Activo");
@@ -31,8 +31,8 @@ namespace CapaNegocio
             try
             {
                 asis.Estado = "Activo";
-                asis.HoraEntrada = Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss"));
-                asis.Fecha = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy"));
+                asis.HoraEntrada = Convert.ToDateTime(DateTime.Now.ToLongTimeString());
+                asis.Fecha = Convert.ToDateTime(DateTime.Now.ToLongDateString());
                 asis.Tipo = "Solo Ingreso";
                 dc.Tbl_Asistencia.InsertOnSubmit(asis);
                 dc.SubmitChanges();
@@ -47,7 +47,7 @@ namespace CapaNegocio
             try
             {
                 asis.Tipo = "Ingreso y Salida";
-                asis.HoraSalida = Convert.ToDateTime(DateTime.Now.ToString("HH:mm:ss"));
+                asis.HoraSalida = Convert.ToDateTime(DateTime.Now.ToLongTimeString());
                 dc.SubmitChanges();
             }
             catch (Exception ex)

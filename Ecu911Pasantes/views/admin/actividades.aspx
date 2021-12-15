@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <asp:GridView ID="grvActividades" runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
+                        <asp:GridView ID="grvActividades" runat="server" EmptyDataText="No hay datos disponibles en la tabla." AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
                             <Columns>
                                 <asp:TemplateField HeaderText="Cedula">
                                     <ItemTemplate>

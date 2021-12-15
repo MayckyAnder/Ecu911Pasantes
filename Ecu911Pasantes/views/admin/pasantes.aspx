@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <asp:GridView ID="grvPasantes" OnRowCommand="grvPasantes_RowCommand" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
+                        <asp:GridView ID="grvPasantes" OnRowCommand="grvPasantes_RowCommand" EmptyDataText="No hay datos disponibles en la tabla." AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="Cedula">
                                     <ItemTemplate>

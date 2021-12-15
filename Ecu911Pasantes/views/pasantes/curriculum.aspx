@@ -36,18 +36,20 @@
                     </div>
                     <div class="fallback">
                         <asp:FileUpload ID="fuCurriculum" CssClass="form-control-file form-control height-auto" runat="server" />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo los archivos en formato PDF son permitidos" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.pdf)$" ControlToValidate="fuCurriculum" ForeColor="Red"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ValidationGroup="info" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo los archivos en formato PDF son permitidos" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.pdf)$" ControlToValidate="fuCurriculum" ForeColor="Red"></asp:RegularExpressionValidator>
                     </div>
                     <div class="text-right">
-                        <asp:Button ID="btnSubir" CssClass="btn btn-success" OnClick="btnSubir_Click" runat="server" Text="Subir" />       
+                        <asp:Button ID="btnSubir" CssClass="btn btn-success" OnClick="btnSubir_Click" ValidationGroup="info" runat="server" Text="Subir" />       
                     </div>
                 </div>
             </div>
         </ContentTemplate>
         <Triggers>
-            <asp:PostBackTrigger ControlID="btnSubir" />
+            <asp:PostBackTrigger ControlID="btnSubir"/>
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </asp:Content>

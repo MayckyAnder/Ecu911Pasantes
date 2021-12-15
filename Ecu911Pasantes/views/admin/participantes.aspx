@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <asp:GridView ID="grvParticipantes" runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
+                        <asp:GridView ID="grvParticipantes" EmptyDataText="No hay datos disponibles en la tabla." runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
                             <Columns>
                                 <asp:TemplateField HeaderText="Apellidos">
                                     <ItemTemplate>

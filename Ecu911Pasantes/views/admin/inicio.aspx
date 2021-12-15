@@ -4,7 +4,8 @@
     Inicio | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-   
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -93,13 +94,8 @@
             </div>
             <div class="card-box pb-10">
                 <div class="h5 pd-20 mb-0">Asistencias diarias</div>
-                <asp:GridView ID="grvAsistencias" runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table nowrap" GridLines="None" Width="100%">
+                <asp:GridView ID="grvAsistencias" EmptyDataText="No hay datos disponibles en la tabla." runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table nowrap" GridLines="None" Width="100%">
                     <Columns>
-                        <asp:TemplateField HeaderText="Codigo">
-                            <ItemTemplate>
-                                <asp:Label ID="Asistencia_id" runat="server" Text='<%#Eval("Asistencia_id")%>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Pasante">
                             <ItemTemplate>
                                 <asp:Label ID="Pasante" runat="server" Text='<%#Eval("Pasante")%>'></asp:Label>
@@ -146,6 +142,10 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
     <script src="../../resources/src/plugins/apexcharts/apexcharts.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script>
         var chartuniversidades;
         var chartPasantes;
@@ -354,15 +354,19 @@
                 searching: false,
                 bLengthChange: false,
                 bPaginate: true,
-                bInfo: false,
+                bInfo: true,
                 columnDefs: [{
                     targets: "datatable-nosort",
                     orderable: false,
                 }],
                 "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
                 "language": {
-                    "info": "_START_-_END_ of _TOTAL_ entries",
-                    searchPlaceholder: "Search",
+                    "info": "Mostrando _START_-_END_ de _TOTAL_ Registros",
+                    "zeroRecords": "No se encontró nada - lo siento",
+                    "lengthMenu": "Mostrar _MENU_ Registros por página",
+                    "emptyTable": "No hay datos disponibles en la tabla",
+                    "search": "Buscar:",
+                    searchPlaceholder: "Buscar",
                     paginate: {
                         next: '<i class="ion-chevron-right"></i>',
                         previous: '<i class="ion-chevron-left"></i>'

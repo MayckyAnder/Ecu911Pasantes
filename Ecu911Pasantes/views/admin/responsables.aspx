@@ -12,8 +12,8 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphContenido" runat="server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>--%>
             <div class="min-height-200px">
                 <div class="page-header">
                     <div class="row">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <asp:GridView ID="grvResponsables" AutoGenerateColumns="False" CssClass="table table-centered w-100 dt-responsive nowrap" OnRowCommand="grvResponsables_RowCommand" GridLines="None" Width="100%" runat="server">
+                        <asp:GridView ID="grvResponsables" AutoGenerateColumns="False" EmptyDataText="No hay datos disponibles en la tabla." CssClass="table table-centered w-100 dt-responsive nowrap" OnRowCommand="grvResponsables_RowCommand" GridLines="None" Width="100%" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="Cedula">
                                     <ItemTemplate>
@@ -96,8 +96,8 @@
                     </div>
                 </div>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+        <%--</ContentTemplate>
+    </asp:UpdatePanel>--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
     <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>

@@ -55,5 +55,27 @@ namespace CapaDatos.Properties {
                 return ((string)(this["db_a7d8a5_pasantesecu911ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5104.site4now.net;Initial Catalog=db_a7d8a5_pasantes911;User ID=db" +
+            "_a7d8a5_pasantes911_admin")]
+        public string db_a7d8a5_pasantes911ConnectionString {
+            get {
+                return ((string)(this["db_a7d8a5_pasantes911ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5104.site4now.net;Initial Catalog=db_a7d8a5_pasantes911;User ID=db" +
+            "_a7d8a5_pasantes911_admin;Password=pasantes911")]
+        public string db_a7d8a5_pasantes911ConnectionString1 {
+            get {
+                return ((string)(this["db_a7d8a5_pasantes911ConnectionString1"]));
+            }
+        }
     }
 }

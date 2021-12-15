@@ -17,8 +17,8 @@ namespace Ecu911Pasantes.views.pasantes
         {
             if (!IsPostBack)
             {
-                txtActividades.Visible = false;
-                string usulogeado = Session["Pasante"].ToString();
+
+                string usulogeado = Session["PASANTE"].ToString();
                 bool existe = cnAsistencias.autentificarxCodigo(Convert.ToInt32(usulogeado));
                 bool dia = cnAsistencias.autentificarDiaxCodigo(Convert.ToInt32(usulogeado));
                 if (dia)
@@ -26,12 +26,9 @@ namespace Ecu911Pasantes.views.pasantes
                     txtAsistencia.Enabled = false;
                     txtActividades.Enabled = false;
                 }
-                else
+                else if (existe)
                 {
-                    if (existe)
-                    {
-                        txtActividades.Visible = true;
-                    }
+                    txtActividades.Visible = true;
                 }
             }
         }
@@ -101,9 +98,9 @@ namespace Ecu911Pasantes.views.pasantes
         }
         protected void btnAsistencia_Click(object sender, EventArgs e)
         {
-            Tbl_Asistencia asi = new Tbl_Asistencia();
+            _ = new Tbl_Asistencia();
             string usulogeado = Session["Pasante"].ToString();
-            asi = cnAsistencias.obtenerAsistenciaxCodigo(Convert.ToInt32(usulogeado));
+            Tbl_Asistencia asi = cnAsistencias.obtenerAsistenciaxCodigo(Convert.ToInt32(usulogeado));
             bool dia = cnAsistencias.autentificarDiaxCodigo(Convert.ToInt32(usulogeado));
             if (dia)
             {

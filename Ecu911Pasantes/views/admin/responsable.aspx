@@ -32,110 +32,119 @@
                     </div>
                 </div>
                 <div class="pd-20 card-box mb-30">
-                    <div class="content">
-                        <div class="content__inner">
-                            <div class="container">
-                                <div class="container overflow-hidden">
-                                    <div class="multisteps-form">
-                                        <div class="row">
-                                            <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
-                                                <div class="multisteps-form__progress">
-                                                    <button class="multisteps-form__progress-btn js-active" type="button" title="Cuenta">Cuenta</button>
-                                                    <button class="multisteps-form__progress-btn" type="button" title="Info persnal">Info personal</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-lg-12 m-auto">
-                                                <div class="multisteps-form__form">
-                                                    <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
-                                                        <h3 class="multisteps-form__title">Cuenta</h3>
-                                                        <div class="multisteps-form__content">
-                                                            <div class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6">
-                                                                    <asp:TextBox ID="txtUser" type="text" CssClass="multisteps-form__input form-control" placeholder="Nombre de usuario" runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="El nombre de usuario es requerido" ControlToValidate="txtUser" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtEmail" type="email" CssClass="multisteps-form__input form-control" placeholder="Correo electrónico"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ErrorMessage="El correo electrónico es requerido" ControlToValidate="txtEmail" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                    <br />
-                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ForeColor="Red" ErrorMessage="El correo ingresado no es valido" ControlToValidate="txtEmail" ValidationGroup="Info" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6">
-                                                                    <asp:TextBox ID="txtPass" type="password" CssClass="multisteps-form__input form-control"  placeholder="Contraseña" runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ErrorMessage="La contraseña es requerida" ControlToValidate="txtPass" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtConfirmar" type="password" CssClass="multisteps-form__input form-control"  placeholder="Repetir contraseña" runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" runat="server" ErrorMessage="La confirmación de la contraseña es requerida" ControlToValidate="txtConfirmar" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                    <br />
-                                                                    <asp:CompareValidator ID="CompareValidator1" ForeColor="Red" ControlToValidate="txtConfirmar" ControlToCompare="txtPass" runat="server" ErrorMessage="Las contraseñas ingresadas no coiciden" ValidationGroup="Info"></asp:CompareValidator>
-                                                                </div>
-                                                            </div>
-                                                            <div class="button-row d-flex mt-4">
-                                                                <asp:Button ID="btnRegresar" OnClick="lnbCancelar_Click" CssClass="btn btn-outline-primary" runat="server" Text="Regresar" />
-                                                                <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Siguiente">Siguiente</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                                                        <h3 class="multisteps-form__title">Información personal</h3>
-                                                        <div class="multisteps-form__content">
-                                                            <div class="form-row mt-4">
-                                                                <div class="col-12 col-sm-4">
-                                                                    <asp:TextBox ID="txtCedula" type="number" MaxLength="10" CssClass="multisteps-form__input form-control" OnTextChanged="txtCedula_TextChanged" placeholder="Cedula"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="La cedula es requerida" ControlToValidate="txtCedula" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <div class="col-12 col-sm-4">
-                                                                    <asp:TextBox ID="txtNombre" type="text" CssClass="multisteps-form__input form-control" placeholder="Nombres"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" runat="server" ErrorMessage="Los nombres son requeridos" ControlToValidate="txtNombre" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <div class="col-12 col-sm-4 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtApellido" type="text" CssClass="multisteps-form__input form-control" placeholder="Apellidos"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" runat="server" ErrorMessage="Los apellidos son requeridos" ControlToValidate="txtApellido" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6">
-                                                                    <asp:TextBox ID="txtDireccion" type="text" CssClass="multisteps-form__input form-control" placeholder="Dirección"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ForeColor="Red" runat="server" ErrorMessage="La dirección es requerida" ControlToValidate="txtDireccion" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtCelular" type="number" MaxLength="10" CssClass="multisteps-form__input form-control phone-number" placeholder="Celular"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ForeColor="Red" runat="server" ErrorMessage="El celular es requerido" ControlToValidate="txtCelular" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                    <br />
-                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ForeColor="Red" ErrorMessage="Ingrese correctamente su numero de telefono" ControlToValidate="txtCelular" ValidationGroup="Info" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6">
-                                                                    <asp:TextBox ID="txtArea" type="text" CssClass="multisteps-form__input form-control" placeholder="Area de trabajo"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ForeColor="Red" runat="server" ErrorMessage="La area de trabajo es requerida" ControlToValidate="txtArea" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                                                    <asp:TextBox ID="txtCargo" type="text" CssClass="multisteps-form__input form-control" placeholder="Cargo"  runat="server"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ForeColor="Red" runat="server" ErrorMessage="El cargo es requerido" ControlToValidate="txtCargo" ValidationGroup="Info"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                            </div>
-                                                            <div class="button-row d-flex mt-4">
-                                                                <button class="btn btn-primary js-btn-prev" type="button" title="Anterior">Anterior</button>
-                                                                <asp:Button ID="btnGuardar" OnClick="lnbGuardar_Click" CssClass="btn btn-success ml-auto" ValidationGroup="Info" runat="server" Text="Enviar" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Cedula</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtCedula" TextMode="Number" MaxLength="10" CssClass="form-control" OnTextChanged="TxtCedula_TextChanged" AutoPostBack="true" placeholder="Ingrese su cedula" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="La cedula es requerida" ControlToValidate="txtCedula" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtNombre" type="text" CssClass="form-control" placeholder="Ingrese sus nombres" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ForeColor="Red" runat="server" ErrorMessage="Los nombres son requeridos" ControlToValidate="txtNombre" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtApellido" type="text" CssClass="form-control" placeholder="Ingrese sus apellidos" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ForeColor="Red" runat="server" ErrorMessage="Los apellidos son requeridos" ControlToValidate="txtApellido" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtDireccion" type="text" CssClass="form-control" placeholder="Ingrese la dirección" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ForeColor="Red" runat="server" ErrorMessage="La dirección es requerida" ControlToValidate="txtDireccion" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Celular</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtCelular" TextMode="Phone" MaxLength="10" CssClass="form-control" placeholder="Ingrese el numero de celular" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" ForeColor="Red" runat="server" ErrorMessage="El celular es requerido" ControlToValidate="txtCelular" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ForeColor="Red" ErrorMessage="Ingrese correctamente su numero de telefono" ControlToValidate="txtCelular" ValidationGroup="Info" ValidationExpression="[0-9]{10}" Display="Dynamic"></asp:RegularExpressionValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Area</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtArea" type="text" CssClass="form-control" placeholder="Ingrese el area de trabajo" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" ForeColor="Red" runat="server" ErrorMessage="La area de trabajo es requerida" ControlToValidate="txtArea" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Cargo</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <asp:TextBox ID="txtCargo" type="text" CssClass="form-control" placeholder="Ingrese el area de trabajo" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ForeColor="Red" runat="server" ErrorMessage="El cargo es requerido" ControlToValidate="txtCargo" ValidationGroup="Info"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-4 col-form-label">Nombre de usuario</label>
+                                <div class="col-sm-12 col-md-8">
+                                    <asp:TextBox ID="txtUser" type="text" CssClass="form-control" placeholder="Ingrese el nombre de usuario" OnTextChanged="txtUser_TextChanged" AutoPostBack="true" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ControlToValidate="txtUser" ValidationGroup="info" ErrorMessage="El nombre de usuario es requerido" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-4 col-form-label">Correo electronico</label>
+                                <div class="col-sm-12 col-md-8">
+                                    <asp:TextBox ID="txtEmail" type="text" CssClass="form-control" placeholder="Ingrese el correo electronico" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" ControlToValidate="txtEmail" ValidationGroup="info" ErrorMessage="El correo electronico es requerido" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-4 col-form-label">Contraseña</label>
+                                <div class="col-sm-12 col-md-8">
+                                    <asp:TextBox ID="txtPass" TextMode="Password" CssClass="form-control" placeholder="Ingrese la contraseña" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ErrorMessage="La contraseña es requerida" ControlToValidate="txtPass" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-4 col-form-label">Confirmar contraseña</label>
+                                <div class="col-sm-12 col-md-8">
+                                    <asp:TextBox ID="txtConfirmar" TextMode="Password" CssClass="form-control" placeholder="Confirme la contraseña" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" runat="server" ErrorMessage="La confirmación de la contraseña es requerida" ControlToValidate="txtConfirmar" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:CompareValidator ID="CompareValidator1" ForeColor="Red" ControlToValidate="txtConfirmar" ControlToCompare="txtPass" runat="server" ErrorMessage="Las contraseñas ingresadas no coiciden" ValidationGroup="Info" Display="Dynamic"></asp:CompareValidator>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="align-items-end">
+                        <asp:Button ID="btnRegresar" OnClick="lnbCancelar_Click" CssClass="btn btn-outline-primary btn-lg" runat="server" Text="Regresar" />
+                        <asp:Button ID="btnGuardar" OnClick="lnbGuardar_Click" CssClass="btn btn-primary btn-lg" ValidationGroup="info" runat="server" Text="Enviar" />
+                    </div>
                 </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

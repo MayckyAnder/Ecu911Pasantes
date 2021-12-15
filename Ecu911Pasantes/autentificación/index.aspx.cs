@@ -37,7 +37,7 @@ namespace Ecu911Pasantes.autentificación
                         int tusuario = Convert.ToInt32(usuario.Tusu_id);
                         if (tusuario == 1)
                         {
-                            Session["Admin"] = usuario.Usu_id.ToString();
+                            Session["ADMIN"] = usuario.Usu_id.ToString();
                             Session["nombre"] = usuario.Nombres.ToString();
                             Session["apellido"] = usuario.Apellidos.ToString();
                             Session["rol"] = tusu.Nombre.ToString();
@@ -46,7 +46,7 @@ namespace Ecu911Pasantes.autentificación
                         }
                         else
                         {
-                            Session["Pasante"] = usuario.Usu_id.ToString();
+                            Session["PASANTE"] = usuario.Usu_id.ToString();
                             Session["nombre"] = usuario.Nombres.ToString();
                             Session["apellido"] = usuario.Apellidos.ToString();
                             Session["rol"] = tusu.Nombre.ToString();

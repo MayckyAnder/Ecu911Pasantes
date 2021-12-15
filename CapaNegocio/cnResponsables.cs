@@ -15,14 +15,14 @@ namespace CapaNegocio
         //Metodo para obtener responsables por usuario
         public static Tbl_Responsable obtenerResponsablesxUsuario(int id)
         {
-            var respid = dc.Tbl_Responsable.FirstOrDefault(resp => resp.Usu_id.Equals(id) && resp.Estado == "Activo");
+            var respid = dc.Tbl_Responsable.FirstOrDefault(resp => resp.Usu_id.Equals(id) && resp.Estado == "ACTIVO");
             return respid;
         }
         public static void save(Tbl_Responsable resp)
         {
             try
             {
-                resp.Estado = "Activo";
+                resp.Estado = "ACTIVO";
                 resp.Fecha = DateTime.Now;
                 dc.Tbl_Responsable.InsertOnSubmit(resp);
                 dc.SubmitChanges();
@@ -32,7 +32,7 @@ namespace CapaNegocio
                 throw new ArgumentException("Los datos no han sido guardados <br/>" + ex.Message);
             }
         }
-        public static void modify(Tbl_Responsable resp)
+        public static void Modify(Tbl_Responsable resp)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace CapaNegocio
         {
             try
             {
-                resp.Estado = "Inactivo";
+                resp.Estado = "INACTIVO";
                 dc.SubmitChanges();
             }
             catch (Exception ex)
