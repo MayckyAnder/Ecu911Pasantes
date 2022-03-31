@@ -74,7 +74,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Curriculum">
                                     <ItemTemplate>
-                                        <asp:HyperLink ID="Curriculum" NavigateUrl='<%# "~/resources/documentos/" + Eval("Curriculum") %>' Target="_blank" runat="server">Ver Curriculum </asp:HyperLink>
+                                        <asp:Label ID="Curriculum" runat="server" Text='<%#Eval("Curriculum")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Acuerdo de confidencialidad">
@@ -109,7 +109,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Estado">
                                     <ItemTemplate>
-                                        <asp:Label ID="Estado" runat="server" Text='<%#Eval("Estado")%>'></asp:Label>
+                                        <asp:Label ID="Estado" runat="server" <%--CssClass="badge bg-success text-white"--%> Text='<%#Eval("Estado")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Editar">

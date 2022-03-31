@@ -21,6 +21,11 @@ namespace Ecu911Pasantes.views.admin
 
         protected void lnbBuscar_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        protected void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
             var query = dc.Actividades(Convert.ToInt32(txtBuscar.Text));
             if (query != null)
             {

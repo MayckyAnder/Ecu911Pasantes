@@ -22,7 +22,7 @@ namespace CapaDatos
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_a7d8a5_pasantes911")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ecu911Pasantes")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -57,7 +57,7 @@ namespace CapaDatos
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::CapaDatos.Properties.Settings.Default.db_a7d8a5_pasantes911ConnectionString1, mappingSource)
+				base(global::CapaDatos.Properties.Settings.Default.Ecu911PasantesConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -190,6 +190,13 @@ namespace CapaDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<horasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.HorasxMes")]
+		public ISingleResult<HorasxMesResult> HorasxMes([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<HorasxMesResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.labores")]
@@ -3440,6 +3447,32 @@ namespace CapaDatos
 				if ((this._Estado != value))
 				{
 					this._Estado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class HorasxMesResult
+	{
+		
+		private System.Nullable<int> _HorasA;
+		
+		public HorasxMesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HorasA", DbType="Int")]
+		public System.Nullable<int> HorasA
+		{
+			get
+			{
+				return this._HorasA;
+			}
+			set
+			{
+				if ((this._HorasA != value))
+				{
+					this._HorasA = value;
 				}
 			}
 		}

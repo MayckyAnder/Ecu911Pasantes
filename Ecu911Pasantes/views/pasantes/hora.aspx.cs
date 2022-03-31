@@ -30,6 +30,7 @@ namespace Ecu911Pasantes.views.pasantes
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Usted aun no se encuentra habilitado para poder registar sus horas.', 'error')", true);
                 }
                 Timer1.Enabled = false;
+                HorasxMes();
             }
         }
         private void cargarLabores()
@@ -82,6 +83,19 @@ namespace Ecu911Pasantes.views.pasantes
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             Response.Redirect("~/views/pasantes/horas.aspx");
+        }
+        
+        private void HorasxMes()
+        {
+            string usulogeado = Session["Pasante"].ToString();
+            var hormes = dc.HorasxMes(Convert.ToInt32(usulogeado));
+            if (hormes != null)
+            {
+                foreach (var item in hormes)
+                {
+                    txtCantidad.Text += item.HorasA;
+                };
+            }
         }
     }
 }

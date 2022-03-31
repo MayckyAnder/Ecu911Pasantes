@@ -41,16 +41,10 @@ namespace Ecu911Pasantes.views.pasantes
                 bool existe = cnPasantes.autentificarxUsu(Convert.ToInt32(usulogeado));
                 if (existe)
                 {
-                    if (fuCurriculum.HasFile)
-                    {
-                        if (!string.IsNullOrEmpty(fuCurriculum.FileName))
-                        {
-                            fuCurriculum.SaveAs(Server.MapPath("~/resources/documentos/") + fuCurriculum.FileName);
-                        }
-                        pasmd.Curriculum = fuCurriculum.FileName;
-                        cnPasantes.curriculum(pasmd);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Curriculum subido con éxito.', 'success')", true);
-                    }
+                    pasmd.Curriculum = txtCurriculum.Text;
+                    cnPasantes.curriculum(pasmd);
+                    txtCurriculum.Text = "";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Curriculum subido con éxito.', 'success')", true);
                 }
             }
             catch (Exception ex)

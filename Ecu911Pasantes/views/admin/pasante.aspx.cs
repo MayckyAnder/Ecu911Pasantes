@@ -105,7 +105,7 @@ namespace Ecu911Pasantes.views.admin
                 pas.Codigo_Pasante = txtCodPa.Text;
                 pas.CodigoEcu = txtCodEcu.Text;
                 pas.Actividad = ddlActividad.SelectedValue;
-                pas.Usu_id = usuinfo.Usu_id;
+
 
                 cnPasantes.modify(pas);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos modificados con éxito.', 'success')", true);

@@ -77,5 +77,27 @@ namespace CapaDatos.Properties {
                 return ((string)(this["db_a7d8a5_pasantes911ConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5104.site4now.net;Initial Catalog=db_a7d8a5_pasantes911;Persist Se" +
+            "curity Info=True;User ID=db_a7d8a5_pasantes911_admin;Password=pasantes911")]
+        public string db_a7d8a5_pasantes911ConnectionString2 {
+            get {
+                return ((string)(this["db_a7d8a5_pasantes911ConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL5053.site4now.net;Initial Catalog=db_a82259_pasantesecu911;User ID" +
+            "=db_a82259_pasantesecu911_admin;Password=pasantes911")]
+        public string db_a82259_pasantesecu911ConnectionString {
+            get {
+                return ((string)(this["db_a82259_pasantesecu911ConnectionString"]));
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@
                             <div class="col-6"></div>
                             <div class="col-6 text-right">
                                 <div class="input-group custom">
-                                    <asp:TextBox ID="txtBuscar" CssClass="form-control search-input" placeholder="Ingrese el numero de cedula del pasante" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtBuscar" CssClass="form-control search-input" OnTextChanged="txtBuscar_TextChanged" AutoPostBack="true" placeholder="Ingrese el numero de cedula del pasante" runat="server"></asp:TextBox>
                                     <div class="input-group-append custom">
                                         <span class="input-group-text">
                                             <asp:LinkButton ID="lnbBuscar" CssClass="dw dw-search2 search-icon" OnClick="lnbBuscar_Click" runat="server"></asp:LinkButton></span>

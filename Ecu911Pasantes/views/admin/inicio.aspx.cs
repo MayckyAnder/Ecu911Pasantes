@@ -8,6 +8,7 @@ namespace Ecu911Pasantes.views.admin
     public partial class inicio : System.Web.UI.Page
     {
         private DataClasses1DataContext dc = new DataClasses1DataContext();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,44 +33,59 @@ namespace Ecu911Pasantes.views.admin
         }
         private void TotalPasantesxUniversidades()
         {
-            var list = dc.TotalPasantesxUniversidad();
-            if (list != null)
+            try
             {
-                string chartData = "";
-                string pasantes = "";
-                string universidades = "";
-                chartData += "<script>";
-                foreach (var item in list)
+                var list = dc.TotalPasantesxUniversidad();
+                if (list != null)
                 {
-                    universidades += "\"" + item.Universidad + "\",";
-                    pasantes += item.TotalPasantes + ",";
+                    string chartData = "";
+                    string pasantes = "";
+                    string universidades = "";
+                    chartData += "<script>";
+                    foreach (var item in list)
+                    {
+                        universidades += "\"" + item.Universidad + "\",";
+                        pasantes += item.TotalPasantes + ",";
+                    }
+                    universidades = universidades.Substring(0, universidades.Length - 1);
+                    pasantes = pasantes.Substring(0, pasantes.Length - 1);
+                    chartData += "chartuniversidades = [" + universidades + "]; chartPasantes = [" + pasantes + "]";
+                    chartData += "</script>";
+                    ltChartData.Text = chartData;
                 }
-                universidades = universidades.Substring(0, universidades.Length - 1);
-                pasantes = pasantes.Substring(0, pasantes.Length - 1);
-                chartData += "chartuniversidades = [" + universidades + "]; chartPasantes = [" + pasantes + "]";
-                chartData += "</script>";
-                ltChartData.Text = chartData;
             }
+            catch(Exception)
+            {
+                throw;
+            }
+            
         }
         private void TotalPasantesxCarrera()
         {
-            var list = dc.TotalPasantesxCarrera();
-            if (list != null)
+            try
             {
-                string chartData1 = "";
-                string pasantes = "";
-                string carreras = "";
-                chartData1 += "<script>";
-                foreach (var item in list)
+                var list = dc.TotalPasantesxCarrera();
+                if (list != null)
                 {
-                    carreras += "\"" + item.Carrera + "\",";
-                    pasantes += item.TotalPasantes + ",";
+                    string chartData1 = "";
+                    string pasantes = "";
+                    string carreras = "";
+                    chartData1 += "<script>";
+                    foreach (var item in list)
+                    {
+                        carreras += "\"" + item.Carrera + "\",";
+                        pasantes += item.TotalPasantes + ",";
+                    }
+                    carreras = carreras.Substring(0, carreras.Length - 1);
+                    pasantes = pasantes.Substring(0, pasantes.Length - 1);
+                    chartData1 += "chartcarreras = [" + carreras + "]; chartPasantes = [" + pasantes + "]";
+                    chartData1 += "</script>";
+                    ltChartData1.Text = chartData1;
                 }
-                carreras = carreras.Substring(0, carreras.Length - 1);
-                pasantes = pasantes.Substring(0, pasantes.Length - 1);
-                chartData1 += "chartcarreras = [" + carreras + "]; chartPasantes = [" + pasantes + "]";
-                chartData1 += "</script>";
-                ltChartData1.Text = chartData1;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
         private void TotalesResp()

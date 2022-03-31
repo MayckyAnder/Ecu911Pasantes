@@ -31,12 +31,12 @@
                 <div class="pd-20 card-box mb-30">
                     <div class="clearfix mb-20">
                         <div class="pull-left">
-                            <h4 class="text-blue h4">Subir curriculum</h4>
+                            <h4 class="text-blue h4">Subir curriculum vitae</h4>
                         </div>
                     </div>
                     <div class="fallback">
-                        <asp:FileUpload ID="fuCurriculum" CssClass="form-control-file form-control height-auto" runat="server" />
-                        <asp:RegularExpressionValidator ValidationGroup="info" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Solo los archivos en formato PDF son permitidos" ValidationExpression="^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))+(.pdf)$" ControlToValidate="fuCurriculum" ForeColor="Red"></asp:RegularExpressionValidator>
+                        <asp:TextBox ID="txtCurriculum" CssClass="form-control" placeholder="Ingrese el link de donde se encuentra alojado su curriculum vitae" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtCurriculum" ForeColor="Red" ValidationGroup="info" runat="server" ErrorMessage="El curriculum es requerido"></asp:RequiredFieldValidator>
                     </div>
                     <div class="text-right">
                         <asp:Button ID="btnSubir" CssClass="btn btn-success" OnClick="btnSubir_Click" ValidationGroup="info" runat="server" Text="Subir" />       
@@ -44,9 +44,6 @@
                 </div>
             </div>
         </ContentTemplate>
-        <Triggers>
-            <asp:PostBackTrigger ControlID="btnSubir"/>
-        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
