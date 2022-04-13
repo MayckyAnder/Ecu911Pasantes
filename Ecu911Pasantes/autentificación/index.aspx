@@ -57,7 +57,7 @@
                                         <h2 class="text-center text-primary">Iniciar sesión en Sistema pasantes</h2>
                                     </div>
                                     <div class="input-group custom">
-                                        <asp:TextBox ID="txtUser" CssClass="form-control form-control-lg" type="text" required="" placeholder="Nombre de usuario" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtUser" CssClass="form-control form-control-lg" autocomplete="off" type="text" required="" placeholder="Nombre de usuario" runat="server"></asp:TextBox>
                                         <div class="input-group-append custom">
                                             <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
                                         </div>                      

@@ -47,9 +47,9 @@ namespace Ecu911Pasantes.views.admin
 
         private void cargarPasantes()
         {
-            var listaPro = dc.pasantes();
+            var listaPro = dc.Pasantes();
             ddlPasantes.DataSource = listaPro.ToList();
-            ddlPasantes.DataTextField = "Pasantes";
+            ddlPasantes.DataTextField = "Pasante";
             ddlPasantes.DataValueField = "Pasantes_id";
             ddlPasantes.DataBind();
         }

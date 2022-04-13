@@ -20,7 +20,7 @@ namespace Ecu911Pasantes.views.admin
 
         private void cargarProyectos()
         {
-            var listaPro = dc.proyectos();
+            var listaPro = dc.Proyectos();
             if (listaPro != null)
             {
                 grvProyectos.DataSource = listaPro.ToList();

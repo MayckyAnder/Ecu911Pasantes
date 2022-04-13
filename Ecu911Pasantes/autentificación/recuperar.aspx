@@ -62,7 +62,7 @@
                                     </div>
                                     <h6 class="mb-20">Ingrese su correo electrónico para restablecer su contraseña</h6>
                                     <div class="input-group custom">
-                                        <asp:TextBox ID="txtEmail" CssClass="form-control form-control-lg" type="email" required="required" placeholder="Correo electrónico" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtEmail" autocomplete="off" CssClass="form-control form-control-lg" type="email" required="required" placeholder="Correo electrónico" runat="server"></asp:TextBox>
                                         <div class="input-group-append custom">
                                             <span class="input-group-text"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                         </div>

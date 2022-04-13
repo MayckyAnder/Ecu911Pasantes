@@ -3,13 +3,12 @@
   <Table Name="dbo.Tbl_Asistencia" Member="Tbl_Asistencia">
     <Type Name="Tbl_Asistencia">
       <Column Name="Asistencia_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Codigo_Pasante" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="HoraEntrada" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="HoraSalida" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Actividades" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Tipo" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Usu_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Usuarios_Tbl_Asistencia" Member="Tbl_Usuarios" ThisKey="Usu_id" OtherKey="Usu_id" Type="Tbl_Usuarios" IsForeignKey="true" />
     </Type>
@@ -17,18 +16,18 @@
   <Table Name="dbo.Tbl_Usuarios" Member="Tbl_Usuarios">
     <Type Name="Tbl_Usuarios">
       <Column Name="Usu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Cedula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Apellidos" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Nombres" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Cedula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimerApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SegundoApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimerNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SegundoNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Correo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Area" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Direccion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Usuario" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Token" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="FechaToken" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Tusu_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Usuarios_Tbl_Asistencia" Member="Tbl_Asistencia" ThisKey="Usu_id" OtherKey="Usu_id" Type="Tbl_Asistencia" />
       <Association Name="Tbl_Usuarios_Tbl_Pasantes" Member="Tbl_Pasantes" ThisKey="Usu_id" OtherKey="Usu_id" Type="Tbl_Pasantes" />
@@ -42,7 +41,7 @@
       <Column Name="ConceptoH" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Labor_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Labores_Tbl_Horas" Member="Tbl_Labores" ThisKey="Labor_id" OtherKey="Labor_id" Type="Tbl_Labores" IsForeignKey="true" />
     </Type>
@@ -52,7 +51,7 @@
       <Column Name="Labor_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ConceptoL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhoras" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Proyecto_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Pasantes_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Labores_Tbl_Horas" Member="Tbl_Horas" ThisKey="Labor_id" OtherKey="Labor_id" Type="Tbl_Horas" />
@@ -63,16 +62,15 @@
   <Table Name="dbo.Tbl_Pasantes" Member="Tbl_Pasantes">
     <Type Name="Tbl_Pasantes">
       <Column Name="Pasantes_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Carrera" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Carrera" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Curriculum" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Acuerdo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Acuerdo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Nsemestre" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Universidad" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Universidad" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Actividad" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Codigo_Pasante" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="CodigoEcu" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Actividad" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="CodigoEcu" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Usu_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Pasantes_Tbl_Labores" Member="Tbl_Labores" ThisKey="Pasantes_id" OtherKey="Pasantes_id" Type="Tbl_Labores" />
       <Association Name="Tbl_Usuarios_Tbl_Pasantes" Member="Tbl_Usuarios" ThisKey="Usu_id" OtherKey="Usu_id" Type="Tbl_Usuarios" IsForeignKey="true" />
@@ -81,9 +79,9 @@
   <Table Name="dbo.Tbl_Proyecto" Member="Tbl_Proyecto">
     <Type Name="Tbl_Proyecto">
       <Column Name="Proyecto_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Resp_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Proyecto_Tbl_Labores" Member="Tbl_Labores" ThisKey="Proyecto_id" OtherKey="Proyecto_id" Type="Tbl_Labores" />
       <Association Name="Tbl_Responsable_Tbl_Proyecto" Member="Tbl_Responsable" ThisKey="Resp_id" OtherKey="Resp_id" Type="Tbl_Responsable" IsForeignKey="true" />
@@ -92,9 +90,9 @@
   <Table Name="dbo.Tbl_Responsable" Member="Tbl_Responsable">
     <Type Name="Tbl_Responsable">
       <Column Name="Resp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Cargo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="Usu_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Responsable_Tbl_Proyecto" Member="Tbl_Proyecto" ThisKey="Resp_id" OtherKey="Resp_id" Type="Tbl_Proyecto" />
       <Association Name="Tbl_Usuarios_Tbl_Responsable" Member="Tbl_Usuarios" ThisKey="Usu_id" OtherKey="Usu_id" Type="Tbl_Usuarios" IsForeignKey="true" />
@@ -103,81 +101,79 @@
   <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
     <Type Name="Tbl_TipoUsuario">
       <Column Name="Tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="Tbl_TipoUsuario_Tbl_Usuarios" Member="Tbl_Usuarios" ThisKey="Tusu_id" OtherKey="Tusu_id" Type="Tbl_Usuarios" />
     </Type>
   </Table>
-  <Function Name="dbo.Actividades" Method="Actividades">
-    <Parameter Name="cedula" Type="System.Int32" DbType="Int" />
-    <ElementType Name="ActividadesResult">
-      <Column Name="Cedula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Nombres" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Apellidos" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Actividades" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Fecha" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.UsuariosyResponsables" Method="UsuariosyResponsables">
     <ElementType Name="UsuariosyResponsablesResult">
       <Column Name="Usu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Usuario" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Cedula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Apellidos" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Nombres" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Area" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Cargo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Direccion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Cedula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cargo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Correo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Actividades" Method="Actividades">
+    <Parameter Name="cedula" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ActividadesResult">
+      <Column Name="Cedula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimerNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimerApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Actividades" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.AcuerdoPasantes" Method="AcuerdoPasantes">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <ElementType Name="AcuerdoPasantesResult">
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Cedula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Nombres" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Apellidos" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Cedula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimerNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SegundoNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimerApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SegundoApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Direccion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Universidad" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Actividad" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Carrera" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Area" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Universidad" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Actividad" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Carrera" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.Asistencias" Method="Asistencias">
     <ElementType Name="AsistenciasResult">
       <Column Name="Asistencia_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Pasante" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
-      <Column Name="Codigo_Pasante" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Pasante" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="HoraEntrada" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="HoraSalida" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Actividades" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Tipo" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.BuscarPorNumeroDeHoras" Method="BuscarPorNumeroDeHoras">
-    <Parameter Name="Apellidos" Parameter="apellidos" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PrimerApellido" Parameter="primerApellido" Type="System.String" DbType="VarChar(100)" />
     <ElementType Name="BuscarPorNumeroDeHorasResult">
-      <Column Name="Apellidos" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Nombres" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PrimerApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimerNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ConceptoL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhoras" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="horasA" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.horas" Method="horas">
-    <ElementType Name="horasResult">
+  <Function Name="dbo.Horas" Method="Horas">
+    <ElementType Name="HorasResult">
       <Column Name="Horas_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ConceptoH" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Pasante" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
+      <Column Name="Pasante" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ConceptoL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.HorasxMes" Method="HorasxMes">
@@ -186,14 +182,14 @@
       <Column Name="HorasA" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.labores" Method="labores">
-    <ElementType Name="laboresResult">
+  <Function Name="dbo.Labores" Method="Labores">
+    <ElementType Name="LaboresResult">
       <Column Name="Labor_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ConceptoL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Pasante" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Pasante" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Nhoras" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.LaboresPorPasante" Method="LaboresPorPasante">
@@ -204,12 +200,12 @@
       <Column Name="Nhoras" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Pasantes_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Proyecto_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.NumeroDeHoras" Method="NumeroDeHoras">
     <ElementType Name="NumeroDeHorasResult">
-      <Column Name="Pasante" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
+      <Column Name="Pasante" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
       <Column Name="ConceptoL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Nhoras" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HorasA" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -223,25 +219,25 @@
       <Column Name="horasA" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.pasantes" Method="pasantes">
-    <ElementType Name="pasantesResult">
+  <Function Name="dbo.Pasantes" Method="Pasantes">
+    <ElementType Name="PasantesResult">
       <Column Name="Pasantes_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Pasantes" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
+      <Column Name="Pasante" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.proyectos" Method="proyectos">
-    <ElementType Name="proyectosResult">
+  <Function Name="dbo.Proyectos" Method="Proyectos">
+    <ElementType Name="ProyectosResult">
       <Column Name="Proyecto_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Responsable" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Responsable" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.responsables" Method="responsables">
-    <ElementType Name="responsablesResult">
+  <Function Name="dbo.Responsables" Method="Responsables">
+    <ElementType Name="ResponsablesResult">
       <Column Name="Resp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Responsables" Type="System.String" DbType="VarChar(401)" CanBeNull="true" />
+      <Column Name="Responsables" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.TotalPasantesActivos" Method="TotalPasantesActivos">
@@ -257,13 +253,13 @@
   <Function Name="dbo.TotalPasantesxCarrera" Method="TotalPasantesxCarrera">
     <ElementType Name="TotalPasantesxCarreraResult">
       <Column Name="TotalPasantes" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Carrera" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Carrera" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.TotalPasantesxUniversidad" Method="TotalPasantesxUniversidad">
     <ElementType Name="TotalPasantesxUniversidadResult">
       <Column Name="TotalPasantes" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Universidad" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Universidad" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.TotalResponsables" Method="TotalResponsables">
@@ -279,23 +275,22 @@
   <Function Name="dbo.UsuariosyPasantes" Method="UsuariosyPasantes">
     <ElementType Name="UsuariosyPasantesResult">
       <Column Name="Usu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Usuario" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Cedula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Nombres" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Apellidos" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Cedula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimerNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PrimerApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Correo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Direccion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Curriculum" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Acuerdo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Area" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="Universidad" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Actividad" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Carrera" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Acuerdo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Universidad" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Actividad" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Carrera" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="Nsemestre" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Codigo_Pasante" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="CodigoEcu" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Estado" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CodigoEcu" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

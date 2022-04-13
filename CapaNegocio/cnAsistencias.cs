@@ -13,24 +13,24 @@ namespace CapaNegocio
         private static readonly DataClasses1DataContext dc = new DataClasses1DataContext();
         public static bool autentificarxCodigo(int cod)
         {
-            var auto = dc.Tbl_Asistencia.Any(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Solo Ingreso" && pasa.Estado == "Activo");
+            var auto = dc.Tbl_Asistencia.Any(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Solo Ingreso" && pasa.Estado == "A");
             return auto;
         }
         public static bool autentificarDiaxCodigo(int cod)
         {
-            var dia = dc.Tbl_Asistencia.Any(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Ingreso y Salida" && pasa.Estado == "Activo");
+            var dia = dc.Tbl_Asistencia.Any(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Ingreso y Salida" && pasa.Estado == "A");
             return dia;
         }
         public static Tbl_Asistencia obtenerAsistenciaxCodigo(int cod)
         {
-            var asiscod = dc.Tbl_Asistencia.FirstOrDefault(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Solo Ingreso" && pasa.Estado == "Activo");
+            var asiscod = dc.Tbl_Asistencia.FirstOrDefault(pasa => pasa.Usu_id.Equals(cod) && pasa.Fecha == DateTime.Today && pasa.Tipo == "Solo Ingreso" && pasa.Estado == "A");
             return asiscod;
         }
         public static void save(Tbl_Asistencia asis)
         {
             try
             {
-                asis.Estado = "Activo";
+                asis.Estado = "A";
                 asis.HoraEntrada = Convert.ToDateTime(DateTime.Now.ToLongTimeString());
                 asis.Fecha = Convert.ToDateTime(DateTime.Now.ToLongDateString());
                 asis.Tipo = "Solo Ingreso";

@@ -22,7 +22,7 @@ namespace Ecu911Pasantes.views.admin
 
         private void cargarHoras()
         {
-            var listaHoras = dc.horas();
+            var listaHoras = dc.Horas();
             if (listaHoras != null)
             {
                 grvHoras.DataSource = listaHoras.ToList();

@@ -15,23 +15,23 @@ namespace CapaNegocio
         //metodo para retornar todos los responsables
         public static List<Tbl_Proyecto> obtenerProyectos()
         {
-            var lista = dc.Tbl_Proyecto.Where(pro => pro.Estado == "Activo");
+            var lista = dc.Tbl_Proyecto.Where(pro => pro.Estado == "A");
             return lista.ToList();
         }
         public static Tbl_Proyecto obtenerProyectosxId(int id)
         {
-            var proid = dc.Tbl_Proyecto.FirstOrDefault(pro => pro.Proyecto_id.Equals(id) && pro.Estado == "Activo");
+            var proid = dc.Tbl_Proyecto.FirstOrDefault(pro => pro.Proyecto_id.Equals(id) && pro.Estado == "A");
             return proid;
         }
         public static Tbl_Proyecto obtenerProyectoxNombre(string nombre)
         {
-            var pronom = dc.Tbl_Proyecto.FirstOrDefault(pro => pro.Nombre.Equals(nombre) && pro.Estado == "Activo");
+            var pronom = dc.Tbl_Proyecto.FirstOrDefault(pro => pro.Nombre.Equals(nombre) && pro.Estado == "A");
             return pronom;
         }
         //metodo para verificar si existe el nombre
         public static bool autentificarxNom(string nombre)
         {
-            var auto = dc.Tbl_Proyecto.Any(pro => pro.Estado == "Activo" && pro.Nombre.Equals(nombre));
+            var auto = dc.Tbl_Proyecto.Any(pro => pro.Estado == "A" && pro.Nombre.Equals(nombre));
             return auto;
         }
 
@@ -39,7 +39,7 @@ namespace CapaNegocio
         {
             try
             {
-                pro.Estado = "Activo";
+                pro.Estado = "A";
                 dc.Tbl_Proyecto.InsertOnSubmit(pro);
                 dc.SubmitChanges();
             }
@@ -65,7 +65,7 @@ namespace CapaNegocio
         {
             try
             {
-                pro.Estado = "Inactivo";
+                pro.Estado = "I";
                 dc.SubmitChanges();
             }
             catch (Exception ex)

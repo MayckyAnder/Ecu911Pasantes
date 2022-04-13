@@ -39,6 +39,10 @@ namespace Ecu911Pasantes.views.admin
             {
                 Response.Redirect("~/views/admin/pasante.aspx?cod=" + codigo, true);
             }
+            else if (e.CommandName == "Detalles")
+            {
+                Response.Redirect("~/views/admin/detallePasante.aspx?cod=" + codigo, true);
+            }
             else if (e.CommandName == "Eliminar")
             {
                 Tbl_Pasantes pasape = new Tbl_Pasantes();
@@ -55,6 +59,31 @@ namespace Ecu911Pasantes.views.admin
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos eliminados con éxito.', 'success')", true);
                         cargarPasantes();
                     }
+                }
+            }
+        }
+
+        protected void grvPasantes_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = DataBinder.Eval(e.Row.DataItem, "Estado").ToString();
+
+
+                if (estado == "Activo")
+                {
+                    e.Row.Cells[14].CssClass = "badge bg-success text-white";
+                    e.Row.Cells[14].Text = "Activo";
+                }
+                else if (estado == "Pendiente")
+                {
+                    e.Row.Cells[14].CssClass = "badge bg-warning text-white";
+                    e.Row.Cells[14].Text = "Activo";
+                }
+                else
+                {
+                    e.Row.Cells[14].CssClass = "badge bg-danger text-white";
+                    e.Row.Cells[14].Text = "Activo";
                 }
             }
         }

@@ -13,44 +13,39 @@ namespace CapaNegocio
         //Metodo para obtener pasantes por usuario
         public static Tbl_Pasantes obtenerPasantesxUsuario(int id)
         {
-            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Usu_id.Equals(id) && pasa.Estado == "Activo");
+            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Usu_id.Equals(id) && pasa.Estado == "A" || pasa.Estado == "I" || pasa.Estado == "P");
             return pasaid;
         }
         //Metodo para verifiar si el pasante Aceptado el acuerdo
         public static bool autentificarxUsuario(int Usu)
         {
-            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Acuerdo == "Aceptado" && pasa.Estado == "Activo");
+            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Acuerdo == "Aceptado" && pasa.Estado == "A");
             return auto;
         }
         //Metodo para verifiar si el pasante existe
         public static bool autentificarxUsu(int Usu)
         {
-            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Estado == "Activo");
+            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Estado == "A");
             return auto;
         }
-        //Metodo para verificar codigo del pasante mediante la session
-        public static bool autentificarxCodigo(int Usu, int cod)
-        {
-            var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Codigo_Pasante.Equals(cod));
-            return auto;
-        }
-        //Metodo para verifiar si el pasante esta Activo
+        
+        //Metodo para verifiar si el pasante esta A
         public static bool autentificarxEstado(int Usu)
         {
-            var est = dc.Tbl_Pasantes.Any(esta => esta.Usu_id.Equals(Usu) && esta.Estado == "Activo");
+            var est = dc.Tbl_Pasantes.Any(esta => esta.Usu_id.Equals(Usu) && esta.Estado == "A");
             return est;
         }
         //Metodo para obtener pasantes por su id
         public static Tbl_Pasantes obtenerPasantesxId(int id)
         {
-            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Pasantes_id.Equals(id) && pasa.Estado == "Pendiente");
+            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Pasantes_id.Equals(id) && pasa.Estado == "P");
             return pasaid;
         }
         public static void save(Tbl_Pasantes pasa)
         {
             try
             {
-                pasa.Estado = "Pendiente";
+                pasa.Estado = "P";
                 pasa.Acuerdo = "No aceptado";
                 pasa.Curriculum = "Aun no se encuentra subido";
                 pasa.Fecha = DateTime.Now;
@@ -77,7 +72,7 @@ namespace CapaNegocio
         {
             try
             {
-                pasa.Estado = "Inactivo";
+                pasa.Estado = "I";
                 dc.SubmitChanges();
             }
             catch (Exception ex)
@@ -112,7 +107,7 @@ namespace CapaNegocio
         {
             try
             {
-                pasa.Estado = "Activo";
+                pasa.Estado = "A";
                 dc.SubmitChanges();
             }
             catch (Exception ex)

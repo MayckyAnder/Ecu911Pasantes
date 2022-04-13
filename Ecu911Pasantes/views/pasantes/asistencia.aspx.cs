@@ -37,7 +37,7 @@ namespace Ecu911Pasantes.views.pasantes
             try
             {
                 string usulogeado = Session["Pasante"].ToString();
-                bool validar = cnPasantes.autentificarxCodigo(Convert.ToInt32(usulogeado), Convert.ToInt32(txtAsistencia.Text));
+                bool validar = cnUsuarios.autentificarxCodigo(Convert.ToInt32(usulogeado), Convert.ToInt32(txtAsistencia.Text));
                 bool activo = cnPasantes.autentificarxEstado(Convert.ToInt32(usulogeado));
                 if (validar)
                 {
@@ -45,7 +45,6 @@ namespace Ecu911Pasantes.views.pasantes
                     {
                         asisinfo = new Tbl_Asistencia();
                         asisinfo.Usu_id = Convert.ToInt32(usulogeado);
-                        asisinfo.Codigo_Pasante = txtAsistencia.Text;
                         cnAsistencias.save(asisinfo);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Ingreso registrado con existo.', 'success')", true);
                         txtAsistencia.Text = "";
@@ -72,7 +71,7 @@ namespace Ecu911Pasantes.views.pasantes
             try
             {
                 string usulogeado = Session["Pasante"].ToString();
-                bool validar = cnPasantes.autentificarxCodigo(Convert.ToInt32(usulogeado), Convert.ToInt32(txtAsistencia.Text));
+                bool validar = cnUsuarios.autentificarxCodigo(Convert.ToInt32(usulogeado), Convert.ToInt32(txtAsistencia.Text));
                 if (validar)
                 {
                     asismd.Actividades = txtActividades.Text;

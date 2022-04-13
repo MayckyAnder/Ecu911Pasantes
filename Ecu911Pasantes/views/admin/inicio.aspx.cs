@@ -54,11 +54,11 @@ namespace Ecu911Pasantes.views.admin
                     ltChartData.Text = chartData;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
-                throw;
+                
             }
-            
+
         }
         private void TotalPasantesxCarrera()
         {
@@ -85,7 +85,7 @@ namespace Ecu911Pasantes.views.admin
             }
             catch (Exception)
             {
-                throw;
+                
             }
         }
         private void TotalesResp()

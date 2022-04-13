@@ -34,7 +34,7 @@ namespace Ecu911Pasantes.views.admin
 
         private void cargarResponsables()
         {
-            var listaresp = dc.responsables();
+            var listaresp = dc.Responsables();
             ddlResponsables.DataSource = listaresp.ToList();
             ddlResponsables.DataTextField = "Responsables";
             ddlResponsables.DataValueField = "Resp_id";

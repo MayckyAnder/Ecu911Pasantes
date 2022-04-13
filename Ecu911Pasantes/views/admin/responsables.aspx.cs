@@ -8,7 +8,7 @@ namespace Ecu911Pasantes.views.admin
 {
     public partial class responsables : System.Web.UI.Page
     {
-        private DataClasses1DataContext dc = new DataClasses1DataContext();
+        private readonly DataClasses1DataContext dc = new DataClasses1DataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -34,6 +34,10 @@ namespace Ecu911Pasantes.views.admin
             {
                 Response.Redirect("~/views/admin/responsable.aspx?cod=" + codigo, true);
             }
+            else if (e.CommandName == "Detalles")
+            {
+                Response.Redirect("~/views/admin/detalleResponsable.aspx?cod=" + codigo, true);
+            }
             else if (e.CommandName == "Eliminar")
             {
                 Tbl_Responsable respe = new Tbl_Responsable();
@@ -57,6 +61,26 @@ namespace Ecu911Pasantes.views.admin
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/views/admin/responsable.aspx");
+        }
+
+        protected void grvResponsables_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = DataBinder.Eval(e.Row.DataItem, "Estado").ToString();
+
+                if (estado == "A")
+                {
+                    e.Row.Cells[5].CssClass = "badge bg-success text-white";
+                    e.Row.Cells[5].Text = "Activo";
+                }
+                else
+                {
+                    e.Row.Cells[5].CssClass = "badge bg-danger text-white";
+                    e.Row.Cells[5].Text = "Inactivo";
+                    e.Row.Cells[7].Enabled = false;
+                }
+            }
         }
     }
 }

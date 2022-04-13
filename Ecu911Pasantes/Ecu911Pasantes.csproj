@@ -43,6 +43,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.42.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.42\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Data.Linq" />
@@ -71,6 +83,7 @@
   <ItemGroup>
     <Content Include="autentificación\index.aspx" />
     <Content Include="autentificación\recuperar.aspx" />
+    <Content Include="error\404.aspx" />
     <Content Include="resources\src\fonts\dropways\dropways.css" />
     <Content Include="resources\src\fonts\dropways\dropways.svg" />
     <Content Include="resources\src\fonts\font-awesome\css\font-awesome.css" />
@@ -587,6 +600,7 @@
     <Content Include="views\admin\actividades.aspx" />
     <Content Include="views\admin\completadas.aspx" />
     <Content Include="views\admin\contraseña.aspx" />
+    <Content Include="views\admin\detalleResponsable.aspx" />
     <Content Include="views\admin\hora.aspx" />
     <Content Include="views\admin\horas.aspx" />
     <Content Include="views\admin\inicio.aspx" />
@@ -602,6 +616,7 @@
     <Content Include="views\pasantes\Acuerdo.aspx" />
     <Content Include="views\pasantes\asistencia.aspx" />
     <Content Include="views\pasantes\Certificado.aspx" />
+    <Content Include="views\pasantes\CertificadoFinalizacion.aspx" />
     <Content Include="views\pasantes\contraseña.aspx" />
     <Content Include="views\pasantes\curriculum.aspx" />
     <Content Include="views\pasantes\hora.aspx" />
@@ -623,6 +638,13 @@
     </Compile>
     <Compile Include="autentificación\recuperar.aspx.designer.cs">
       <DependentUpon>recuperar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="views\admin\actividades.aspx.cs">
@@ -652,6 +674,13 @@
     </Compile>
     <Compile Include="views\admin\contraseña.aspx.designer.cs">
       <DependentUpon>contraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\admin\detalleResponsable.aspx.cs">
+      <DependentUpon>detalleResponsable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\admin\detalleResponsable.aspx.designer.cs">
+      <DependentUpon>detalleResponsable.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\admin\hora.aspx.cs">
       <DependentUpon>hora.aspx</DependentUpon>
@@ -757,6 +786,13 @@
     </Compile>
     <Compile Include="views\pasantes\Certificado.aspx.designer.cs">
       <DependentUpon>Certificado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\pasantes\CertificadoFinalizacion.aspx.cs">
+      <DependentUpon>CertificadoFinalizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\pasantes\CertificadoFinalizacion.aspx.designer.cs">
+      <DependentUpon>CertificadoFinalizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\pasantes\contraseña.aspx.cs">
       <DependentUpon>contraseña.aspx</DependentUpon>

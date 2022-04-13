@@ -4,8 +4,6 @@
     Proyecto | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/sweetalert2/sweetalert2.css" />
-    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/select2/dist/css/select2.min.css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -47,7 +45,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Responsables</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Responsable</label>
                         <div class="col-sm-12 col-md-10">
                             <asp:DropDownList ID="ddlResponsables" CssClass="form-control select2" data-toggle="select2" runat="server">
                                 <asp:ListItem Value="0">Seleccione responsable</asp:ListItem>
@@ -62,12 +60,12 @@
                 </div>
             </div>
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnEnviar"/>
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
-    <script type="text/javascript" src="../../resources/src/plugins/select2/dist/js/select2.full.min.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
     <script>
         $(document).ready(function () {
             $('#<%=ddlResponsables.ClientID%>').select2();

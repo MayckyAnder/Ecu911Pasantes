@@ -38,8 +38,8 @@ namespace Ecu911Pasantes.autentificación
                         if (tusuario == 1)
                         {
                             Session["ADMIN"] = usuario.Usu_id.ToString();
-                            Session["nombre"] = usuario.Nombres.ToString();
-                            Session["apellido"] = usuario.Apellidos.ToString();
+                            Session["nombre"] = usuario.PrimerNombre.ToString();
+                            Session["apellido"] = usuario.PrimerApellido.ToString();
                             Session["rol"] = tusu.Nombre.ToString();
                             Response.Redirect("~/views/admin/inicio.aspx");
                             Limpiar();
@@ -47,8 +47,8 @@ namespace Ecu911Pasantes.autentificación
                         else
                         {
                             Session["PASANTE"] = usuario.Usu_id.ToString();
-                            Session["nombre"] = usuario.Nombres.ToString();
-                            Session["apellido"] = usuario.Apellidos.ToString();
+                            Session["nombre"] = usuario.PrimerNombre.ToString();
+                            Session["apellido"] = usuario.PrimerApellido.ToString();
                             Session["rol"] = tusu.Nombre.ToString();
                             Response.Redirect("~/views/pasantes/asistencia.aspx");
                             Limpiar();

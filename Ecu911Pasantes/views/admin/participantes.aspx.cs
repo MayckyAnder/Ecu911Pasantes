@@ -27,8 +27,8 @@ namespace Ecu911Pasantes.views.admin
                         orderby p.Universidad
                         select new
                         {
-                            u.Apellidos,
-                            u.Nombres,
+                            u.PrimerApellido,
+                            u.PrimerNombre,
                             p.Universidad,
                             pr.Nombre,
                             pr.Descripcion

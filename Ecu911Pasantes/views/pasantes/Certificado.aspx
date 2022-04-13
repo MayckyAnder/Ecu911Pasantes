@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/pasantes/pasante.Master" AutoEventWireup="true" CodeBehind="Certificado.aspx.cs" Inherits="Ecu911Pasantes.views.pasantes.Certificado" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/pasantes/pasante.Master" AutoEventWireup="true" CodeBehind="Certificado.aspx.cs" Inherits="Ecu911Pasantes.views.pasantes.Certificado" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphTitle" runat="server">
     Certificado de Finalizacion | Pasantes - Sistema Pasantes
@@ -27,13 +27,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="invoice-wrap">
+                <div id="dvtext" class="invoice-wrap" runat="server">
                     <div class="invoice-box">
                         <div class="invoice-header">
                             <div class="row pb-30">
                                 <div class="col-md-12">
                                     <div class="logo text-left">
-                                        <img src="../../resources/vendors/images/Bandera.PNG" alt="">
+                                        <img src="../../resources/vendors/images/Bandera.PNG" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -51,17 +51,17 @@
                             <div class="col-md-12">
                                 <p class="font-14 mb-5 mb-15" style="text-align: justify; font-family: Arial;">
                                     El Servicio Integrado de Seguridad ECU 911 entrega el presente Certificado a
-                                <asp:Label ID="Label16" runat="server" Text="Nicolás Fernando Cabezas Vizcarra " Font-Bold="true"></asp:Label>con cédula de identidad
-                                <asp:Label ID="Label17" runat="server" Text="1725431397" Font-Bold="true"></asp:Label>estudiante de 
-                                <asp:Label ID="Label18" runat="server" Text="Desarrollo de Software" Font-Bold="true"></asp:Label>de la Universidad
-                                <asp:Label ID="Label19" runat="server" Text="Tecnologico Superior Cordillera" Font-Bold="true"></asp:Label>,por haber formado parte del Proyecto Académico
-                                <asp:Label ID="Label20" runat="server" Text="“Desarrollo del sistema para registro de horas de las y los estudiantes que realizan proyectos académicos en el ECU 911, 
+                                <asp:Label ID="lblNombre" runat="server" Text="Nicolás Fernando Cabezas Vizcarra " Font-Bold="true"></asp:Label>con cédula de identidad
+                                <asp:Label ID="lblCedula" runat="server" Text="1725431397" Font-Bold="true"></asp:Label>estudiante de 
+                                <asp:Label ID="lblCarrera" runat="server" Text="Desarrollo de Software" Font-Bold="true"></asp:Label>de 
+                                <asp:Label ID="lblUniversidad" runat="server" Text="Tecnologico Superior Cordillera" Font-Bold="true"></asp:Label>, por haber formado parte del Proyecto Académico
+                                <asp:Label ID="lblProyectos" runat="server" Text="“Desarrollo del sistema para registro de horas de las y los estudiantes que realizan proyectos académicos en el ECU 911, 
                                     Desarrollo del sistema médico del ECU 911”"
                                     Font-Bold="true"></asp:Label>
                                     con una duración de
-                                <asp:Label ID="Label21" runat="server" Text="240" Font-Bold="true"></asp:Label>horas,a partir del
-                                <asp:Label ID="Label22" runat="server" Text="02 de Agosto del 2021" Font-Bold="true"></asp:Label>al
-                                <asp:Label ID="Label23" runat="server" Text="10 de Noviembre del 2021" Font-Bold="true"></asp:Label>
+                                <asp:Label ID="lblHoras" runat="server" Text="240" Font-Bold="true"></asp:Label>horas, a partir del
+                                <asp:Label ID="LblInicio" runat="server" Text="02 de Agosto del 2021"></asp:Label>al
+                                <asp:Label ID="lblFin" runat="server" Text="10 de Noviembre del 2021"></asp:Label>
                                 </p>
                             </div>
                             <div class="col-md-12">
@@ -74,7 +74,7 @@
                                 <p class="font-14 mb-5" style="text-align: justify; font-family: Arial;">Atentamente,</p>
                             </div>
                             <div class="col-md-12">
-                                <img alt="" src="../../resources/vendors/images/firmas.png" />
+                                <img src="../../resources/vendors/images/firmas.png" />
                             </div>
                         </div>
                         <div class="row pb-30">
@@ -93,14 +93,18 @@
                         </div>
                         <div class="row pb-30">
                             <div class="col-md-12">
-                                <img alt="" src="../../resources/vendors/images/footer.png" />
+                                <img src="../../resources/vendors/images/footer.png" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <br />
+                <asp:Button ID="btnExportar" CssClass="btn btn-info" OnClick="btnExportar_Click" runat="server" Text="Exportar Pdf" />
             </div>
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnExportar"/>
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">

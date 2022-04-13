@@ -22,6 +22,10 @@
     <link rel="stylesheet" type="text/css" href="../../resources/vendors/styles/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/jquery-steps/jquery.steps.css">
     <link rel="stylesheet" type="text/css" href="../../resources/vendors/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
     <asp:ContentPlaceHolder ID="cphCabecera" runat="server">
     </asp:ContentPlaceHolder>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -35,7 +39,7 @@
 </head>
 <body>
     <form runat="server">
-        <%--<div class="pre-loader">
+        <div class="pre-loader">
             <div class="pre-loader-box">
                 <div class="loader-logo">
                     <img src="../../resources/vendors/images/ECU911.svg.png" width="300" height="300" alt="">
@@ -48,7 +52,7 @@
                     Cargando...
                 </div>
             </div>
-        </div>--%>
+        </div>
 
         <div class="header">
             <div class="header-left">
@@ -223,6 +227,13 @@
     <script type="text/javascript" src="../../resources/vendors/scripts/layout-settings.js"></script>
     <script type="text/javascript" src="../../resources/src/plugins/jquery-steps/jquery.steps.js"></script>
     <script type="text/javascript" src="../../resources/vendors/scripts/steps-setting.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/select2/dist/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+    <script type="text/javascript" src="../../resources/src/plugins/apexcharts/apexcharts.min.js"></script>
     <asp:ContentPlaceHolder ID="cphFooter" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

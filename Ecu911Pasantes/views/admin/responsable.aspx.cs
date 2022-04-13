@@ -23,8 +23,10 @@ namespace Ecu911Pasantes.views.admin
                     if (usuinfo != null)
                     {
                         txtUser.Text = usuinfo.Usuario.ToString();
-                        txtNombre.Text = usuinfo.Nombres.ToString();
-                        txtApellido.Text = usuinfo.Apellidos.ToString();
+                        txtPrimerNombre.Text = usuinfo.PrimerNombre.ToString();
+                        txtSegundoNombre.Text = usuinfo.SegundoNombre.ToString();
+                        txtPrimerApellido.Text = usuinfo.PrimerApellido.ToString();
+                        txtSegundoApellido.Text = usuinfo.SegundoApellido.ToString();
                         txtCedula.Text = usuinfo.Cedula.ToString();
                         txtArea.Text = usuinfo.Area.ToString();
                         txtEmail.Text = usuinfo.Correo.ToString();
@@ -32,6 +34,7 @@ namespace Ecu911Pasantes.views.admin
                         txtDireccion.Text = usuinfo.Direccion.ToString();
                         txtPass.Text = usuinfo.Password.ToString();
                         txtConfirmar.Text = usuinfo.Password.ToString();
+                        ddlEstado.SelectedValue = usuinfo.Estado.ToString();
                         if (respinfo != null)
                         {
                             txtCargo.Text = respinfo.Cargo.ToString();
@@ -60,22 +63,24 @@ namespace Ecu911Pasantes.views.admin
             {
                 usuinfo = new Tbl_Usuarios
                 {
-                    Usuario = txtUser.Text,
-                    Password = encriptar(txtPass.Text),
-                    Nombres = txtNombre.Text,
-                    Apellidos = txtApellido.Text,
-                    Cedula = txtCedula.Text,
-                    Area = txtArea.Text,
-                    Celular = txtCelular.Text,
-                    Correo = txtEmail.Text,
-                    Direccion = txtDireccion.Text,
+                    Usuario = txtUser.Text.Trim(),
+                    Password = encriptar(txtPass.Text).Trim(),
+                    PrimerNombre = txtPrimerNombre.Text.ToUpper().Trim(),
+                    SegundoNombre = txtSegundoNombre.Text.ToUpper().Trim(),
+                    PrimerApellido = txtPrimerApellido.Text.ToUpper().Trim(),
+                    SegundoApellido = txtSegundoApellido.Text.ToUpper().Trim(),
+                    Cedula = Convert.ToInt32(txtCedula.Text),
+                    Area = txtArea.Text.ToUpper().Trim(),
+                    Celular = Convert.ToInt32(txtCelular.Text),
+                    Correo = txtEmail.Text.ToUpper().Trim(),
+                    Direccion = txtDireccion.Text.ToUpper().Trim(),
                     Tusu_id = 1
                 };
                 cnUsuarios.save(usuinfo);
 
                 respinfo = new Tbl_Responsable
                 {
-                    Cargo = txtCargo.Text,
+                    Cargo = txtCargo.Text.ToUpper().Trim(),
                     Usu_id = usuinfo.Usu_id
                 };
 
@@ -92,17 +97,21 @@ namespace Ecu911Pasantes.views.admin
         {
             try
             {
-                usu.Usuario = txtUser.Text;
-                usu.Nombres = txtNombre.Text;
-                usu.Apellidos = txtApellido.Text;
-                usu.Cedula = txtCedula.Text;
-                usu.Area = txtArea.Text;
-                usu.Celular = txtCelular.Text;
-                usu.Correo = txtEmail.Text;
-                usu.Direccion = txtDireccion.Text;
+                usu.Usuario = txtUser.Text.Trim();
+                usu.PrimerNombre = txtPrimerNombre.Text.ToUpper().Trim();
+                usu.SegundoNombre = txtSegundoNombre.Text.ToUpper().Trim();
+                usu.PrimerApellido = txtPrimerApellido.Text.ToUpper().Trim();
+                usu.SegundoApellido = txtSegundoApellido.Text.ToUpper().Trim();
+                usu.Cedula = Convert.ToInt32(txtCedula.Text);
+                usu.Area = txtArea.Text.ToUpper().Trim();
+                usu.Celular = Convert.ToInt32(txtCelular.Text);
+                usu.Correo = txtEmail.Text.ToUpper().Trim();
+                usu.Direccion = txtDireccion.Text.ToUpper().Trim();
+                usu.Estado = ddlEstado.SelectedValue;
                 cnUsuarios.modify(usu);
 
-                respmd.Cargo = txtCargo.Text;
+                respmd.Cargo = txtCargo.Text.ToUpper().Trim();
+                respmd.Estado = ddlEstado.SelectedValue;
                 cnResponsables.Modify(respmd);
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos modificados con éxito.', 'success')", true);
@@ -138,6 +147,7 @@ namespace Ecu911Pasantes.views.admin
             txtPass.Enabled = false;
             txtConfirmar.Enabled = false;
             btnGuardar.Text = "Actualizar";
+            ddlEstado.Enabled = true;
         }
         string encriptar(string cadena)
         {
@@ -152,28 +162,35 @@ namespace Ecu911Pasantes.views.admin
         }
         protected void TxtCedula_TextChanged(object sender, EventArgs e)
         {
-            bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));
-            if (existe)
+            if (txtCedula.Text != "") 
             {
-                _ = new Tbl_Usuarios();
-                Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
-                if (resp != null)
+                bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));
+                if (existe)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ya existe una persona registrado con ese numero de cedula', 'error')", true);
+                    _ = new Tbl_Usuarios();
+                    Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
+                    if (resp != null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ya existe una persona registrado con ese numero de cedula', 'error')", true);
+                        txtCedula.Text = "";
+                    }
                 }
             }
         }
 
         protected void txtUser_TextChanged(object sender, EventArgs e)
         {
-            bool existe = cnUsuarios.autentificarxNomUsuario(txtUser.Text);
-            if (existe)
+            if (txtUser.Text != "")
             {
-                _ = new Tbl_Usuarios();
-                Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxNomUsuario(txtUser.Text);
-                if (resp != null)
+                bool existe = cnUsuarios.autentificarxNomUsuario(txtUser.Text);
+                if (existe)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ese nombre de usuario ya se encuentra registrado', 'error')", true);
+                    _ = new Tbl_Usuarios();
+                    Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxNomUsuario(txtUser.Text);
+                    if (resp != null)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ese nombre de usuario ya se encuentra registrado', 'error')", true);
+                    }
                 }
             }
         }

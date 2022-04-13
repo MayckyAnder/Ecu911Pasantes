@@ -4,9 +4,6 @@
     Pasantes | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
-    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/sweetalert2/sweetalert2.css" />
-    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="../../resources/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -35,11 +32,11 @@
                 </div>
                 <div class="card-box mb-30">
                     <div class="pd-20">
-                        <asp:GridView ID="grvPasantes" OnRowCommand="grvPasantes_RowCommand" EmptyDataText="No hay datos disponibles en la tabla." AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
+                        <asp:GridView ID="grvPasantes" OnRowCommand="grvPasantes_RowCommand" OnRowDataBound="grvPasantes_RowDataBound" EmptyDataText="No hay datos disponibles en la tabla." AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" runat="server">
                             <Columns>
                                 <asp:TemplateField HeaderText="Cedula">
                                     <ItemTemplate>
-                                        <asp:Label ID="Cedula" runat="server" Text='<%#Eval("Cedula")%>'></asp:Label>
+                                        <asp:LinkButton ID="lblCedula" CommandArgument='<%#Eval("Usu_id")%>' CommandName="Detalles" runat="server"><asp:Label ID="Cedula" runat="server" Text='<%#Eval("Cedula")%>'></asp:Label></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Usuario">
@@ -49,12 +46,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Nombres">
                                     <ItemTemplate>
-                                        <asp:Label ID="Nombres" runat="server" Text='<%#Eval("Nombres")%>'></asp:Label>
+                                        <asp:Label ID="PrimerNombre" runat="server" Text='<%#Eval("PrimerNombre")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Apellidos">
+                                <asp:TemplateField HeaderText="Apellido">
                                     <ItemTemplate>
-                                        <asp:Label ID="Apellidos" runat="server" Text='<%#Eval("Apellidos")%>'></asp:Label>
+                                        <asp:Label ID="PrimerApellido" runat="server" Text='<%#Eval("PrimerApellido")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Celular">
@@ -97,11 +94,6 @@
                                         <asp:Label ID="Universidad" runat="server" Text='<%#Eval("Universidad")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Codigo de Asistencia">
-                                    <ItemTemplate>
-                                        <asp:Label ID="Codigo_Pasante" runat="server" Text='<%#Eval("Codigo_Pasante")%>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Codigo del Ecu">
                                     <ItemTemplate>
                                         <asp:Label ID="CodigoEcu" runat="server" Text='<%#Eval("CodigoEcu")%>'></asp:Label>
@@ -109,7 +101,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Estado">
                                     <ItemTemplate>
-                                        <asp:Label ID="Estado" runat="server" <%--CssClass="badge bg-success text-white"--%> Text='<%#Eval("Estado")%>'></asp:Label>
+                                        <asp:Label ID="Estado" runat="server" Text='<%#Eval("Estado")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Editar">
@@ -121,7 +113,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="Eliminar">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lnbEliminar" Width="16" Height="16" ForeColor="Red" CommandArgument='<%#Eval("Usu_id")%>' CommandName="Eliminar" OnClientClick="return confirm('Esta seguro que desea eliminar este registro..')" runat="server"><i class="icon-copy dw dw-delete-3"></i></asp:LinkButton>
+                                        <asp:LinkButton ID="lnbEliminar" Width="16" Height="16" ForeColor="Red" CommandArgument='<%#Eval("Usu_id")%>' CommandName="Eliminar" OnClientClick="return confirmDelete(this);" runat="server"><i class="icon-copy dw dw-delete-3"></i></asp:LinkButton>
                                     </ItemTemplate>
                                     <HeaderStyle Width="17px" />
                                     <ItemStyle Width="17px" />
@@ -135,15 +127,10 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphFooter" runat="server">
-    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweetalert2.all.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/sweetalert2/sweet-alert.init.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-    <script type="text/javascript" src="../../resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script>
         $('document').ready(function () {
             $('#<%=grvPasantes.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                destroy: true,
                 scrollCollapse: true,
                 autoWidth: false,
                 responsive: true,
@@ -167,4 +154,27 @@
             });
         });
     </script>
+        <script>
+            var object = { status: false, ele: null };
+            function confirmDelete(ev) {
+                if (object.status) { return true; };
+                swal({
+                    title: "¿Estás seguro?",
+                    text: "Que desea eliminar este registro",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    cancelButtonClass: "btn-info",
+                    confirmButtonText: "Si, Borralo!",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: true
+                },
+                    function () {
+                        object.status = true;
+                        object.ele = ev;
+                        object.ele.click();
+                    });
+                return false;
+            };
+        </script>
 </asp:Content>

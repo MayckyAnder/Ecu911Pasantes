@@ -21,7 +21,7 @@ namespace Ecu911Pasantes.views.admin
         }
         private void cargarLabor()
         {
-            var listaLab = dc.labores();
+            var listaLab = dc.Labores();
             if (listaLab != null)
             {
                 grvLabores.DataSource = listaLab.ToList();
@@ -50,6 +50,24 @@ namespace Ecu911Pasantes.views.admin
                     cnLabores.delete(labpe);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Datos eliminados con éxito.', 'success')", true);
                     cargarLabor();
+                }
+            }
+        }
+
+        protected void grvLabores_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string estado = DataBinder.Eval(e.Row.DataItem, "Estado").ToString();
+
+                if (estado == "A")
+                {
+                    e.Row.Cells[4].CssClass = "badge bg-success text-white";
+                }
+                else
+                {
+                    e.Row.Cells[4].CssClass = "badge bg-danger text-white";
+                    e.Row.Cells[6].Enabled = false;
                 }
             }
         }

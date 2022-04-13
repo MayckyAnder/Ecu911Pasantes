@@ -22,8 +22,8 @@ namespace Ecu911Pasantes.views.pasantes
             pasinfo = cnPasantes.obtenerPasantesxUsuario(usu);
             if (usuinfo != null)
             {
-                lblNombres.Text = usuinfo.Apellidos.ToString() + " " + usuinfo.Nombres.ToString() + " ";
-                lblEstudiante.Text = usuinfo.Apellidos.ToString() + " " + usuinfo.Nombres.ToString();
+                lblNombres.Text = usuinfo.PrimerApellido.ToString() + " " + usuinfo.SegundoApellido.ToString() + " " + usuinfo.PrimerNombre.ToString() + " " + usuinfo.SegundoNombre.ToString() + " ";
+                lblEstudiante.Text = usuinfo.PrimerNombre.ToString() + " " + usuinfo.PrimerApellido.ToString();
                 lblCedula.Text = usuinfo.Cedula.ToString() + " ";
                 lblCedulaF.Text = usuinfo.Cedula.ToString();
                 lbldireccion.Text = usuinfo.Direccion.ToString();

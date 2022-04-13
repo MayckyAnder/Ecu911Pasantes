@@ -15,12 +15,12 @@ namespace CapaNegocio
         //metodo para retornar todos los usuarios
         public static List<Tbl_Horas> obtenerHoras()
         {
-            var lista = dc.Tbl_Horas.Where(hor => hor.Estado == "Activo" || hor.Estado == "Pendiente");
+            var lista = dc.Tbl_Horas.Where(hor => hor.Estado == "A" || hor.Estado == "P");
             return lista.ToList();
         }
         public static Tbl_Horas obtenerHorasxId(int id)
         {
-            var Horid = dc.Tbl_Horas.FirstOrDefault(Hor => Hor.Horas_id.Equals(id) && Hor.Estado == "Activo" || Hor.Estado == "Pendiente");
+            var Horid = dc.Tbl_Horas.FirstOrDefault(Hor => Hor.Horas_id.Equals(id) && Hor.Estado == "A" || Hor.Estado == "P");
             return Horid;
         }
 
@@ -28,7 +28,7 @@ namespace CapaNegocio
         {
             try
             {
-                Hor.Estado = "Pendiente";
+                Hor.Estado = "P";
                 Hor.Fecha = DateTime.Now;
                 dc.Tbl_Horas.InsertOnSubmit(Hor);
                 dc.SubmitChanges();
@@ -54,7 +54,7 @@ namespace CapaNegocio
         {
             try
             {
-                Hor.Estado = "Inactivo";
+                Hor.Estado = "I";
                 dc.SubmitChanges();
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace CapaNegocio
         {
             try
             {
-                Hor.Estado = "Activo";
+                Hor.Estado = "A";
                 dc.SubmitChanges();
             }
             catch (Exception ex)

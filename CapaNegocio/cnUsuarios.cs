@@ -12,74 +12,81 @@ namespace CapaNegocio
         //metodo para verificar credenciales
         public static bool autentificar(string nombre, string pass)
         {
-            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Usuario.Equals(nombre) && usu.Password.Equals(pass));
+            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "A" && usu.Usuario.Equals(nombre) && usu.Password.Equals(pass));
             return auto;
         }
         //metodo para verificar si existe el usuario
         public static Tbl_Usuarios obtenerUsuariosxCedula(int cedula)
         {
-            var usuced = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Cedula.Equals(cedula) && usu.Estado == "Activo");
+            var usuced = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Cedula.Equals(cedula) && usu.Estado == "A" || usu.Estado == "I");
             return usuced;
         }
         //metodo para verificar si existe el nombre
         public static bool autentificarxCedula(int cedula)
         {
-            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Cedula.Equals(cedula));
+            var auto = dc.Tbl_Usuarios.Any(usu => usu.Cedula.Equals(cedula) && usu.Estado == "A" || usu.Estado == "I");
             return auto;
         }
         //metodo para verificar si existe el nombre de usuario
         public static Tbl_Usuarios obtenerUsuariosxNomUsuario(string nombre)
         {
-            var usunom = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Usuario.Equals(nombre) && usu.Estado == "Activo");
+            var usunom = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Usuario.Equals(nombre) && usu.Estado == "A" || usu.Estado == "I");
             return usunom;
         }
         //metodo para verificar si existe el nombre
         public static bool autentificarxNomUsuario(string nombre)
         {
-            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Usuario.Equals(nombre));
+            var auto = dc.Tbl_Usuarios.Any(usu => usu.Usuario.Equals(nombre) && usu.Estado == "A" || usu.Estado == "I");
             return auto;
         }
         //metodo para verificar si existe el nombre
         public static bool autentificarxNom(string nombre)
         {
-            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Usuario.Equals(nombre));
+            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "A" && usu.Usuario.Equals(nombre));
             return auto;
         }
         //metodo para traer el objeto
         public static Tbl_Usuarios autentificarxLogin(string nombre, string pass)
         {
-            var nlogin = dc.Tbl_Usuarios.Single(usu => usu.Estado == "Activo" && usu.Usuario.Equals(nombre) && usu.Password.Equals(pass));
+            var nlogin = dc.Tbl_Usuarios.Single(usu => usu.Estado == "A" && usu.Usuario.Equals(nombre) && usu.Password.Equals(pass));
             return nlogin;
         }
         //metodo para obtener los usuarios por su id
         public static Tbl_Usuarios obtenerUsuariosxId(int id)
         {
-            var respid = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Usu_id.Equals(id) && usu.Estado == "Activo");
+            var respid = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Usu_id.Equals(id) && usu.Estado == "A" || usu.Estado == "I");
             return respid;
         }
         //Metodo para obtener contraseña anterior
         public static bool autentificarxUsuario(int usu, string pass)
         {
-            var auto = dc.Tbl_Usuarios.Any(usup => usup.Estado == "Activo" && usup.Usu_id.Equals(usu) && usup.Password.Equals(pass));
+            var auto = dc.Tbl_Usuarios.Any(usup => usup.Estado == "A" && usup.Usu_id.Equals(usu) && usup.Password.Equals(pass));
             return auto;
         }
         //metodo para verificar si existe el correo
         public static bool autentificarxCorreo(string correo)
         {
-            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "Activo" && usu.Correo == (correo));
+            var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "A" && usu.Correo == (correo));
             return auto;
         }
         //metodo para obtener el correo
         public static Tbl_Usuarios obtenerCorreo(string correo)
         {
-            var contra = dc.Tbl_Usuarios.Single(usu => usu.Estado == "Activo" && usu.Correo.Equals(correo));
+            var contra = dc.Tbl_Usuarios.Single(usu => usu.Estado == "A" && usu.Correo.Equals(correo));
             return contra;
         }
+        //Metodo para verificar codigo del pasante mediante la session
+        public static bool autentificarxCodigo(int Usu, int ced)
+        {
+            var auto = dc.Tbl_Usuarios.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Cedula.Equals(ced));
+            return auto;
+        }
+
         public static void save(Tbl_Usuarios usu)
         {
             try
             {
-                usu.Estado = "Activo";
+                usu.Estado = "A";
                 dc.Tbl_Usuarios.InsertOnSubmit(usu);
                 dc.SubmitChanges();
             }
@@ -103,7 +110,7 @@ namespace CapaNegocio
         {
             try
             {
-                usu.Estado = "Inactivo";
+                usu.Estado = "I";
                 dc.SubmitChanges();
             }
             catch (Exception ex)
