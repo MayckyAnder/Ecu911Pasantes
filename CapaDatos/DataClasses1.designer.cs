@@ -2703,9 +2703,9 @@ namespace CapaDatos
 		
 		private System.Nullable<int> _Cedula;
 		
-		private string _PrimerNombre;
+		private string _Nombres;
 		
-		private string _PrimerApellido;
+		private string _Apellidos;
 		
 		private string _Actividades;
 		
@@ -2731,34 +2731,34 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrimerNombre", DbType="VarChar(50)")]
-		public string PrimerNombre
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombres", DbType="VarChar(101)")]
+		public string Nombres
 		{
 			get
 			{
-				return this._PrimerNombre;
+				return this._Nombres;
 			}
 			set
 			{
-				if ((this._PrimerNombre != value))
+				if ((this._Nombres != value))
 				{
-					this._PrimerNombre = value;
+					this._Nombres = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrimerApellido", DbType="VarChar(50)")]
-		public string PrimerApellido
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apellidos", DbType="VarChar(101)")]
+		public string Apellidos
 		{
 			get
 			{
-				return this._PrimerApellido;
+				return this._Apellidos;
 			}
 			set
 			{
-				if ((this._PrimerApellido != value))
+				if ((this._Apellidos != value))
 				{
-					this._PrimerApellido = value;
+					this._Apellidos = value;
 				}
 			}
 		}
@@ -3039,7 +3039,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pasante", DbType="VarChar(101)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pasante", DbType="VarChar(203)")]
 		public string Pasante
 		{
 			get

@@ -31,14 +31,14 @@
                     <div class="pd-20">
                         <asp:GridView ID="grvParticipantes" EmptyDataText="No hay datos disponibles en la tabla." runat="server" AllowPaging="false" AutoGenerateColumns="false" CssClass="table table-centered w-100 dt-responsive nowrap" GridLines="None" Width="100%">
                             <Columns>
-                                <asp:TemplateField HeaderText="Apellidos">
+                                <asp:TemplateField HeaderText="Apellido">
                                     <ItemTemplate>
-                                        <asp:Label ID="Apellidos" runat="server" Text='<%#Eval("Apellidos")%>'></asp:Label>
+                                        <asp:Label ID="PrimerApellido" runat="server" Text='<%#Eval("PrimerApellido")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Nombres">
+                                <asp:TemplateField HeaderText="Nombre">
                                     <ItemTemplate>
-                                        <asp:Label ID="Nombres" runat="server" Text='<%#Eval("Nombres")%>'></asp:Label>
+                                        <asp:Label ID="PrimerNombre" runat="server" Text='<%#Eval("PrimerNombre")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Universidad">

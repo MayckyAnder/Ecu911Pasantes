@@ -122,8 +122,8 @@
     <Parameter Name="cedula" Type="System.Int32" DbType="Int" />
     <ElementType Name="ActividadesResult">
       <Column Name="Cedula" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PrimerNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PrimerApellido" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
       <Column Name="Actividades" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </ElementType>
@@ -147,7 +147,7 @@
   <Function Name="dbo.Asistencias" Method="Asistencias">
     <ElementType Name="AsistenciasResult">
       <Column Name="Asistencia_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Pasante" Type="System.String" DbType="VarChar(101)" CanBeNull="true" />
+      <Column Name="Pasante" Type="System.String" DbType="VarChar(203)" CanBeNull="true" />
       <Column Name="Fecha" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="HoraEntrada" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="HoraSalida" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />

@@ -99,11 +99,6 @@
                                 <asp:Label ID="Pasante" runat="server" Text='<%#Eval("Pasante")%>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Codigo del Pasante">
-                            <ItemTemplate>
-                                <asp:Label ID="Codigo_Pasante" runat="server" Text='<%#Eval("Codigo_Pasante")%>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Fecha">
                             <ItemTemplate>
                                 <asp:Label ID="Fecha" runat="server" Text='<%#Eval("Fecha")%>'></asp:Label>
