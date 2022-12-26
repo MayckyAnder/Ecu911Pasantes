@@ -41,14 +41,16 @@ namespace Ecu911Pasantes.views.admin
                     string chartData = "";
                     string pasantes = "";
                     string universidades = "";
+
                     chartData += "<script>";
+
                     foreach (var item in list)
                     {
-                        universidades += "\"" + item.Universidad + "\",";
                         pasantes += item.TotalPasantes + ",";
+                        universidades += "\"" + item.Universidad + "\",";
                     }
-                    universidades = universidades.Substring(0, universidades.Length - 1);
                     pasantes = pasantes.Substring(0, pasantes.Length - 1);
+                    universidades = universidades.Substring(0, universidades.Length - 1);
                     chartData += "chartuniversidades = [" + universidades + "]; chartPasantes = [" + pasantes + "]";
                     chartData += "</script>";
                     ltChartData.Text = chartData;
@@ -78,7 +80,7 @@ namespace Ecu911Pasantes.views.admin
                     }
                     carreras = carreras.Substring(0, carreras.Length - 1);
                     pasantes = pasantes.Substring(0, pasantes.Length - 1);
-                    chartData1 += "chartcarreras = [" + carreras + "]; chartPasantes = [" + pasantes + "]";
+                    chartData1 += "chartcarreras = [" + carreras + "]; TotalPasantes = [" + pasantes + "]";
                     chartData1 += "</script>";
                     ltChartData1.Text = chartData1;
                 }

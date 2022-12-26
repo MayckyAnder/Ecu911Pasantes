@@ -35,7 +35,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-12 col-md-3 col-form-label">Cedula</label>
                                 <div class="col-sm-12 col-md-9">
-                                    <asp:TextBox ID="txtCedula" TextMode="Number" MaxLength="10" CssClass="form-control" OnTextChanged="TxtCedula_TextChanged" autocomplete="off" Style="text-transform: uppercase;" AutoPostBack="true" placeholder="Ingrese su cedula" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtCedula" TextMode="Number" MaxLength="10" CssClass="form-control" OnTextChanged="TxtCedula_TextChanged" autocomplete="off" AutoPostBack="true" placeholder="Ingrese su cedula" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" ErrorMessage="La cedula es requerida" ControlToValidate="txtCedula" ValidationGroup="Info" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
@@ -211,6 +211,7 @@
                                 <label class="col-sm-12 col-md-4 col-form-label">Estado</label>
                                 <div class="col-sm-12 col-md-8">
                                     <asp:DropDownList ID="ddlEstado" CssClass="form-control" Enabled="false" runat="server">
+                                        <asp:ListItem Value="P">Pendiente</asp:ListItem>
                                         <asp:ListItem Value="A">Activo</asp:ListItem>
                                         <asp:ListItem Value="I">Inactivo</asp:ListItem>
                                     </asp:DropDownList>

@@ -189,9 +189,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="Certificado.aspx" class="dropdown-toggle no-arrow">
+                            <asp:LinkButton ID="lnbAutorizar" href="Certificado.aspx" CssClass="dropdown-toggle no-arrow" Visible="false" runat="server">
                                 <span class="micon dw dw-file"></span><span class="mtext">Certificado</span>
-                            </a>
+                            </asp:LinkButton>
+                            <%--<a href="Certificado.aspx" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-file"></span><span class="mtext">Certificado</span>
+                            </a>--%>
                         </li>
                         <li>
                             <a href="curriculum.aspx" class="dropdown-toggle no-arrow">

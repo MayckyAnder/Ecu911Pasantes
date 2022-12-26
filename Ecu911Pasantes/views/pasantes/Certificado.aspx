@@ -4,6 +4,20 @@
     Certificado de Finalizacion | Pasantes - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
+    <style>
+        .contorno{
+            border: solid 1px;
+            width: 250px; 
+            height: 100px; 
+            box-shadow: -10px -10px 1px gray; 
+            margin-left: 490px;
+        }
+        .titulo{
+            font-weight:600;
+            text-align:center !important;
+            margin-bottom: 30px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -24,6 +38,9 @@
                                     <li class="breadcrumb-item active" aria-current="page">Certificado de Finalización</li>
                                 </ol>
                             </nav>
+                        </div>
+                        <div class="col-md-6 col-sm-12 text-right">
+                            <asp:Button ID="btnExportar" CssClass="btn btn-info" OnClick="btnExportar_Click" runat="server" Text="Exportar Pdf" />
                         </div>
                     </div>
                 </div>
@@ -46,7 +63,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h4 class="text-center mb-30 weight-600">CERTIFICADO</h4>
+                        <h4 class="titulo">CERTIFICADO</h4>
                         <div class="row pb-30" style="margin-left: 20px; margin-right: 20px">
                             <div class="col-md-12">
                                 <p class="font-14 mb-5 mb-15" style="text-align: justify; font-family: Arial;">
@@ -79,7 +96,7 @@
                         </div>
                         <div class="row pb-30">
                             <div class="col-md-12">
-                                <div class="align-content-end" style="border: solid 1px; width: 250px; height: 100px; box-shadow: -10px -10px 1px gray; margin-left: 490px">
+                                <div class="align-content-end contorno">
                                     <p class="font-14 mb-5 mb-15" style="text-align: justify; font-family: Arial;">
                                         <label style="text-align: center; font-size: 11px">
                                             Dirección Nacional Académico para Emergencias Subdirección Técnica de Doctrina<br />
@@ -98,8 +115,7 @@
                         </div>
                     </div>
                 </div>
-                <br />
-                <asp:Button ID="btnExportar" CssClass="btn btn-info" OnClick="btnExportar_Click" runat="server" Text="Exportar Pdf" />
+                <br />            
             </div>
         </ContentTemplate>
         <Triggers>

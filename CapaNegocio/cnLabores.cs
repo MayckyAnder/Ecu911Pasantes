@@ -40,11 +40,18 @@ namespace CapaNegocio
             var auto = dc.Tbl_Labores.Any(lab => lab.Estado == "A" && lab.ConceptoL == (nombre));
             return auto;
         }
+
+        public static bool autentificarxPasante(int id)
+        {
+            var auto = dc.Tbl_Labores.Any(lab => lab.Estado == "A" && lab.Certificado == "A" && lab.Pasantes_id.Equals(id));
+            return auto;
+        }
         public static void save(Tbl_Labores lab)
         {
             try
             {
                 lab.Estado = "A";
+                lab.Certificado = "P";
                 dc.Tbl_Labores.InsertOnSubmit(lab);
                 dc.SubmitChanges();
             }
@@ -75,6 +82,18 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 throw new ArgumentException("Los datos no han sido eliminados <br/>" + ex.Message);
+            }
+        }
+        public static void authorize(Tbl_Labores lab)
+        {
+            try
+            {
+                lab.Certificado = "A";
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("El certificado no ha sido autorizado <br/>" + ex.Message);
             }
         }
     }

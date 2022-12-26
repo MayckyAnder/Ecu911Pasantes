@@ -69,9 +69,9 @@ namespace Ecu911Pasantes.views.admin
                     SegundoNombre = txtSegundoNombre.Text.ToUpper().Trim(),
                     PrimerApellido = txtPrimerApellido.Text.ToUpper().Trim(),
                     SegundoApellido = txtSegundoApellido.Text.ToUpper().Trim(),
-                    Cedula = Convert.ToInt32(txtCedula.Text),
+                    Cedula = txtCedula.Text.Trim(),
                     Area = txtArea.Text.ToUpper().Trim(),
-                    Celular = Convert.ToInt32(txtCelular.Text),
+                    Celular = txtCelular.Text.Trim(),
                     Correo = txtEmail.Text.ToUpper().Trim(),
                     Direccion = txtDireccion.Text.ToUpper().Trim(),
                     Tusu_id = 1
@@ -102,9 +102,9 @@ namespace Ecu911Pasantes.views.admin
                 usu.SegundoNombre = txtSegundoNombre.Text.ToUpper().Trim();
                 usu.PrimerApellido = txtPrimerApellido.Text.ToUpper().Trim();
                 usu.SegundoApellido = txtSegundoApellido.Text.ToUpper().Trim();
-                usu.Cedula = Convert.ToInt32(txtCedula.Text);
+                usu.Cedula = txtCedula.Text.Trim();
                 usu.Area = txtArea.Text.ToUpper().Trim();
-                usu.Celular = Convert.ToInt32(txtCelular.Text);
+                usu.Celular = txtCelular.Text.Trim();
                 usu.Correo = txtEmail.Text.ToUpper().Trim();
                 usu.Direccion = txtDireccion.Text.ToUpper().Trim();
                 usu.Estado = ddlEstado.SelectedValue;
@@ -164,11 +164,11 @@ namespace Ecu911Pasantes.views.admin
         {
             if (txtCedula.Text != "") 
             {
-                bool existe = cnUsuarios.autentificarxCedula(Convert.ToInt32(txtCedula.Text));
+                bool existe = cnUsuarios.autentificarxCedula(txtCedula.Text);
                 if (existe)
                 {
                     _ = new Tbl_Usuarios();
-                    Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxCedula(Convert.ToInt32(txtCedula.Text));
+                    Tbl_Usuarios resp = cnUsuarios.obtenerUsuariosxCedula(txtCedula.Text);
                     if (resp != null)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Ya existe una persona registrado con ese numero de cedula', 'error')", true);

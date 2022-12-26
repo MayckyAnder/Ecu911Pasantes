@@ -183,6 +183,11 @@
                                 <span class="micon dw dw-time-management"></span><span class="mtext">Numero de horas com.</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="proyectosCulminados.aspx" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-time-management"></span><span class="mtext">Proyectos Culminados</span>
+                            </a>
+                        </li>
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle">
                                 <span class="micon dw dw-user-2"></span><span class="mtext">Pasantes</span>
@@ -234,6 +239,10 @@
     <script type="text/javascript" src="../../resources/src/plugins/select2/dist/js/select2.full.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
     <script type="text/javascript" src="../../resources/src/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="../../resources/src/src/plugins/highcharts-6.0.7/code/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<script src="../../resources/src/src/plugins/highcharts-6.0.7/code/highcharts-more.js"></script>
+	<script src="../../resources/src/vendors/scripts/highchart-setting.js"></script>
     <asp:ContentPlaceHolder ID="cphFooter" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

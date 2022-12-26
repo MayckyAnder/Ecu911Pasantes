@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using HtmlAgilityPack;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using System;
@@ -22,11 +23,13 @@ namespace Ecu911Pasantes.views.pasantes
 
         protected void btnExportar_Click(object sender, EventArgs e)
         {
+            HtmlNode.ElementsFlags["img"] = HtmlElementFlag.Closed;
+            HtmlNode.ElementsFlags["br"] = HtmlElementFlag.Closed;
             using (StringWriter sw = new StringWriter())
             {
                 using (HtmlTextWriter hw = new HtmlTextWriter(sw))
                 {
-                    this.Page.RenderControl(hw);
+                    Page.RenderControl(hw);
                     StringReader sr = new StringReader(sw.ToString());
                     Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);

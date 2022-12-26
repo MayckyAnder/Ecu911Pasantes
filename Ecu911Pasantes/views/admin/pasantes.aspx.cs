@@ -14,6 +14,14 @@ namespace Ecu911Pasantes.views.admin
         {
             if (!IsPostBack)
             {
+                //if (Session["Mensaje"] != null && Session["Estado"] != null && Session["Icono"] != null)
+                //{
+                //    var Mensaje = Session["Mensaje"];
+                //    var Estado = Session["Estado"];
+                //    var Icono = Session["Icono"];
+
+                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('"+Estado+"', '"+Mensaje+"', '"+Icono+"')", true);
+                //}
                 cargarPasantes();
             }
         }
@@ -70,20 +78,20 @@ namespace Ecu911Pasantes.views.admin
                 string estado = DataBinder.Eval(e.Row.DataItem, "Estado").ToString();
 
 
-                if (estado == "Activo")
+                if (estado == "A")
                 {
-                    e.Row.Cells[14].CssClass = "badge bg-success text-white";
-                    e.Row.Cells[14].Text = "Activo";
+                    e.Row.Cells[4].CssClass = "badge bg-success text-white";
+                    e.Row.Cells[4].Text = "Activo";
                 }
-                else if (estado == "Pendiente")
+                else if (estado == "P")
                 {
-                    e.Row.Cells[14].CssClass = "badge bg-warning text-white";
-                    e.Row.Cells[14].Text = "Activo";
+                    e.Row.Cells[4].CssClass = "badge bg-warning text-white";
+                    e.Row.Cells[4].Text = "Pendiente";
                 }
                 else
                 {
-                    e.Row.Cells[14].CssClass = "badge bg-danger text-white";
-                    e.Row.Cells[14].Text = "Activo";
+                    e.Row.Cells[4].CssClass = "badge bg-danger text-white";
+                    e.Row.Cells[4].Text = "Inactivo";
                 }
             }
         }

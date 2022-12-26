@@ -4,6 +4,55 @@
     Actividades | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
+    <style type="text/css">
+        .CompletionList
+        {             
+            padding: 5px 0;
+            margin: 2px 0 0; 
+            height: 100px;  
+            overflow: auto;             
+            position: absolute;
+            border: 1px solid #ccc;
+              border: 1px solid rgba(0, 0, 0, 0.2);
+              *border-right-width: 2px;
+              *border-bottom-width: 2px;
+              -webkit-border-radius: 6px;
+                 -moz-border-radius: 6px;
+                      border-radius: 6px;
+                      -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                 -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+              -webkit-background-clip: padding-box;
+                 -moz-background-clip: padding;
+                      background-clip: padding-box;
+          
+            background-color: White;
+            cursor: pointer;
+        }
+        
+        .CompletionListItem
+        {
+	          display: block;
+              padding: 3px 20px;
+              clear: both;
+              font-weight: normal;
+              line-height: 20px;
+              color: #333333;
+              white-space: nowrap;
+        }
+        
+
+        .CompletionListHighlightedItem
+        {
+	          color: #ffffff;
+	          padding: 3px 20px;
+              text-decoration: none;
+              background-color: #0081c2;
+              background-repeat: repeat-x;
+              outline: 0;
+              background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphMensajes" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -39,6 +88,11 @@
                                         <span class="input-group-text">
                                             <asp:LinkButton ID="lnbBuscar" CssClass="dw dw-search2 search-icon" OnClick="lnbBuscar_Click" runat="server"></asp:LinkButton></span>
                                     </div>
+                                    <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender" runat="server" CompletionInterval="10" DelimiterCharacters="" Enabled="True"
+                                        MinimumPrefixLength="1" ServiceMethod="ObtenerCedulaPasante"
+                                        TargetControlID="txtBuscar" CompletionListCssClass="CompletionList"
+                                        CompletionListHighlightedItemCssClass="CompletionListHighlightedItem"
+                                        CompletionListItemCssClass="CompletionListItem"></ajaxToolkit:AutoCompleteExtender>
                                 </div>
                             </div>
                         </div>
@@ -67,6 +121,11 @@
                                 <asp:TemplateField HeaderText="Fecha">
                                     <ItemTemplate>
                                         <asp:Label ID="Fecha" runat="server" Text='<%#Eval("Fecha")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Horas Realizas">
+                                    <ItemTemplate>
+                                        <asp:Label ID="TotalHoras" runat="server" Text='<%#Eval("TotalHoras")%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

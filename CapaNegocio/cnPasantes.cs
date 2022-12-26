@@ -13,15 +13,22 @@ namespace CapaNegocio
         //Metodo para obtener pasantes por usuario
         public static Tbl_Pasantes obtenerPasantesxUsuario(int id)
         {
-            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Usu_id.Equals(id) && pasa.Estado == "A" || pasa.Estado == "I" || pasa.Estado == "P");
+            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Usu_id.Equals(id));
+            return pasaid;
+        }
+        //Metodo para obtener pasantes por usuario
+        public static Tbl_Pasantes obtenerPasantesxSession(int id)
+        {
+            var pasaid = dc.Tbl_Pasantes.FirstOrDefault(pasa => pasa.Usu_id.Equals(id) && pasa.Estado == "A");
             return pasaid;
         }
         //Metodo para verifiar si el pasante Aceptado el acuerdo
-        public static bool autentificarxUsuario(int Usu)
+        public static bool autentificarAcuerdoxUsuario(int Usu)
         {
             var auto = dc.Tbl_Pasantes.Any(pasa => pasa.Usu_id.Equals(Usu) && pasa.Acuerdo == "Aceptado" && pasa.Estado == "A");
             return auto;
         }
+
         //Metodo para verifiar si el pasante existe
         public static bool autentificarxUsu(int Usu)
         {

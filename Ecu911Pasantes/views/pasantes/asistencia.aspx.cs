@@ -18,7 +18,7 @@ namespace Ecu911Pasantes.views.pasantes
             if (!IsPostBack)
             {
 
-                string usulogeado = Session["PASANTE"].ToString();
+                string usulogeado = Session["Pasante"].ToString();
                 bool existe = cnAsistencias.autentificarxCodigo(Convert.ToInt32(usulogeado));
                 bool dia = cnAsistencias.autentificarDiaxCodigo(Convert.ToInt32(usulogeado));
                 if (dia)
@@ -72,10 +72,18 @@ namespace Ecu911Pasantes.views.pasantes
             {
                 string usulogeado = Session["Pasante"].ToString();
                 bool validar = cnUsuarios.autentificarxCodigo(Convert.ToInt32(usulogeado), Convert.ToInt32(txtAsistencia.Text));
+                Tbl_Asistencia asi = cnAsistencias.obtenerAsistenciaxCodigo(Convert.ToInt32(usulogeado));
+                DateTime entrada = Convert.ToDateTime(asi.HoraEntrada);
+                DateTime salida = DateTime.Now;
+                TimeSpan minutos = salida - entrada;
+                double diferencia = minutos.TotalMinutes;
+                decimal total = Convert.ToDecimal( diferencia / 60);
+                total = decimal.Round(total, 2, MidpointRounding.AwayFromZero);
+
                 if (validar)
                 {
                     asismd.Actividades = txtActividades.Text;
-                    asismd.Usu_id = Convert.ToInt32(usulogeado);
+                    asismd.TotalHoras = total;
                     cnAsistencias.modify(asismd);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Salida registrada con existo.', 'success')", true);
                     txtAsistencia.Text = "";

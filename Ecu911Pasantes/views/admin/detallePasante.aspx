@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/admin/admin.Master" AutoEventWireup="true" CodeBehind="detalleResponsable.aspx.cs" Inherits="Ecu911Pasantes.views.admin.detalleResponsable" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/admin/admin.Master" AutoEventWireup="true" CodeBehind="detallePasante.aspx.cs" Inherits="Ecu911Pasantes.views.admin.detallePasante" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphTitle" runat="server">
-    Detalle de Responsables | Admin - Sistema Pasantes
+    Detalle de Pasantes | Admin - Sistema Pasantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphCabecera" runat="server">
 </asp:Content>
@@ -54,11 +53,23 @@
                         <h6>Nombre de Usuario:
                             <asp:Label ID="lblUser" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
                         <br />
-                        <h6>Area de Trabajo:
+                        <h6>Area de Prácticas/Vinculación:
                             <asp:Label ID="lblArea" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
                         <br />
-                        <h6>Cargo Ocupado:
-                            <asp:Label ID="lblCargo" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
+                        <h6>Universidad/Instituto:
+                            <asp:Label ID="lblUniversidad" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
+                        <br />
+                        <h6>Carrera Universitaria:
+                            <asp:Label ID="lblCarrera" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
+                        <br />
+                        <h6>Nivel de Semestre:
+                            <asp:Label ID="lblSemestre" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
+                        <br />
+                        <h6>Codigo del ECU 911:
+                            <asp:Label ID="lblCodigo" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
+                        <br />
+                        <h6>Actividad:
+                            <asp:Label ID="lblActividad" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>
                         <br />
                         <h6>Estado:
                             <asp:Label ID="lblEstado" CssClass="form-label font-15" Font-Bold="false" runat="server" Text=""></asp:Label></h6>

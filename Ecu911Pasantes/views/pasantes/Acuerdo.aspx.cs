@@ -16,7 +16,7 @@ namespace Ecu911Pasantes.views.pasantes
         protected void Page_Load(object sender, EventArgs e)
         {
             string usulogeado = Session["Pasante"].ToString();
-            int codigo = Convert.ToInt32(Convert.ToInt32(usulogeado));
+            int codigo = Convert.ToInt32(usulogeado);
             usuinfo = cnUsuarios.obtenerUsuariosxId(codigo);
             int usu = Convert.ToInt32(usuinfo.Usu_id.ToString());
             pasinfo = cnPasantes.obtenerPasantesxUsuario(usu);
@@ -36,7 +36,7 @@ namespace Ecu911Pasantes.views.pasantes
                     lblActividad.Text = pasinfo.Actividad.ToString() + " ";
                 }
             }
-            bool existe = cnPasantes.autentificarxUsuario(Convert.ToInt32(usulogeado));
+            bool existe = cnPasantes.autentificarAcuerdoxUsuario(Convert.ToInt32(usulogeado));
             if (existe)
             {
                 ckbAcuerdo.Checked = true;
