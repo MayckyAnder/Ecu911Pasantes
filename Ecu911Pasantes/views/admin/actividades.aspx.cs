@@ -1,6 +1,7 @@
 ﻿using CapaDatos;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -35,9 +36,7 @@ namespace Ecu911Pasantes.views.admin
             List<string> lista = new List<string>();
             try
             {
-                string oConn = @"Data Source=MAYCKYANDER\MAYCKYANDER;Initial Catalog=Ecu911Pasantes;Integrated Security=True";
-
-                SqlConnection con = new SqlConnection(oConn);
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ToString());
                 con.Open();
                 SqlCommand cmd = new SqlCommand("select top(10) Cedula +' | '+ PrimerNombre +' '+ SegundoNombre +' '+ PrimerApellido +' '+ SegundoApellido from Tbl_Usuarios where Cedula LIKE + @Cedula + '%' and Tusu_id = 2 and Estado = 'A'", con);
                 cmd.Parameters.AddWithValue("@Cedula", prefixText);

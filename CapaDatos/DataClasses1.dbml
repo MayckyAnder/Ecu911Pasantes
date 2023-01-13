@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Ecu911Pasantes" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MAYCKYANDER\MAYCKYANDER;Initial Catalog=Ecu911Pasantes;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="Ecu911PasantesConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Ecu911Pasantes;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="Ecu911PasantesConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Tbl_Asistencia" Member="Tbl_Asistencia">
     <Type Name="Tbl_Asistencia">
       <Column Name="Asistencia_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
