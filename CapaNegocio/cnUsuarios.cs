@@ -15,18 +15,21 @@ namespace CapaNegocio
             var auto = dc.Tbl_Usuarios.Any(usu => usu.Estado == "A" && usu.Usuario.Equals(nombre) && usu.Password.Equals(pass));
             return auto;
         }
+
         //metodo para verificar si existe el usuario
         public static Tbl_Usuarios obtenerUsuariosxCedula(string cedula)
         {
             var usuced = dc.Tbl_Usuarios.FirstOrDefault(usu => usu.Cedula.Equals(cedula));
             return usuced;
         }
+
         //metodo para verificar si existe el nombre
         public static bool autentificarxCedula(string cedula)
         {
             var auto = dc.Tbl_Usuarios.Any(usu => usu.Cedula.Equals(cedula));
             return auto;
         }
+
         //metodo para verificar si existe el nombre de usuario
         public static Tbl_Usuarios obtenerUsuariosxNomUsuario(string nombre)
         {
